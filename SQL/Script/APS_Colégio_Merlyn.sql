@@ -1,0 +1,24 @@
+CREATE TABLE Pessoa (
+    cd_pessoa INTEGER UNIQUE NOT NULL, /* [PK] */
+	nome VARCHAR(70) NOT NULL,
+	dt_nasc DATE NOT NULL,
+	RG VARCHAR(10) NOT NULL,
+	CPF VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE Sala (
+	cd_sala INTEGER UNIQUE NOT NULL /* [PK] */
+);
+
+CREATE TABLE Aluno (
+	cd_aluno INTEGER UNIQUE NOT NULL, /* [PK] */
+	pessoa_cd_pessoa INTEGER UNIQUE NOT NULL, /* [FK] */
+	cd_sala INTEGER NOT NULL /* [FK] */
+);
+
+CREATE TABLE Notas (
+	cd_nota VARCHAR(5) UNIQUE NOT NULL /* [PK] */ -- VERIFICAR SE VARCHAR
+    cd_aluno INTEGER NOT NULL, /* [FK] */
+    NP1 FLOAT NOT NULL,
+    NP2 VARCHAR(5) NOT NULL -- VERIFICAR SE VARCHAR
+);
