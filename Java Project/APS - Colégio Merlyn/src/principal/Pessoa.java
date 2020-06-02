@@ -17,6 +17,7 @@ public abstract class Pessoa {
 		this.dtNasc = dtNasc;
 	}
 	
+	//Métodos Getters
 	String getNome() {
 		return nome;
 	}
@@ -32,7 +33,11 @@ public abstract class Pessoa {
 	public String getDtNasc() {
 		return dtNasc;
 	}
+	//Fim de Métodos Getters
 
+	//Outros Métodos
+	
+	//Quantidade de Pessoas
 	public int getPessoaCount() throws ClassNotFoundException {
         String SQL = "SELECT count(*) FROM Pessoa";
         int count = 0;

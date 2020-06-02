@@ -1,6 +1,8 @@
 --Arrumar Data
 SHOW datestyle;
 set datestyle to ISO, DMY;
+--Problema em arrumar a data --Infomações no Trello
+
 
 --Facilitador SELECT
 SELECT * FROM Pessoa;
@@ -77,6 +79,10 @@ CREATE TABLE Diretor (
 
 SELECT * FROM Diretor;
 
+UPDATE Pessoa
+SET CPF = '08618351903'
+WHERE nome = 'Victor';
+
 DELETE FROM Pessoa
 
 INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
@@ -92,10 +98,10 @@ INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
 ('6666', '01/01/2001', '098223', '086183');
 
 INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
-('José', '22/02/2006', '098223', '086183'),
-('Mauricio', '04/08/2009', '098223', '086183'),
-('Mariana', '16/07/2003', '098223', '6987'),
-('Clara', '01/01/2005', '098223', '87954');
+('Luana', '22/02/2010', '54546', '78898941'),
+('Lorraine', '04/08/2015', '98788', '086183'),
+('Altair', '16/07/2004', '96441', '6987'),
+('Paulo', '01/01/2016', '56847', '87954');
 
 INSERT INTO Aluno(pessoa_cd_pessoa, cd_sala) VALUES
 (3232, 34);
