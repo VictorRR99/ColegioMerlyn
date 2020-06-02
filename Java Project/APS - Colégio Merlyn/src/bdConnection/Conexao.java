@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class Conexao {
 	
 	private static final String url = "jdbc:postgresql://localhost:5432/APSColegioMerlyn";
-	private static final String user = "postgres";
-	private static final String password = "9922";
+	private static final String user = "Colegio";
+	private static final String password = "4444";
 	
 	//Este metodo funcionou mesmo sem que o servidor do Postgres estivesse aberto
 	//Provavelmente ele está ocorrendo alguma das exceções que estão no throws
