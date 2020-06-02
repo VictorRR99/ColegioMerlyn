@@ -67,7 +67,9 @@ public abstract class Pessoa {
 		ResultSet rs = stmt.executeQuery(SQL)) {
 	      rs.next();
 	      count = rs.getInt(1);
-	      conn.close();
+	      rs.close();
+          stmt.close();
+          conn.close();
 	} catch (SQLException ex) {
 	      System.out.println(ex.getMessage());
 	}
@@ -87,6 +89,9 @@ public abstract class Pessoa {
             ResultSet rs = stmt.executeQuery(SQL)) {
             rs.next();
             queryPessoa = rs.getString(1);
+            
+            rs.close();
+            stmt.close();
             conn.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
