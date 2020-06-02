@@ -43,7 +43,7 @@ public abstract class Pessoa {
         int count = 0;
 
         try (Connection conn = Conexao.getConnection();
-                Statement stmt = conn.createStatement();
+        		Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(SQL)) {
             rs.next();
             count = rs.getInt(1);

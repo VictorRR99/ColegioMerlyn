@@ -11,13 +11,28 @@ public class Conexao {
 	private static final String password = "4444";
 	
 //	JDBC utiliza do serviço aberto do postgres, não é necessário abrir o banco para testar
-	public static Connection getConnection() throws ClassNotFoundException, SQLException{
-		Class.forName("org.postgresql.Driver");
-		Connection conecta = DriverManager.getConnection(url, user, password);
+	public static Connection getConnection(){
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Classe não encontrada!");
+			e.printStackTrace();
+		}
+		
+		Connection conecta;
+		
+		try {
+			conecta = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			conecta = null;
+			e.printStackTrace();
+		}
+		
+//		Se houver algum problema com a conexão retorna uma mensagem
 		if(conecta != null) {
-			System.out.println("Conexão com Sucesso");
 			return conecta;
 		}else {
+			System.out.println("Conexão não encontrada!");
 			return null;
 		}
 	}
