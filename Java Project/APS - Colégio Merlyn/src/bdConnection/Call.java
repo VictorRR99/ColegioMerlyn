@@ -27,6 +27,8 @@ public class Call {
 		//Teste VS CODe
 		
 		//Teste no Java
+
+		/*VS CODE DENOVO*/
 	}
 	
 }
