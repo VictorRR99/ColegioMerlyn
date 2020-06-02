@@ -10,9 +10,7 @@ public class Conexao {
 	private static final String user = "Colegio";
 	private static final String password = "4444";
 	
-	//Este metodo funcionou mesmo sem que o servidor do Postgres estivesse aberto
-	//Provavelmente ele está ocorrendo alguma das exceções que estão no throws
-	//Importante entender o que está acontecendo
+//	JDBC utiliza do serviço aberto do postgres, não é necessário abrir o banco para testar
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName("org.postgresql.Driver");
 		Connection conecta = DriverManager.getConnection(url, user, password);
