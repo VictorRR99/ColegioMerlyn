@@ -1,7 +1,9 @@
-package bdConnection;
+package principal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import bdConnection.*;
 
 public class Call {
 	
@@ -13,22 +15,13 @@ public class Call {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	
-		Conexao utilitario = new Conexao();
+			
+		Aluno victor = new Aluno("Victor", "08618351903", "6021469", "22/02/2020");
 		
-		System.out.println(utilitario.getPessoaCount());
+		System.out.println(victor.getPessoaCount());
 		
-		System.out.println(utilitario.getPessoaDtNasc());
+		System.out.println(victor.getPessoaDtNasc());
 		
-		//Teste pra ver se atualiza
-
-		//Tentando
-
-		//Teste VS CODe
-		
-		//Teste no Java
-
-		/*VS CODE DENOVO*/
 	}
 	
 }
