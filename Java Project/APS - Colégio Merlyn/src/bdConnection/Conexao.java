@@ -2,10 +2,7 @@ package bdConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 
 public class Conexao {
 	
@@ -13,6 +10,9 @@ public class Conexao {
 	private static final String user = "postgres";
 	private static final String password = "9922";
 	
+	//Este metodo funcionou mesmo sem que o servidor do Postgres estivesse aberto
+	//Provavelmente ele está ocorrendo alguma das exceções que estão no throws
+	//Importante entender o que está acontecendo
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName("org.postgresql.Driver");
 		Connection conecta = DriverManager.getConnection(url, user, password);

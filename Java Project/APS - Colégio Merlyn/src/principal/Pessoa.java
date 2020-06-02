@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 import bdConnection.*;
 
@@ -51,9 +50,10 @@ public abstract class Pessoa {
     }
 	
 	/*Este método está incorreto*/
+	//Seu intuito é pegar todos os nomes das pessoas que tem no banco
 	public int getAllPessoa() throws ClassNotFoundException {
-	String SQL = "SELECT * FROM Pessoa";
-	int cd_pessoa;
+	String SQL = "SELECT nome FROM Pessoa";
+
 	int count = 0;
 	
 	
@@ -71,12 +71,9 @@ public abstract class Pessoa {
 	}
 	
 	public String getPessoaDtNasc() throws ClassNotFoundException {
-		Scanner leitor = new Scanner(System.in);
 		
-		String nomePessoa = leitor.next();
-		leitor.close();
-		
-        String SQL = "SELECT dt_nasc FROM Pessoa WHERE LOWER(nome) = '" + nomePessoa + "'";
+		//Faz o Select da data de nascimento e assegura que a pesquisa será feito corretamente
+        String SQL = "SELECT dt_nasc FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
         
         String queryPessoa = null;
 
