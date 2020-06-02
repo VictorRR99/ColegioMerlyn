@@ -1,0 +1,33 @@
+[1] - Interface Gráfica
+	>Console;
+	>Swing;
+
+[2] - Mínimo de 6 Entidades (Objetos?)
+	>Mínimo de 1 relacionamento "muitos para muitos" {(N,N)?}.
+
+[3] - Funcionalidades:
+	>Criacão de entidades
+	>Alteracão de entidades 
+	>Busca por entidades
+	>Delecão de entidades 
+	>Relatórios (Pesquisas por dados, tanto da persistência local quanto do banco de dado, pesquisas SELECT)
+
+[4] - Persistência Local e no Postgres.
+
+[5] - Devera ser realizado o projeto Entidade-Relacionamento da base de dados(Modelo Lógico).
+
+[6] - A base de dados deve estar na 3FN.
+
+[7] - Mínimo de 4 relatórios(Pesquisas) no sistema.
+-No modo programação convencional
+	>Persistência Local
+-Com o BD
+	>INNER JOIN
+	>OUTER JOIN
+	>UNION
+	>Subquery
+
+[8] Utilizar JDBC
+
+
+
