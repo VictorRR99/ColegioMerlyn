@@ -91,6 +91,12 @@ INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
 ('5445', '16/07/2001', '098223', '086183'),
 ('6666', '01/01/2001', '098223', '086183');
 
+INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
+('José', '22/02/2001', '098223', '086183'),
+('Mauricio', '04/08/2000', '098223', '086183'),
+('Mariana', '16/07/2001', '098223', '086183'),
+('Clara', '01/01/2001', '098223', '086183');
+
 INSERT INTO Aluno(pessoa_cd_pessoa, cd_sala) VALUES
 (3232, 34);
 
