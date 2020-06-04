@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import bdConnection.*;
 
 public abstract class Pessoa implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String nome, cpf, rg, dtNasc;
 	
 	Pessoa(String nome, String cpf, String rg, String dtNasc){
@@ -23,7 +26,11 @@ public abstract class Pessoa implements Serializable{
 		this.dtNasc = dtNasc;
 	}
 	
-	//Métodos Getters
+	/* Métodos de Relatório [Pesquisa] JAVA*/
+	//Talvez fazer métodos que procuram igual a pesquisa do SQL
+	//Para tal realmente é possível a necessidade de umaa lista estática
+	//Porém haverá complicações a respeito de como será chamado os métodos
+	
 	String getNome() {
 		return nome;
 	}
@@ -39,11 +46,10 @@ public abstract class Pessoa implements Serializable{
 	public String getDtNasc() {
 		return dtNasc;
 	}
-	//Fim de Métodos Getters
 
-	//Outros Métodos
+	/* Métodos de Relatório [Pesquisa] PostgreSQL*/
 	
-	//Quantidade de Pessoas
+	//Quantidade de Pessoas que estão cadastradas na Escola
 	public int getPessoaCount() throws ClassNotFoundException {
         String SQL = "SELECT count(*) FROM Pessoa";
         int count = 0;
@@ -60,7 +66,7 @@ public abstract class Pessoa implements Serializable{
         return count;
     }
 	
-	//Retorna todos os nomes das pessoas
+	//Todas os nomes das Pessoas que estão cadastradas na Escola
 	public List<String> getAllPessoa() throws ClassNotFoundException {
 		String SQL = "SELECT nome FROM Pessoa";
 		
@@ -83,6 +89,8 @@ public abstract class Pessoa implements Serializable{
 			return lista;
 	}
 	
+	//Dado o cpf que estiver na String cpf será retornado a data de nascimento desta pessoa
+	//Através da pesquisa no Banco de Dados
 	public String getPessoaDtNasc() throws ClassNotFoundException {
 		
 		//Faz o Select da data de nascimento e assegura que a pesquisa será feito corretamente
