@@ -1,3 +1,4 @@
+--INSERTS NA TABELA ALUNO
 INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
 ('Victor', '22/02/2001', '123456', '08618351903'),
 ('Vinicius', '04/08/2000', '654321', '12345678901'),
@@ -11,3 +12,4 @@ INSERT INTO Pessoa(nome, dt_nasc, rg, cpf) VALUES
 ('Lorraine', '04/08/2015', '694351', '33352145698'),
 ('Altair', '16/07/2004', '854652', '52468854122'),
 ('Paulo', '01/01/2016', '697136', '65987894126');
+--END-- INSERTS NA TABELA ALUNO
