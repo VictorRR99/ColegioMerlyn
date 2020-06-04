@@ -80,7 +80,7 @@ public abstract class Pessoa {
 	public String getPessoaDtNasc() throws ClassNotFoundException {
 		
 		//Faz o Select da data de nascimento e assegura que a pesquisa será feito corretamente
-        String SQL = "SELECT dt_nasc FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        String SQL = "SELECT TO_CHAR(dt_nasc :: DATE, 'dd/mm/yyyy') FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
         
         String queryPessoa = null;
 
