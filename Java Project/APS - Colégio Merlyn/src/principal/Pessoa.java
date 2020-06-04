@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import java.util.ArrayList;
 
 import bdConnection.*;
 
@@ -54,27 +56,27 @@ public abstract class Pessoa {
         return count;
     }
 	
-	/*Este método está incorreto*/
-	//Seu intuito é pegar todos os nomes das pessoas que tem no banco
-	public int getAllPessoa() throws ClassNotFoundException {
+//	Retorna todos os nomes das pessoas
+	public List<String> getAllPessoa() throws ClassNotFoundException {
 	String SQL = "SELECT nome FROM Pessoa";
-
-	int count = 0;
 	
+	List<String> lista = new ArrayList<>();
 	
 	try (Connection conn = Conexao.getConnection();
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(SQL)) {
+		while(rs.next()) {
+				lista.add(rs.getString("nome"));
+		}
 	      rs.next();
-	      count = rs.getInt(1);
 	      rs.close();
           stmt.close();
           conn.close();
 	} catch (SQLException ex) {
 	      System.out.println(ex.getMessage());
 	}
-	
-		return count;
+
+		return lista;
 	}
 	
 	public String getPessoaDtNasc() throws ClassNotFoundException {

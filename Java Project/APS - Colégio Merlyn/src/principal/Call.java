@@ -17,6 +17,8 @@ public class Call {
 		
 		System.out.println(victor.getPessoaDtNasc());
 		
+		System.out.println(victor.getAllPessoa());
+		
 	}
 	
 }
