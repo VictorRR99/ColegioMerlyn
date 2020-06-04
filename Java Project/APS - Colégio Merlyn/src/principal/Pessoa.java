@@ -1,15 +1,19 @@
 package principal;
 
+import java.io.Serializable;
+
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.List;
 import java.util.ArrayList;
 
 import bdConnection.*;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 	private String nome, cpf, rg, dtNasc;
 	
 	Pessoa(String nome, String cpf, String rg, String dtNasc){
@@ -56,27 +60,27 @@ public abstract class Pessoa {
         return count;
     }
 	
-//	Retorna todos os nomes das pessoas
+	//Retorna todos os nomes das pessoas
 	public List<String> getAllPessoa() throws ClassNotFoundException {
-	String SQL = "SELECT nome FROM Pessoa";
-	
-	List<String> lista = new ArrayList<>();
-	
-	try (Connection conn = Conexao.getConnection();
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(SQL)) {
-		while(rs.next()) {
-				lista.add(rs.getString("nome"));
+		String SQL = "SELECT nome FROM Pessoa";
+		
+		List<String> lista = new ArrayList<>();
+		
+		try (Connection conn = Conexao.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(SQL)) {
+			while(rs.next()) {
+					lista.add(rs.getString("nome"));
+			}
+		      rs.next();
+		      rs.close();
+	          stmt.close();
+	          conn.close();
+		} catch (SQLException ex) {
+		      System.out.println(ex.getMessage());
 		}
-	      rs.next();
-	      rs.close();
-          stmt.close();
-          conn.close();
-	} catch (SQLException ex) {
-	      System.out.println(ex.getMessage());
-	}
-
-		return lista;
+	
+			return lista;
 	}
 	
 	public String getPessoaDtNasc() throws ClassNotFoundException {
