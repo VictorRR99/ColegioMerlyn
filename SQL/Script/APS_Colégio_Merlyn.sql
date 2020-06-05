@@ -17,7 +17,9 @@ CREATE TABLE Pessoa (
 CREATE TABLE Aluno (
 	cd_aluno SERIAL UNIQUE NOT NULL,          /* [PK] */
 	pessoa_cd_pessoa INTEGER UNIQUE NOT NULL, /* [FK] */ --(0,1)
-	cd_sala INTEGER NOT NULL                  /* [FK] */ --(1,N)
+	cd_sala INTEGER NOT NULL,                  /* [FK] */ --(1,N)
+	serie INTEGER NOT NULL,
+	turno VARCHAR(10) NOT NULL
 );
 
 --CRIANDO TABELA SALA
@@ -29,8 +31,10 @@ CREATE TABLE Sala (
 CREATE TABLE Notas (
 	cd_nota SERIAL UNIQUE NOT NULL,  /* [PK] */
     cd_aluno INTEGER NOT NULL,       /* [FK] */
-    NP1 FLOAT NOT NULL,
-    NP2 FLOAT NOT NULL
+	cd_disciplina INTEGER NOT NULL,  /* [FK] */
+    NP1 FLOAT,
+    NP2 FLOAT,
+	bimestre INTEGER NOTNULL
 );
 
 --CRIANDO TABELA DISCIPLINA
@@ -62,3 +66,4 @@ CREATE TABLE Diretor (
 --END-- BLOCO DE CRIAÇÃO DE TABELAS--
 
 -- CHECAR RELACIONAMENTOS DE CARDINALIDADE
+
