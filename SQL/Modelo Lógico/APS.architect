@@ -192,36 +192,36 @@
    </folder>
   </table>
   <relationships>
-   <relationship id="REL48" populated="true" UUID="a52b79e4-154c-4115-a10c-c8529a12d958" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="3" identifying="false" name="Pessoa_aluno_fk" physicalName="pessoa_aluno_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+   <relationship id="REL48" populated="true" UUID="a52b79e4-154c-4115-a10c-c8529a12d958" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="3" identifying="false" name="Pessoa_aluno_fk" physicalName="Pessoa_aluno_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP49" populated="true" UUID="f374b89a-f0a7-475c-827a-d4c486603235" fk-column-ref="COL11" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL50" populated="true" UUID="5b0a2767-07bf-4bab-97ff-40826d933f28" deferrability="7" deleteRule="3" fk-table-ref="TAB15" fkCardinality="3" identifying="false" name="Pessoa_professor_fk" physicalName="pessoa_professor_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
+   <relationship id="REL50" populated="true" UUID="5b0a2767-07bf-4bab-97ff-40826d933f28" deferrability="7" deleteRule="3" fk-table-ref="TAB15" fkCardinality="3" identifying="false" name="Pessoa_professor_fk" physicalName="Pessoa_professor_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP51" populated="true" UUID="4e65d181-d941-4dae-8d0a-ae19f246cb74" fk-column-ref="COL17" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL52" populated="true" UUID="5185c492-6386-48ac-9253-ff47eca5bf86" deferrability="7" deleteRule="3" fk-table-ref="TAB21" fkCardinality="6" identifying="false" name="aluno_notas_fk" physicalName="aluno_notas_fk" pk-table-ref="TAB9" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP53" populated="true" UUID="844c9710-f0b1-4d29-91a3-66e2f454aa91" fk-column-ref="COL23" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL10" />
    </relationship>
-   <relationship id="REL54" populated="true" UUID="c7c39a08-42f5-400a-bb53-fd5655cb4f4f" deferrability="7" deleteRule="3" fk-table-ref="TAB28" fkCardinality="3" identifying="false" name="professor_Diretor_fk" physicalName="professor_diretor_fk" pk-table-ref="TAB15" pkCardinality="2" updateRule="3" >
+   <relationship id="REL54" populated="true" UUID="c7c39a08-42f5-400a-bb53-fd5655cb4f4f" deferrability="7" deleteRule="3" fk-table-ref="TAB28" fkCardinality="3" identifying="false" name="professor_Diretor_fk" physicalName="professor_Diretor_fk" pk-table-ref="TAB15" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP55" populated="true" UUID="b7dd892c-9495-487a-9b00-ff22f1453675" fk-column-ref="COL30" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL16" />
    </relationship>
-   <relationship id="REL56" populated="true" UUID="441fec8d-eee0-44b7-9149-f6b7ed1919ed" deferrability="7" deleteRule="3" fk-table-ref="TAB15" fkCardinality="7" identifying="false" name="Disciplina_professor_fk" physicalName="disciplina_professor_fk" pk-table-ref="TAB33" pkCardinality="2" updateRule="3" >
+   <relationship id="REL56" populated="true" UUID="441fec8d-eee0-44b7-9149-f6b7ed1919ed" deferrability="7" deleteRule="3" fk-table-ref="TAB15" fkCardinality="7" identifying="false" name="Disciplina_professor_fk" physicalName="Disciplina_professor_fk" pk-table-ref="TAB33" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP57" populated="true" UUID="49f10830-c9d6-4db8-aa44-52c42c59599f" fk-column-ref="COL18" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL34" />
    </relationship>
-   <relationship id="REL58" populated="true" UUID="64bb2905-463f-4b29-8eb7-2befad0c4b3b" deferrability="7" deleteRule="3" fk-table-ref="TAB42" fkCardinality="6" identifying="false" name="Disciplina_sala_disc_fk" physicalName="disciplina_sala_disc_fk" pk-table-ref="TAB33" pkCardinality="6" updateRule="3" >
-    <column-mapping id="CMP59" populated="true" UUID="12ba7797-6670-4914-a0ea-a972766e5e51" fk-column-ref="COL45" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL34" />
+   <relationship id="REL58" populated="true" UUID="64bb2905-463f-4b29-8eb7-2befad0c4b3b" deferrability="7" deleteRule="3" fk-table-ref="TAB42" fkCardinality="6" identifying="false" name="Disciplina_sala_disc_fk" physicalName="Disciplina_sala_disc_fk" pk-table-ref="TAB33" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP59" populated="true" UUID="a27ca4dc-3314-416e-8453-da6de976b552" fk-column-ref="COL45" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL34" />
    </relationship>
-   <relationship id="REL60" populated="true" UUID="9b6ab584-1228-49b3-80be-68b7e5b2d7f9" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="6" identifying="false" name="Sala_aluno_fk" physicalName="sala_aluno_fk" pk-table-ref="TAB38" pkCardinality="2" updateRule="3" >
+   <relationship id="REL60" populated="true" UUID="9b6ab584-1228-49b3-80be-68b7e5b2d7f9" deferrability="7" deleteRule="3" fk-table-ref="TAB9" fkCardinality="6" identifying="false" name="Sala_aluno_fk" physicalName="Sala_aluno_fk" pk-table-ref="TAB38" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP61" populated="true" UUID="3dbcb56e-caa2-424c-9c61-9c99911bc33a" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL39" />
    </relationship>
-   <relationship id="REL62" populated="true" UUID="9890f95f-3b57-4895-8a8c-eca65a4a7e24" deferrability="7" deleteRule="3" fk-table-ref="TAB42" fkCardinality="6" identifying="false" name="Sala_sala_disc_fk" physicalName="sala_sala_disc_fk" pk-table-ref="TAB38" pkCardinality="6" updateRule="3" >
-    <column-mapping id="CMP63" populated="true" UUID="3b7107d8-335d-4396-a31b-b2c1ff58ff16" fk-column-ref="COL44" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL39" />
+   <relationship id="REL62" populated="true" UUID="9890f95f-3b57-4895-8a8c-eca65a4a7e24" deferrability="7" deleteRule="3" fk-table-ref="TAB42" fkCardinality="6" identifying="false" name="Sala_sala_disc_fk" physicalName="Sala_sala_disc_fk" pk-table-ref="TAB38" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP63" populated="true" UUID="f56e52ee-89d5-4b69-850a-492dc4a81eba" fk-column-ref="COL44" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL39" />
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="A"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="A"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="1.4142135623730947" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="29" y="51" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB9" x="451" y="76" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB15" x="51" y="402" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
