@@ -8,10 +8,12 @@ public class RecallTest {
 		
 		/* Main de Teste para puxar os arquivos serializados */
 		
-		List<Pessoa> listaAlunosRecall = new ArrayList<>(Pessoa.readObjectList("Alunos"));
+		List<Pessoa> listaAlunosRecall = new ArrayList<>(Aluno.readObjectList("Alunos"));
 		System.out.println("Desserializado!\n");
 		
 		System.out.println("Nomes dos Alunos:\n");
+		
+		listaAlunosRecall.get(0).c
 		
 		for(Pessoa x : listaAlunosRecall) {
 			System.out.println(x.getNome());

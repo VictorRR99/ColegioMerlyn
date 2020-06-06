@@ -1,13 +1,5 @@
 package principal;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-
 import java.sql.Connection;
 
 import java.sql.ResultSet;
@@ -19,9 +11,7 @@ import java.util.ArrayList;
 
 import bdConnection.*;
 
-public abstract class Pessoa implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public abstract class Pessoa {
 	
 	private String nome, cpf, rg, dtNasc;
 	
@@ -32,58 +22,13 @@ public abstract class Pessoa implements Serializable{
 		this.dtNasc = dtNasc;
 	}
 	
-	/* Serialization Handler */
-	
-	public static void saveObjectList(List<Pessoa> lista, String nomeArq) {
-	      File arq = new File(nomeArq);
-	      try {
-	    	  arq.delete();
-	    	  arq.createNewFile();
-	    
-	    	  ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
-	        
-	    	  objOutput.writeObject(lista);
-	    	  objOutput.close();
-	    
-	      } catch(IOException erro) {
-	    	  System.out.printf("Erro: %s", erro.getMessage());
-	      }
-	}
-	
-	
-	@SuppressWarnings("all")
-	public static List<Pessoa> readObjectList(String nomeArq) {
-		
-		ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
-		try {
-			File arq = new File(nomeArq);
-			if (arq.exists()) {
-				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Pessoa>)objInput.readObject();
-				objInput.close();
-			}
-			
-		} catch(IOException erro1) {
-			System.out.printf("Erro: %s", erro1.getMessage());
-		} catch(ClassNotFoundException erro2) {
-			System.out.printf("Erro: %s", erro2.getMessage());
-		}
-	    
-		return(lista);
-	}
-	
-	//----
-	
-	
-	//----
-	
 	/* Métodos de Relatório [Pesquisa] JAVA */
 	
 	//Talvez fazer métodos que procuram igual a pesquisa do SQL
 	//Para tal realmente é possível a necessidade de umaa lista estática
 	//Porém haverá complicações a respeito de como será chamado os métodos
 	
-	String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
@@ -106,9 +51,7 @@ public abstract class Pessoa implements Serializable{
         String SQL = "SELECT count(*) FROM Pessoa";
         int count = 0;
 
-        try (Connection conn = Conexao.getConnection();
-        		Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(SQL)) {
+        try (Connection conn = Conexao.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(SQL)) {
             rs.next();
             count = rs.getInt(1);
         } catch (SQLException ex) {

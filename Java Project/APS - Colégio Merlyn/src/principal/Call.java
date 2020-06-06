@@ -7,23 +7,34 @@ public class Call {
 	
 	public static void main(String[] args) throws ClassNotFoundException {
 
+		
+		
+		
+		
+		
+		
+		
+		
 		/* Serialization Test*/
-		Aluno victor = new Aluno("Victor Rodrigues", "08618351903", "6021469", "22/02/2001");
-		Aluno vinicius = new Aluno("Vinicius Amorim", "12345678911", "1234567", "04/08/2000");
-		Aluno leticia = new Aluno("Letícia Oliveira", "11987654321", "7654321", "16/07/2001");
-		Aluno samuel = new Aluno("Samuel Costa", "12345612345", "1234123", "01/01/2001");
-		Aluno altair = new Aluno("Altair Vega", "99224852158", "9874563", "09/05/1995");
-
-		List<Pessoa> listaAlunos = new ArrayList<>();
 		
-		listaAlunos.add(victor);
-		listaAlunos.add(vinicius);
-		listaAlunos.add(leticia);
-		listaAlunos.add(samuel);
-		listaAlunos.add(altair);
-		
-		Pessoa.saveObjectList(listaAlunos, "Alunos");
-		System.out.println("Serializado!");
+//		Aluno victor = new Aluno("Victor Rodrigues", "08618351903", "6021469", "22/02/2001");
+//		Aluno vinicius = new Aluno("Vinicius Amorim", "12345678911", "1234567", "04/08/2000");
+//		Aluno leticia = new Aluno("Letícia Oliveira", "11987654321", "7654321", "16/07/2001");
+//		Aluno samuel = new Aluno("Samuel Costa", "12345612345", "1234123", "01/01/2001");
+//		Aluno altair = new Aluno("Altair Vega", "99224852158", "9874563", "09/05/1995");
+//
+//		List<Pessoa> listaAlunos = new ArrayList<>();
+//		
+//		listaAlunos.add(victor);
+//		listaAlunos.add(vinicius);
+//		listaAlunos.add(leticia);
+//		listaAlunos.add(samuel);
+//		listaAlunos.add(altair);
+//		
+//		List<Pessoa> listaProfessores = new ArrayList<>();
+//		
+//		Pessoa.saveObjectList(listaAlunos, "Alunos");
+//		System.out.println("Serializado!");
 		
 		/* Original */
         
