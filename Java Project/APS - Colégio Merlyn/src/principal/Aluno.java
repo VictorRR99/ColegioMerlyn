@@ -18,11 +18,17 @@ public class Aluno extends Pessoa implements Serializable{
 	Aluno(String nome, String cpf, String rg, String dtNasc) {
 		super(nome, cpf, rg, dtNasc);
 	}
-
+	
+	/* Métodos Básicos */
+	
+	public static void colocarNaLista(Aluno aluno){
+		listaAlunos.add(aluno);
+	}
+	
 	/* Serialization Handler */
 	
 	public void serialization() {
-		listaAlunos = Aluno.readObjectList("Alunos");
+		Aluno.saveObjectList(listaAlunos, "Alunos");
 	}
 	
 	public void desserialization() {
@@ -65,11 +71,6 @@ public class Aluno extends Pessoa implements Serializable{
 	    
 		return(lista);
 	}
+	
 
-	public void colocarNaLista(Aluno x){
-		listaAlunos.add(x);
-	}
-	
-	/*Cadastrar Aluno*/
-	
 }

@@ -23,6 +23,10 @@ public class Professor extends Pessoa implements Serializable{
 
 	/* Serialization Handler */
 
+	public void serialization() {
+		Professor.saveObjectList(listaProfessor, "Professores");
+	}
+	
 	public void desserialization() {
 		listaProfessor = Professor.readObjectList("Professores");
 	}
@@ -66,11 +70,9 @@ public class Professor extends Pessoa implements Serializable{
 		
 	}
 	
-	/* Cadastrar Aluno */
+	/* Cadastro Aluno */
 	
 	public void cadastrarAluno(String nome, String cpf, String rg, String dtNasc) {
-		Aluno x = new Aluno(nome, cpf, rg, dtNasc);
-
-		x.colocarNaLista(x);
+		 Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc));
 	}
 }

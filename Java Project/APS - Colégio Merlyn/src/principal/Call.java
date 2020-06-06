@@ -6,8 +6,8 @@ import java.util.List;
 public class Call {
 	
 	public static void main(String[] args) throws ClassNotFoundException {
-
 		
+		Professor professor = new Professor("Valério Silva", "96587412355", "3588799", "22/08/1990");
 		
 		
 		
