@@ -47,6 +47,7 @@ public class Professor extends Pessoa implements Serializable{
 	public static List<Professor> readObjectList(String nomeArq) {
 		
 		ArrayList<Professor> lista = new ArrayList<Professor>();
+		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
@@ -65,9 +66,11 @@ public class Professor extends Pessoa implements Serializable{
 		
 	}
 	
-	/* Cadastrar Professor */
+	/* Cadastrar Aluno */
 	
-	public void cadastrar(String nome, String cpf, String rg, String dtNasc) {
-		listaProfessor.add(new Professor(nome, cpf, rg, dtNasc));
+	public void cadastrarAluno(String nome, String cpf, String rg, String dtNasc) {
+		Aluno x = new Aluno(nome, cpf, rg, dtNasc);
+
+		x.colocarNaLista(x);
 	}
 }

@@ -65,11 +65,11 @@ public class Aluno extends Pessoa implements Serializable{
 	    
 		return(lista);
 	}
+
+	public void colocarNaLista(Aluno x){
+		listaAlunos.add(x);
+	}
 	
 	/*Cadastrar Aluno*/
-	
-	public void cadastrar(String nome, String cpf, String rg, String dtNasc) {
-		listaAlunos.add(new Aluno(nome, cpf, rg, dtNasc));
-	}
 	
 }
