@@ -52,7 +52,7 @@ public abstract class Pessoa implements Serializable{
 	
 	
 	@SuppressWarnings("all")
-	public static ArrayList<Pessoa> readObjectList(String nomeArq) {
+	public static List<Pessoa> readObjectList(String nomeArq) {
 		
 		ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
 		try {
@@ -76,7 +76,7 @@ public abstract class Pessoa implements Serializable{
 	
 	
 	//----
-	/* Métodos de Relatório [Pesquisa] JAVA*/
+	
 	/* Métodos de Relatório [Pesquisa] JAVA */
 	
 	//Talvez fazer métodos que procuram igual a pesquisa do SQL
