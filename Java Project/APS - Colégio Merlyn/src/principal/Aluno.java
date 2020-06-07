@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Aluno extends Pessoa implements Serializable{
 
-	private static List<Aluno> listaAlunos;
+	private static List<Aluno> listaAlunos =  new ArrayList();
 	private static int nmTotalMat;
 	private int serie;
 	private int sala;
