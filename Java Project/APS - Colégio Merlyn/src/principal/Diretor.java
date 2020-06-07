@@ -87,9 +87,18 @@ public class Diretor extends Professor {
 			System.out.println("Sala errada para série escolhida!");
 			return true;
 		}
+		
 		Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha));
+		
 		return false;
 	}
 	
+	/* Cadastro Aluno */
+	
+	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
+
+		Professor.colocarNaLista(new Professor(nome, cpf, rg, dtNasc, senha, disciplina));
+		
+	}
 	
 }

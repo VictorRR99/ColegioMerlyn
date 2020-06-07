@@ -16,12 +16,14 @@ public class RecallTest {
 		
 		List<Professor> listaProfessores = Professor.getLista();
 		
+		System.out.println("+Nomes dos Alunos:");
 		for(Aluno x : listaAlunos) {
 			System.out.println(x.getNome());
 		}
 		
 		System.out.println("==============");
 		
+		System.out.println("+Nomes dos Professores:");
 		for(Professor x : listaProfessores) {
 			System.out.println(x.getNome());
 		}

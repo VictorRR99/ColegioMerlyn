@@ -10,7 +10,7 @@ public class Call {
 		
 		/* Leitura dos arquivos */
 		Professor.desserialization();
-		Diretor.desserialization();
+//		Diretor.desserialization();
 		Aluno.desserialization();
 //		Sala.desserialization();
 //		Disciplina.desserialization();
@@ -36,14 +36,18 @@ public class Call {
 		String nome, cpf, rg, dtNasc, turno, sala, senha;
 		int serie;
 		
-		/**/
-		int userSelect = leitorInt.nextInt();
+		/* Seleção */
+		int userSelect;
 		
+		/* Operações */
+		/* Averiguar Eliminação dos IFs com enum */
 		while(rep == 0) {
 			
 			InterfaceGrafica.operations();
 			
-			if(userSelect == 1 ) {
+			userSelect = leitorInt.nextInt();
+			
+			if(userSelect == 1) {
 				InterfaceGrafica.cadastrarAluno();
 				
 				System.out.println("Digite nome:");
@@ -70,11 +74,39 @@ public class Call {
 				System.out.println("Digite senha:");
 				senha = leitorStr.nextLine();
 				
-				Professor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+				//Arrumar a verificação de true e false
+				while(Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha)) {
+					System.out.println("Digite outra sala:");
+					sala = leitorStr.nextLine();
+				}
 				
-			}else if(userSelect == 9) {
-				rep = 1;
+				Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 				
+				
+			}else if(userSelect == 2) {
+				InterfaceGrafica.cadastrarProfessor();
+				
+				System.out.println("Digite nome:");
+				nome = leitorStr.nextLine();
+				
+				System.out.println("Digite cpf:");
+				cpf = leitorStr.nextLine();
+				
+				System.out.println("Digite rg:");
+				rg = leitorStr.nextLine();
+				
+				System.out.println("Digite data de nascimento:");
+				dtNasc = leitorStr.nextLine();
+				
+				System.out.println("Digite senha:");
+				senha = leitorStr.nextLine();
+				
+				//Disciplina?
+				
+				Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disciplina);
+				
+			}else if(userSelect == 0) {
+				rep++;
 			}else {
 				System.out.println("Operação não existente");
 			}
@@ -88,7 +120,7 @@ public class Call {
 			
 		/* Salvamento dos arquivos */
 		Professor.serialization();
-		Diretor.serialization();
+//		Diretor.serialization();
 		Aluno.serialization();
 //		Sala.serialization();
 //		Disciplina.serialization();

@@ -86,16 +86,5 @@ public class Professor extends Pessoa implements Serializable{
 		return(lista);
 		
 	}
-	
-	/* Cadastro Aluno */
-	
-	public static boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
 
-		if("" + sala.charAt(0) == Integer.toString(serie)) {
-			System.out.println("Sala errada para série escolhida!");
-			return true;
-		}
-		Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha));
-		return false;
-	}
 }
