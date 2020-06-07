@@ -26,7 +26,7 @@ public class Call {
 		
 		/* Salvamento dos arquivos */
 		Professor.serialization();
-		Diretor.desserialization();
+		Diretor.serialization();
 		Aluno.serialization();
 		/* Salvamento dos arquivos */
 		
