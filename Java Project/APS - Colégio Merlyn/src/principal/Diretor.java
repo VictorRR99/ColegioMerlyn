@@ -12,7 +12,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Diretor extends Professor {
 	
-	private static List<Diretor> listaDiretor = new ArrayList<>();
+	private static List<Diretor> listaDiretores = new ArrayList<>();
 	
 	Diretor(String nome, String cpf, String rg, String dtNasc) {
 		super(nome, cpf, rg, dtNasc);
@@ -21,11 +21,11 @@ public class Diretor extends Professor {
 	/* Serialization Handler */
 
 	public static void serialization() {
-		Diretor.saveObjectList(listaDiretor, "Diretores");
+		Diretor.saveObjectList(listaDiretores, "Diretores");
 	}
 	
 	public static void desserialization() {
-		listaDiretor = Diretor.readObjectList("Diretores");
+		listaDiretores = Diretor.readObjectList("Diretores");
 	}
 	
 	private static void saveObjectList(List<Diretor> lista, String nomeArq) {

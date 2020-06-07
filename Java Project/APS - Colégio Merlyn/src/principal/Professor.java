@@ -13,9 +13,9 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Professor extends Pessoa implements Serializable{
 	
-	private static List<Professor> listaProfessor = new ArrayList<>();
+	private static List<Professor> listaProfessores = new ArrayList<>();
 	
-	Disciplina disciplina;
+	private Disciplina disciplina;
 	
 	Professor(String nome, String cpf, String rg, String dtNasc) {
 		super(nome, cpf, rg, dtNasc);
@@ -24,11 +24,11 @@ public class Professor extends Pessoa implements Serializable{
 	/* Serialization Handler */
 
 	public static void serialization() {
-		Professor.saveObjectList(listaProfessor, "Professores");
+		Professor.saveObjectList(listaProfessores, "Professores");
 	}
 	
 	public static void desserialization() {
-		listaProfessor = Professor.readObjectList("Professores");
+		listaProfessores = Professor.readObjectList("Professores");
 	}
 	
 	private static void saveObjectList(List<Professor> lista, String nomeArq) {

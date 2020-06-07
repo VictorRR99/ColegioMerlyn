@@ -10,6 +10,8 @@ public class Call {
 		Professor.desserialization();
 		Diretor.desserialization();
 		Aluno.desserialization();
+		Sala.desserialization();
+		Disciplina.desserialization();
 		/* Leitura dos arquivos */
 		
 		Professor professor = new Professor("Valério Silva", "96587412355", "3588799", "22/08/1990");
@@ -28,6 +30,8 @@ public class Call {
 		Professor.serialization();
 		Diretor.serialization();
 		Aluno.serialization();
+		Sala.serialization();
+		Disciplina.serialization();
 		/* Salvamento dos arquivos */
 		
 //-----------------------------------------------------------------------------------------------------------------
