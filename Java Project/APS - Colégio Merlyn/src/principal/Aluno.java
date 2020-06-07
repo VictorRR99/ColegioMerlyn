@@ -50,6 +50,18 @@ public class Aluno extends Pessoa implements Serializable{
 		return mat;
 	}
 	
+	String getTurno() {
+		return turno;
+	}
+	
+	String getSala() {
+		return sala.getSala();
+	}
+	
+	int getSerie() {
+		return serie;
+	}
+	
 	/* Serialization Handler */
 	
 	public static void serialization() {
