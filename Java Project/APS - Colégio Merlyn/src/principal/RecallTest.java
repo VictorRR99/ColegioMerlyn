@@ -12,6 +12,8 @@ public class RecallTest {
 		
 		System.out.println("Desserialização completa!");
 		
+		InterfaceGrafica.separator();
+		
 		List<Aluno> listaAlunos = Aluno.getLista();
 		
 		List<Professor> listaProfessores = Professor.getLista();
@@ -21,14 +23,14 @@ public class RecallTest {
 			System.out.println(x.getNome());
 		}
 		
-		System.out.println("==============");
+		InterfaceGrafica.separator();
 		
 		System.out.println("+Nomes dos Professores:");
 		for(Professor x : listaProfessores) {
 			System.out.println(x.getNome());
 		}
 		
-		System.out.println("==============");
+		InterfaceGrafica.separator();
 		
 		System.out.println("End.");
 		
