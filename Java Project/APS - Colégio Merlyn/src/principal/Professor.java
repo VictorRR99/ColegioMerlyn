@@ -17,15 +17,21 @@ public class Professor extends Pessoa implements Serializable{
 	
 	private List<Aluno> listaAlunosDoProfessor = new ArrayList();
 	
-	private Disciplina disciplina;
+	private String disciplina;
+	
+	private Sala sala;
 	
 	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, senha);
-		this.disciplina = disciplina;
+		this.disciplina = disciplina.cadDisc(this.disciplina);
 	}
 	
 	String getDisc() {
-		return disciplina.getNomeDisc();
+		return disciplina;
+	}
+	
+	void setSala(Sala sala) {
+		this.sala = sala;
 	}
 
 	/* Métodos Básicos */

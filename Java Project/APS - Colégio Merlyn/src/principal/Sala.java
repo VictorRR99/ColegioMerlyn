@@ -13,9 +13,9 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Sala implements Serializable {
 	
-	private static List<Sala> listaSalas = new ArrayList<>();
+	public static List<Sala> listaSalas = new ArrayList<>();
 	
-	private List<Professor> professoresQueLecionam = new ArrayList();
+	private List<Professor> professoresQueLecionam = new ArrayList<Professor>();
 	
 	String nmSala;
 	
@@ -32,27 +32,28 @@ public class Sala implements Serializable {
 		return false;
 	}
 	
-	String getSala() {
+	public String getSala() {
 		return nmSala;
 	}
 	
-	boolean addProfessor(Professor a) {
+	boolean addProfessor(Professor nmProf) {
 		for(int i = 0; i < professoresQueLecionam.size(); i++) {
-			if(professoresQueLecionam.get(i).getDisc() == a.getDisc()) {
+			if(professoresQueLecionam.get(i).getDisc() == nmProf.getDisc()) {
 				System.out.println("Sala já possui tal matéria!");
-				return true;
+				return false;
 			}
 		}
-		professoresQueLecionam.add(a);
-		return false;
+		nmProf.setSala(this);
+		professoresQueLecionam.add(nmProf);
+		return true;
 	}
 	
 	List<String> getDiscDaSalas(){
-		List<String> a = new ArrayList();
+		List<String> discDaSalas = new ArrayList<String>();
 		for(int i = 0; i < professoresQueLecionam.size(); i++) {
-			a.add(professoresQueLecionam.get(i).getDisc());
+			discDaSalas.add(professoresQueLecionam.get(i).getDisc());
 		}
-		return a;
+		return discDaSalas;
 	}
 	
 	/* Serialization Handler */

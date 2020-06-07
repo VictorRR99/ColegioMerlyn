@@ -18,7 +18,7 @@ public class Aluno extends Pessoa implements Serializable{
 	private static int nmTotalMat;
 	
 	private int serie;
-	private String sala;
+	private Sala sala;
 	private String mat;
 	private String turno;
 	
@@ -26,7 +26,11 @@ public class Aluno extends Pessoa implements Serializable{
 		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
 		this.turno = turno;
-		this.sala = sala;
+		for(int i = 0; i < Sala.listaSalas.size(); i++) {
+			if(sala == Sala.listaSalas.get(i).getSala()) {
+				this.sala = Sala.listaSalas.get(i);
+			}
+		}
 		nmTotalMat++;
 		mat = sala + "" + "" + serie + "" + nmTotalMat; 
 		
