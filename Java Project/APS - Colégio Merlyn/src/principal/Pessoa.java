@@ -13,7 +13,7 @@ import bdConnection.*;
 
 public abstract class Pessoa {
 	
-	private String nome, cpf, rg, dtNasc;
+	private String nome, cpf, rg, dtNasc, senha;
 	
 	Pessoa(String nome, String cpf, String rg, String dtNasc){
 		this.nome = nome;
@@ -22,11 +22,11 @@ public abstract class Pessoa {
 		this.dtNasc = dtNasc;
 	}
 	
-	/* Métodos de Relatório [Pesquisa] JAVA */
+	/* Mï¿½todos de Relatï¿½rio [Pesquisa] JAVA */
 	
-	//Talvez fazer métodos que procuram igual a pesquisa do SQL
-	//Para tal realmente é possível a necessidade de umaa lista estática
-	//Porém haverá complicações a respeito de como será chamado os métodos
+	//Talvez fazer mï¿½todos que procuram igual a pesquisa do SQL
+	//Para tal realmente ï¿½ possï¿½vel a necessidade de umaa lista estï¿½tica
+	//Porï¿½m haverï¿½ complicaï¿½ï¿½es a respeito de como serï¿½ chamado os mï¿½todos
 	
 	public String getNome() {
 		return nome;
@@ -44,9 +44,9 @@ public abstract class Pessoa {
 		return dtNasc;
 	}
 
-	/* Métodos de Relatório [Pesquisa] PostgreSQL */
+	/* Mï¿½todos de Relatï¿½rio [Pesquisa] PostgreSQL */
 	
-	//Quantidade de Pessoas que estão cadastradas na Escola
+	//Quantidade de Pessoas que estï¿½o cadastradas na Escola
 	public int getPessoaCount() throws ClassNotFoundException {
         String SQL = "SELECT count(*) FROM Pessoa";
         int count = 0;
@@ -61,7 +61,7 @@ public abstract class Pessoa {
         return count;
     }
 	
-	//Todas os nomes das Pessoas que estão cadastradas na Escola
+	//Todas os nomes das Pessoas que estï¿½o cadastradas na Escola
 	public List<String> getAllPessoa() throws ClassNotFoundException {
 		String SQL = "SELECT nome FROM Pessoa";
 		
@@ -84,11 +84,11 @@ public abstract class Pessoa {
 			return lista;
 	}
 	
-	//Dado o cpf que estiver na String cpf será retornado a data de nascimento desta pessoa
-	//Através da pesquisa no Banco de Dados
+	//Dado o cpf que estiver na String cpf serï¿½ retornado a data de nascimento desta pessoa
+	//Atravï¿½s da pesquisa no Banco de Dados
 	public String getPessoaDtNasc() throws ClassNotFoundException {
 		
-		//Faz o Select da data de nascimento e assegura que a pesquisa será feito corretamente
+		//Faz o Select da data de nascimento e assegura que a pesquisa serï¿½ feito corretamente
         String SQL = "SELECT TO_CHAR(dt_nasc :: DATE, 'dd/mm/yyyy') FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
         
         String queryPessoa = null;
