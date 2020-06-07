@@ -23,11 +23,7 @@ public abstract class Pessoa {
 		this.senha = senha;
 	}
 	
-	/* Mï¿½todos de Relatï¿½rio [Pesquisa] JAVA */
-	
-	//Talvez fazer mï¿½todos que procuram igual a pesquisa do SQL
-	//Para tal realmente ï¿½ possï¿½vel a necessidade de umaa lista estï¿½tica
-	//Porï¿½m haverï¿½ complicaï¿½ï¿½es a respeito de como serï¿½ chamado os mï¿½todos
+	/* Métodos Básicos*/
 	
 	public String getNome() {
 		return nome;
@@ -44,6 +40,14 @@ public abstract class Pessoa {
 	public String getDtNasc() {
 		return dtNasc;
 	}
+	
+	/* Mï¿½todos de Relatï¿½rio [Pesquisa] JAVA */
+	
+	//Talvez fazer mï¿½todos que procuram igual a pesquisa do SQL
+	//Para tal realmente ï¿½ possï¿½vel a necessidade de umaa lista estï¿½tica
+	//Porï¿½m haverï¿½ complicaï¿½ï¿½es a respeito de como serï¿½ chamado os mï¿½todos
+	
+	// INSERIR METODOS DE RELATORIO
 
 	/* Mï¿½todos de Relatï¿½rio [Pesquisa] PostgreSQL */
 	

@@ -5,18 +5,57 @@ import java.util.*;
 public class RecallTest {
 	public static void main(String[] args) {
 		
-		List<Aluno> lista = new ArrayList<>(Aluno.readObjectList("Alunos"));
+		/* Principal */
 		
-		for(Aluno x : lista) {
+		Professor.desserialization();
+		Aluno.desserialization();
+		
+		System.out.println("Desserialização completa!");
+		
+		List<Aluno> listaAlunos = Aluno.getLista();
+		
+		List<Professor> listaProfessores = Professor.getLista();
+		
+		for(Aluno x : listaAlunos) {
 			System.out.println(x.getNome());
 		}
 		
+		System.out.println("==============");
 		
+		for(Professor x : listaProfessores) {
+			System.out.println(x.getNome());
+		}
 		
+		System.out.println("End.");
 		
+//-----------------------------------------------------------------------------------------------------------------------------------------------------\\
 		
-//-----------------------------------------------------------------------------------------------------------------		
+		/*ClasseTeste1 e SubClasseTeste2*/
+		/* Teste Serialization */
+//		
+//		ClasseTeste1.desserialization();
+//		SubClasseTeste2.desserialization();
+//		System.out.println("Desserialização completa!");
+//		
+//		
+//		
+//		List<ClasseTeste1> listaClasse = ClasseTeste1.getLista();
+//		List<SubClasseTeste2> listaSubClasse = SubClasseTeste2.getLista();
+//		
+//		for(int x=0; x<listaClasse.size(); x++) {
+//			System.out.println("Nomes Classe");
+//			System.out.println(listaClasse.get(x).getNome());
+//		}
+//		
+//		System.out.println("===========");
+//		
+//		for(int y=0; y<listaSubClasse.size(); y++) {
+//			System.out.println("Nomes SubClasse");
+//			System.out.println(listaSubClasse.get(y).getNome());
+//		}
 		
+//-----------------------------------------------------------------------------------------------------------------------------------------------------\\
+
 		/* Main de Teste para puxar os arquivos serializados */
 		
 		//List<Professor> listaAlunosRecall = new ArrayList<>(Professor.readObjectList("Alunos"));

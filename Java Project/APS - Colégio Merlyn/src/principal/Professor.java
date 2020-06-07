@@ -14,6 +14,7 @@ import java.util.List;
 public class Professor extends Pessoa implements Serializable{
 	
 	private static List<Professor> listaProfessores = new ArrayList<>();
+	
 	private List<Aluno> listaAlunosDoProfessor = new ArrayList();
 	
 	private Disciplina disciplina;
@@ -27,6 +28,16 @@ public class Professor extends Pessoa implements Serializable{
 		return disciplina.getNomeDisc();
 	}
 
+	/* Métodos Básicos */
+	
+	public static List<Professor> getLista(){
+		return listaProfessores;
+	}
+	
+	public static void colocarNaLista(Professor professor){
+		listaProfessores.add(professor);
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {
@@ -54,15 +65,15 @@ public class Professor extends Pessoa implements Serializable{
 	}
 	
 	@SuppressWarnings("all")
-	private static List<Professor> readObjectList(String nomeArq) {
+	public static List<Professor> readObjectList(String nomeArq) {
 		
-		ArrayList<Professor> lista = new ArrayList<Professor>();
+		List<Professor> lista = new ArrayList<Professor>();
 		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Professor>) objInput.readObject();
+				lista = (List<Professor>) objInput.readObject();
 				objInput.close();
 			}
 			
@@ -78,7 +89,7 @@ public class Professor extends Pessoa implements Serializable{
 	
 	/* Cadastro Aluno */
 	
-	public boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+	public static boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
 
 		if("" + sala.charAt(0) == Integer.toString(serie)) {
 			System.out.println("Sala errada para série escolhida!");

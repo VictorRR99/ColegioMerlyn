@@ -29,9 +29,14 @@ public class Aluno extends Pessoa implements Serializable{
 		this.sala = sala;
 		nmTotalMat++;
 		mat = sala + "" + "" + serie + "" + nmTotalMat; 
+		
 	}
 	
-	/* Mï¿½todos Bï¿½sicos */
+	/* Métodos Básicos */
+	
+	public static List<Aluno> getLista(){
+		return listaAlunos;
+	}
 	
 	public static void colocarNaLista(Aluno aluno){
 		listaAlunos.add(aluno);
@@ -66,12 +71,12 @@ public class Aluno extends Pessoa implements Serializable{
 	@SuppressWarnings("all")
 	public static List<Aluno> readObjectList(String nomeArq) {
 		
-		ArrayList<Aluno> lista = new ArrayList<Aluno>();
+		List<Aluno> lista = new ArrayList<Aluno>();
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Aluno>) objInput.readObject();
+				lista = (List<Aluno>) objInput.readObject();
 				objInput.close();
 			}
 			

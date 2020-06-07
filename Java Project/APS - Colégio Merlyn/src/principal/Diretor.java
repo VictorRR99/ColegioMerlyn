@@ -14,21 +14,32 @@ public class Diretor extends Professor {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc) {
-		super(nome, cpf, rg, dtNasc);
+	Diretor(String nome, String cpf, String rg, String dtNasc, Disciplina disciplina) {
+		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
 	}
+	
+	/* Métodos Básicos */
 
+	public static List<Diretor> getListaDir(){
+		return listaDiretores;
+	}
+	
+	public static void colocarNaLista(Diretor aluno){
+		listaDiretores.add(aluno);
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {
-		Diretor.saveObjectList(listaDiretores, "Diretores");
+		Diretor.saveObjectListDir(listaDiretores, "Diretores");
 	}
 	
 	public static void desserialization() {
-		listaDiretores = Diretor.readObjectList("Diretores");
+		listaDiretores = Diretor.readObjectListDir("Diretores");
 	}
 	
-	private static void saveObjectList(List<Diretor> lista, String nomeArq) {
+	//Alterado nome do readObjectList por causa de conflito com a superclasse
+	private static void saveObjectListDir(List<Diretor> lista, String nomeArq) {
 	      File arq = new File(nomeArq);
 	      try {
 	    	  arq.delete();
@@ -44,16 +55,17 @@ public class Diretor extends Professor {
 	      }
 	}
 	
+	//Alterado nome do readObjectList por causa de conflito com a superclasse
 	@SuppressWarnings("all")
-	private static List<Diretor> readObjectList(String nomeArq) {
+	private static List<Diretor> readObjectListDir(String nomeArq) {
 		
-		ArrayList<Diretor> lista = new ArrayList<Diretor>();
+		List<Diretor> lista = new ArrayList<Diretor>();
 		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Diretor>) objInput.readObject();
+				lista = (List<Diretor>) objInput.readObject();
 				objInput.close();
 			}
 			
@@ -65,6 +77,18 @@ public class Diretor extends Professor {
 	    
 		return(lista);
 		
+	}
+	
+	/* Cadastrar Professor */
+	
+	public static boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+
+		if("" + sala.charAt(0) == Integer.toString(serie)) {
+			System.out.println("Sala errada para série escolhida!");
+			return true;
+		}
+		Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha));
+		return false;
 	}
 	
 	

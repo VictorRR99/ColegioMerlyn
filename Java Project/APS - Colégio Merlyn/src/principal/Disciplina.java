@@ -67,13 +67,13 @@ public class Disciplina {
 	@SuppressWarnings("all")
 	private static List<Disciplina> readObjectList(String nomeArq) {
 		
-		ArrayList<Disciplina> lista = new ArrayList<Disciplina>();
+		List<Disciplina> lista = new ArrayList<Disciplina>();
 		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Disciplina>) objInput.readObject();
+				lista = (List<Disciplina>) objInput.readObject();
 				objInput.close();
 			}
 			

@@ -84,13 +84,13 @@ public class Sala implements Serializable {
 	@SuppressWarnings("all")
 	private static List<Sala> readObjectList(String nomeArq) {
 		
-		ArrayList<Sala> lista = new ArrayList<Sala>();
+		List<Sala> lista = new ArrayList<Sala>();
 		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (ArrayList<Sala>) objInput.readObject();
+				lista = (List<Sala>) objInput.readObject();
 				objInput.close();
 			}
 			
