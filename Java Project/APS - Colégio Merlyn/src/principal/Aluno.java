@@ -9,11 +9,15 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @SuppressWarnings("serial")
 public class Aluno extends Pessoa implements Serializable{
 
 	private static List<Aluno> listaAlunos =  new ArrayList<>();
+	
+	private Map<Disciplina, Float[]> disc = new HashMap<Disciplina, Float[]>();
 	
 	private static int nmTotalMat;
 	

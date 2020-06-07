@@ -14,8 +14,9 @@ public class Diretor extends Professor {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc, Disciplina disciplina) {
+	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
+		this.senha = senha;
 	}
 	
 	/* Métodos Básicos */

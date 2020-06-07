@@ -15,7 +15,8 @@ import bdConnection.*;
 @SuppressWarnings("serial")
 public abstract class Pessoa implements Serializable{
 	
-	private String nome, cpf, rg, dtNasc, senha;
+	private String nome, cpf, rg, dtNasc;
+	protected String senha;
 	
 	Pessoa(String nome, String cpf, String rg, String dtNasc, String senha){
 		this.nome = nome;
