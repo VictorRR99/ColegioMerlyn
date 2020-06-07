@@ -15,6 +15,8 @@ public class Sala implements Serializable {
 	
 	private static List<Sala> listaSalas = new ArrayList<>();
 	
+	private static int globalSala; 
+	
 	Sala(){
 		
 	}

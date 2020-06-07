@@ -13,8 +13,23 @@ public class Disciplina {
 
 	private static List<Disciplina> listaDisciplinas = new ArrayList<>();
 	
-	Disciplina(){
-		
+	private String nomeDisc;
+	
+	Disciplina(String nomeDisc){
+//		Apenas teste, talvez remover depois
+		if(this.checaDuplicata(nomeDisc)) System.out.println("Disciplina já existe! >:(");
+		else this.nomeDisc = nomeDisc;
+	}
+	
+	String getNomeDisc() {
+		return nomeDisc;
+	}
+	
+	boolean checaDuplicata(String a) {
+		for(int i = 0; i < listaDisciplinas.size(); i++) {
+			if(listaDisciplinas.get(i).getNomeDisc() == a) return true;
+		}
+		return false;
 	}
 	
 	/* Serialization Handler */
