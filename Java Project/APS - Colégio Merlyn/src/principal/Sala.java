@@ -17,6 +17,8 @@ public class Sala implements Serializable {
 	
 	private List<Professor> professoresQueLecionam = new ArrayList<Professor>();
 	
+	private List<Aluno> alunosDaSala = new ArrayList<Aluno>();
+	
 	String nmSala;
 	
 	Sala(String nmSala){
@@ -45,6 +47,17 @@ public class Sala implements Serializable {
 		}
 		nmProf.setSala(this);
 		professoresQueLecionam.add(nmProf);
+		return true;
+	}
+	
+	boolean addAluno(Aluno aluno) {
+		for(int i = 0; i < alunosDaSala.size(); i++) {
+			if(alunosDaSala.get(i).getMat() == aluno.getMat()) {
+				System.out.println("Aluno já está na sala");
+				alunosDaSala.add(aluno);
+				return false;
+			}
+		}
 		return true;
 	}
 	

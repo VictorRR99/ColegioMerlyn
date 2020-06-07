@@ -26,14 +26,14 @@ public class Aluno extends Pessoa implements Serializable{
 		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
 		this.turno = turno;
+		nmTotalMat++;
+		mat = sala + "" + "" + serie + "" + nmTotalMat;
 		for(int i = 0; i < Sala.listaSalas.size(); i++) {
 			if(sala == Sala.listaSalas.get(i).getSala()) {
+				Sala.listaSalas.get(i).addAluno(this);
 				this.sala = Sala.listaSalas.get(i);
 			}
 		}
-		nmTotalMat++;
-		mat = sala + "" + "" + serie + "" + nmTotalMat; 
-		
 	}
 	
 	/* Métodos Básicos */
@@ -44,6 +44,10 @@ public class Aluno extends Pessoa implements Serializable{
 	
 	public static void colocarNaLista(Aluno aluno){
 		listaAlunos.add(aluno);
+	}
+	
+	public String getMat() {
+		return mat;
 	}
 	
 	/* Serialization Handler */
