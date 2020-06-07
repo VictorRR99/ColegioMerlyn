@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import bdConnection.*;
 
+@SuppressWarnings("serial")
 public abstract class Pessoa implements Serializable{
 	
 	private String nome, cpf, rg, dtNasc, senha;

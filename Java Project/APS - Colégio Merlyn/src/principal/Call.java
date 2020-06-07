@@ -19,144 +19,49 @@ public class Call {
 		
 		System.out.println("Desserialização completa!");
 		
-		
-		/* PROBLEMA DE SERIALIZAÇÃO COM O CONSTRUTOR */
-		
-		int rep=0;
-		
-		Scanner leitorInt = new Scanner(System.in);
-		Scanner leitorStr = new Scanner(System.in);
-				
-		InterfaceGrafica.welcome();
-		
-		/*Variáveis Cadastro Aluno*/
-		String nome, cpf, rg, dtNasc, turno, sala, senha;
-		int serie;
-		
+		Scanner leitorSelection = new Scanner(System.in);
+		Operations operacao = new Operations();
+
 		/* Seleção */
 		int userSelect;
+		/* Condição de parada While */
+		int rep=0;
+		
+		InterfaceGrafica.welcome();
 		
 		/* Operações */
-		/* Averiguar Eliminação dos IFs com enum */
 		while(rep == 0) {
 			
 			InterfaceGrafica.operations();
 			
-			userSelect = leitorInt.nextInt();
+			userSelect = leitorSelection.nextInt();
 			
 			if(userSelect == 1) {
 				
-				InterfaceGrafica.cadastrarAluno();
-				
-				System.out.println("Digite nome:");
-				nome = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite cpf:");
-				cpf = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite rg:");
-				rg = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite data de nascimento:");
-				dtNasc = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite serie:");
-				serie = leitorInt.nextInt();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite turno:");
-				turno = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite sala:");
-				sala = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite senha:");
-				senha = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				//Arrumar a verificação dos problemas relacionado com serie e sala
-				
-				Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-				
+				operacao.cadastrarAluno();
 				
 			}else if(userSelect == 2) {
 				
-				InterfaceGrafica.cadastrarProfessor();
-				
-				System.out.println("Digite nome:");
-				nome = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite cpf:");
-				cpf = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite rg:");
-				rg = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite data de nascimento:");
-				dtNasc = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				System.out.println("Digite senha:");
-				senha = leitorStr.nextLine();
-				InterfaceGrafica.lineBreaker();
-				
-				//Disciplina?
-				
-				Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
+				operacao.cadastrarProfessor();
 				
 			}else if(userSelect == 5) {
 				
-				InterfaceGrafica.lineBreaker();
-				InterfaceGrafica.separator();
-				
-				List<Aluno> listaAlunos = Aluno.getLista();
-				
-				System.out.println("+Nomes dos Alunos:");
-				InterfaceGrafica.lineBreaker();
-				for(Aluno x : listaAlunos) {
-					System.out.println(x.getNome());
-				}
-				
-				InterfaceGrafica.separator();
-				InterfaceGrafica.lineBreaker();
+				operacao.verAlunos();
 				
 			}else if(userSelect == 6) {
 				
-				InterfaceGrafica.lineBreaker();
-				InterfaceGrafica.separator();
-				
-				List<Professor> listaProfessores = Professor.getLista();
-				
-				System.out.println("+Nomes dos Professores:");
-				InterfaceGrafica.lineBreaker();
-				for(Professor x : listaProfessores) {
-					System.out.println(x.getNome());
-				}
-				
-				InterfaceGrafica.separator();
-				InterfaceGrafica.lineBreaker();
+				operacao.verProfessores();
 				
 			}else if(userSelect == 0) {
 				rep++;
 			}else {
 				System.out.println("Operação não existe.");
-			}
 				
-			//Sair repetição
+			}
 			
 		}
-	
-		leitorInt.close();
-		leitorStr.close();
+		
+		operacao.closeScanners();
 			
 		/* Salvamento dos arquivos */
 		Professor.serialization();
