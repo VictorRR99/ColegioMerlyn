@@ -72,7 +72,7 @@ public class Professor extends Pessoa implements Serializable{
 	
 	/* Cadastro Aluno */
 	
-	public void cadastrarAluno(String nome, String cpf, String rg, String dtNasc) {
-		 Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc));
+	public void cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno) {
+		 Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno));
 	}
 }
