@@ -6,6 +6,11 @@ import java.util.List;
 public class Call {
 	
 	public static void main(String[] args) throws ClassNotFoundException {
+		/* Leitura dos arquivos */
+		Professor.desserialization();
+		Diretor.desserialization();
+		Aluno.desserialization();
+		/* Leitura dos arquivos */
 		
 		Professor professor = new Professor("Valério Silva", "96587412355", "3588799", "22/08/1990");
 		
@@ -13,6 +18,19 @@ public class Call {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		/* Salvamento dos arquivos */
+		Professor.serialization();
+		Diretor.desserialization();
+		Aluno.serialization();
+		/* Salvamento dos arquivos */
+		
+//-----------------------------------------------------------------------------------------------------------------
 		
 		
 		/* Serialization Test*/

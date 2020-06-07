@@ -27,11 +27,11 @@ public class Aluno extends Pessoa implements Serializable{
 	
 	/* Serialization Handler */
 	
-	public void serialization() {
+	public static void serialization() {
 		Aluno.saveObjectList(listaAlunos, "Alunos");
 	}
 	
-	public void desserialization() {
+	public static void desserialization() {
 		listaAlunos = Aluno.readObjectList("Alunos");
 	}
 	

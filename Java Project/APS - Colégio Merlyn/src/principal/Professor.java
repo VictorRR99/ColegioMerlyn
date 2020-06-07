@@ -23,15 +23,15 @@ public class Professor extends Pessoa implements Serializable{
 
 	/* Serialization Handler */
 
-	public void serialization() {
+	public static void serialization() {
 		Professor.saveObjectList(listaProfessor, "Professores");
 	}
 	
-	public void desserialization() {
+	public static void desserialization() {
 		listaProfessor = Professor.readObjectList("Professores");
 	}
 	
-	public static void saveObjectList(List<Professor> lista, String nomeArq) {
+	private static void saveObjectList(List<Professor> lista, String nomeArq) {
 	      File arq = new File(nomeArq);
 	      try {
 	    	  arq.delete();
@@ -48,7 +48,7 @@ public class Professor extends Pessoa implements Serializable{
 	}
 	
 	@SuppressWarnings("all")
-	public static List<Professor> readObjectList(String nomeArq) {
+	private static List<Professor> readObjectList(String nomeArq) {
 		
 		ArrayList<Professor> lista = new ArrayList<Professor>();
 		
