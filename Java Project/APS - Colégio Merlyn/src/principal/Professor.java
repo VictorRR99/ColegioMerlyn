@@ -14,11 +14,17 @@ import java.util.List;
 public class Professor extends Pessoa implements Serializable{
 	
 	private static List<Professor> listaProfessores = new ArrayList<>();
+	private List<Aluno> listaAlunosDoProfessor = new ArrayList();
 	
 	private Disciplina disciplina;
 	
-	Professor(String nome, String cpf, String rg, String dtNasc) {
-		super(nome, cpf, rg, dtNasc);
+	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
+		super(nome, cpf, rg, dtNasc, senha);
+		this.disciplina = disciplina;
+	}
+	
+	String getDisc() {
+		return disciplina.getNomeDisc();
 	}
 
 	/* Serialization Handler */
@@ -72,7 +78,13 @@ public class Professor extends Pessoa implements Serializable{
 	
 	/* Cadastro Aluno */
 	
-	public void cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno) {
-		 Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno));
+	public boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+
+		if("" + sala.charAt(0) == Integer.toString(serie)) {
+			System.out.println("Sala errada para série escolhida!");
+			return true;
+		}
+		Aluno.colocarNaLista(new Aluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha));
+		return false;
 	}
 }

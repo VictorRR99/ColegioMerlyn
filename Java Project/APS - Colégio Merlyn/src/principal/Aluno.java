@@ -18,16 +18,16 @@ public class Aluno extends Pessoa implements Serializable{
 	private static int nmTotalMat;
 	
 	private int serie;
-	private int sala;
+	private String sala;
 	private String mat;
 	private String turno;
 	
-	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno) {
-		super(nome, cpf, rg, dtNasc);
+	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
 		this.turno = turno;
+		this.sala = sala;
 		nmTotalMat++;
-		// implementar escolha de sala
 		mat = sala + "" + "" + serie + "" + nmTotalMat; 
 	}
 	

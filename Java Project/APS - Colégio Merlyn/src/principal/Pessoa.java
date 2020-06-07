@@ -15,11 +15,12 @@ public abstract class Pessoa {
 	
 	private String nome, cpf, rg, dtNasc, senha;
 	
-	Pessoa(String nome, String cpf, String rg, String dtNasc){
+	Pessoa(String nome, String cpf, String rg, String dtNasc, String senha){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.dtNasc = dtNasc;
+		this.senha = senha;
 	}
 	
 	/* M�todos de Relat�rio [Pesquisa] JAVA */

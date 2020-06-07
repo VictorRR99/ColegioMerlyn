@@ -15,10 +15,44 @@ public class Sala implements Serializable {
 	
 	private static List<Sala> listaSalas = new ArrayList<>();
 	
-	private static int globalSala; 
+	private List<Professor> professoresQueLecionam = new ArrayList();
 	
-	Sala(){
+	String nmSala;
+	
+	Sala(String nmSala){
+		if(this.checarSalas(nmSala)) System.out.println("Sala já existe");
+		else this.nmSala = nmSala;
 		
+	}
+	
+	boolean checarSalas(String a) {
+		for(int i = 0; i < listaSalas.size(); i++) {
+			if(listaSalas.get(i).getSala() == a) return true;
+		}
+		return false;
+	}
+	
+	String getSala() {
+		return nmSala;
+	}
+	
+	boolean addProfessor(Professor a) {
+		for(int i = 0; i < professoresQueLecionam.size(); i++) {
+			if(professoresQueLecionam.get(i).getDisc() == a.getDisc()) {
+				System.out.println("Sala já possui tal matéria!");
+				return true;
+			}
+		}
+		professoresQueLecionam.add(a);
+		return false;
+	}
+	
+	List<String> getDiscDaSalas(){
+		List<String> a = new ArrayList();
+		for(int i = 0; i < professoresQueLecionam.size(); i++) {
+			a.add(professoresQueLecionam.get(i).getDisc());
+		}
+		return a;
 	}
 	
 	/* Serialization Handler */
