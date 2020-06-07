@@ -25,7 +25,7 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void lineBreaker() {
-		System.out.println("\n");
+		System.out.println("");
 	}
 	
 	public static void separator() {

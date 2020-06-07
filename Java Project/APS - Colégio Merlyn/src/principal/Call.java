@@ -50,27 +50,35 @@ public class Call {
 				
 				System.out.println("Digite nome:");
 				nome = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite cpf:");
 				cpf = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite rg:");
 				rg = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite data de nascimento:");
 				dtNasc = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite serie:");
 				serie = leitorInt.nextInt();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite turno:");
 				turno = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite sala:");
 				sala = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite senha:");
 				senha = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				//Arrumar a verificação dos problemas relacionado com serie e sala
 				
@@ -83,18 +91,23 @@ public class Call {
 				
 				System.out.println("Digite nome:");
 				nome = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite cpf:");
 				cpf = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite rg:");
 				rg = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite data de nascimento:");
 				dtNasc = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				System.out.println("Digite senha:");
 				senha = leitorStr.nextLine();
+				InterfaceGrafica.lineBreaker();
 				
 				//Disciplina?
 				
@@ -108,6 +121,7 @@ public class Call {
 				List<Aluno> listaAlunos = Aluno.getLista();
 				
 				System.out.println("+Nomes dos Alunos:");
+				InterfaceGrafica.lineBreaker();
 				for(Aluno x : listaAlunos) {
 					System.out.println(x.getNome());
 				}
@@ -123,6 +137,7 @@ public class Call {
 				List<Professor> listaProfessores = Professor.getLista();
 				
 				System.out.println("+Nomes dos Professores:");
+				InterfaceGrafica.lineBreaker();
 				for(Professor x : listaProfessores) {
 					System.out.println(x.getNome());
 				}
