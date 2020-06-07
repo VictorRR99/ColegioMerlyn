@@ -1,5 +1,6 @@
 package principal;
 
+import java.io.Serializable;
 import java.sql.Connection;
 
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 import bdConnection.*;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 	
 	private String nome, cpf, rg, dtNasc, senha;
 	

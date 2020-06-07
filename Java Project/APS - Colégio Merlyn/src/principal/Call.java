@@ -73,12 +73,8 @@ public class Call {
 				senha = leitorStr.nextLine();
 				
 				//Arrumar a verificação de true e false
-				while(Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha)) {
-					System.out.println("Digite outra sala:");
-					sala = leitorStr.nextLine();
-				}
 				
-				diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+				Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 				
 				
 			}else if(userSelect == 2) {
@@ -101,7 +97,7 @@ public class Call {
 				
 				//Disciplina?
 				
-				diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
+				Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
 				
 			}else if(userSelect == 0) {
 				rep++;
