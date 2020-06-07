@@ -26,9 +26,7 @@ public class Call {
 		Scanner leitorInt = new Scanner(System.in);
 		Scanner leitorStr = new Scanner(System.in);
 		
-		Disciplina disciplina = new Disciplina("Programação");
-		
-		Diretor diretor = new Diretor("SuperDiretor", "11", "11", "11", disciplina);
+		Diretor diretor = new Diretor("SuperDiretor", "11", "11", "11", null);
 		
 		InterfaceGrafica.welcome();
 		
@@ -80,7 +78,7 @@ public class Call {
 					sala = leitorStr.nextLine();
 				}
 				
-				Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+				diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 				
 				
 			}else if(userSelect == 2) {
@@ -103,7 +101,7 @@ public class Call {
 				
 				//Disciplina?
 				
-				Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disciplina);
+				diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
 				
 			}else if(userSelect == 0) {
 				rep++;

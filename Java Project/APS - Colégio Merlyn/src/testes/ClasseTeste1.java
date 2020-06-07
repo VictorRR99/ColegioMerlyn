@@ -1,4 +1,4 @@
-package principal;
+package testes;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,38 +10,37 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubClasseTeste2 implements Serializable {
+public class ClasseTeste1 implements Serializable {
 
 	private String nome, data;
 	
-	private static List<SubClasseTeste2> listaSubClasseTeste2 = new ArrayList<>();
+	private static List<ClasseTeste1> listaClasseTeste1 = new ArrayList<>();
 	
-	SubClasseTeste2(String nome, String data){
-		this.nome = nome;
-		this.data = data;
+	ClasseTeste1(){
+
 	}
 	
-	/* Métodos Básicos */
+	/*Métodos Básicos*/
 	
 	public String getNome() {
 		return nome;
 	}
 	
-	public static List<SubClasseTeste2> getLista(){
-		return listaSubClasseTeste2;
+	public static List<ClasseTeste1> getLista(){
+		return listaClasseTeste1;
 	}
 	
 	/* Serialization Handler */
 
 	public static void serialization() {
-		SubClasseTeste2.saveObjectListSub(listaSubClasseTeste2, "SubClasse");
+		ClasseTeste1.saveObjectList(listaClasseTeste1, "ClasseTeste");
 	}
 	
 	public static void desserialization() {
-		listaSubClasseTeste2 = SubClasseTeste2.readObjectListSub("SubClasse");
+		listaClasseTeste1 = ClasseTeste1.readObjectList("ClasseTeste");
 	}
 	
-	private static void saveObjectListSub(List<SubClasseTeste2> lista, String nomeArq) {
+	private static void saveObjectList(List<ClasseTeste1> lista, String nomeArq) {
 	      File arq = new File(nomeArq);
 	      try {
 	    	  arq.delete();
@@ -58,15 +57,15 @@ public class SubClasseTeste2 implements Serializable {
 	}
 	
 	@SuppressWarnings("all")
-	public static List<SubClasseTeste2> readObjectListSub(String nomeArq) {
+	public static List<ClasseTeste1> readObjectList(String nomeArq) {
 		
-		List<SubClasseTeste2> lista = new ArrayList<SubClasseTeste2>();
+		List<ClasseTeste1> lista = new ArrayList<ClasseTeste1>();
 		
 		try {
 			File arq = new File(nomeArq);
 			if (arq.exists()) {
 				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-				lista = (List<SubClasseTeste2>) objInput.readObject();
+				lista = (List<ClasseTeste1>) objInput.readObject();
 				objInput.close();
 			}
 			
@@ -82,8 +81,8 @@ public class SubClasseTeste2 implements Serializable {
 	
 	/* Cadastro Aluno */
 	
-	public static void cadastrarSubClasse(String nome, String data) {
-		listaSubClasseTeste2.add(new SubClasseTeste2(nome, data));
+	public static void cadastrarClasse() {
+		listaClasseTeste1.add(new ClasseTeste1());
 	}
 	
 }
