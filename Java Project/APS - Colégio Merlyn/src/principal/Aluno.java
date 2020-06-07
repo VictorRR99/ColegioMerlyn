@@ -22,11 +22,12 @@ public class Aluno extends Pessoa implements Serializable{
 	private String mat;
 	private String turno;
 	
-	Aluno(String nome, String cpf, String rg, String dtNasc, int serie) {
+	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno) {
 		super(nome, cpf, rg, dtNasc);
 		this.serie = serie;
+		this.turno = turno;
 		nmTotalMat++;
-		// implementar escolha de classe
+		// implementar escolha de sala
 		mat = sala + "" + "" + serie + "" + nmTotalMat; 
 	}
 	
