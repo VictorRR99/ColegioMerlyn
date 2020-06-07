@@ -14,12 +14,20 @@ import java.util.List;
 public class Aluno extends Pessoa implements Serializable{
 
 	private static List<Aluno> listaAlunos;
+	private static int nmTotalMat;
+	private int serie;
+	private int sala;
+	private String mat;
+	private String turno;
 	
-	Aluno(String nome, String cpf, String rg, String dtNasc) {
+	Aluno(String nome, String cpf, String rg, String dtNasc, int serie) {
 		super(nome, cpf, rg, dtNasc);
+		this.serie = serie;
+		nmTotalMat++;
+		
 	}
 	
-	/* Métodos Básicos */
+	/* Mï¿½todos Bï¿½sicos */
 	
 	public static void colocarNaLista(Aluno aluno){
 		listaAlunos.add(aluno);
