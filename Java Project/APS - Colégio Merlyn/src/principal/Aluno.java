@@ -17,7 +17,9 @@ public class Aluno extends Pessoa implements Serializable{
 
 	private static List<Aluno> listaAlunos =  new ArrayList<>();
 	
-	private Map<Disciplina, Float[]> disc = new HashMap<Disciplina, Float[]>();
+	private Map<String, Float[]> disc = new HashMap<String, Float[]>();
+	
+	private List<Float> notas = new ArrayList();
 	
 	private static int nmTotalMat;
 	
@@ -32,6 +34,23 @@ public class Aluno extends Pessoa implements Serializable{
 		this.turno = turno;
 		nmTotalMat++;
 		mat = sala + "" + "" + serie + "" + nmTotalMat;
+		
+		if(serie < 6) {
+			disc.put("Português", null);
+			disc.put("Matemática", null);
+			disc.put("Educação Fisíca", null);
+			disc.put("Arte", null);
+		}else if(serie > 5) {
+			disc.put("Português", null);
+			disc.put("Matemática", null);
+			disc.put("Educação Fisíca", null);
+			disc.put("Ciência", null);
+			disc.put("Inglês", null);
+			disc.put("Filosofia", null);
+			disc.put("Geografia", null);
+			disc.put("História", null);
+			disc.put("Arte", null);
+		}
 		for(int i = 0; i < Sala.listaSalas.size(); i++) {
 			if(sala == Sala.listaSalas.get(i).getSala()) {
 				Sala.listaSalas.get(i).addAluno(this);
@@ -64,6 +83,38 @@ public class Aluno extends Pessoa implements Serializable{
 	
 	int getSerie() {
 		return serie;
+	}
+	
+	float getNP1(String a) {
+		Float[] x = disc.get(a);
+		
+		return x[0];
+	}
+	
+	float getNP2(String a) {
+		Float[] x = disc.get(a);
+		
+		return x[1];
+	}
+	
+	void setNP1(Float np1, Professor prof) {
+		Float[] np = disc.get(prof.getDisc());
+		disc.remove(prof.getDisc());
+		np[0] = np1;
+		disc.put(prof.getDisc(), np);
+	}
+	
+	void setNP2(Float np2, Professor prof) {
+		Float[] np = disc.get(prof.getDisc());
+		disc.remove(prof.getDisc());
+		np[1] = np2;
+		disc.put(prof.getDisc(), np);
+	}
+	
+	Float getMedia(Professor prof) {
+		Float np[] = disc.get(prof.getDisc());
+		Float media = (np[0] + np[1]) / 2;
+		return media;
 	}
 	
 	/* Serialization Handler */

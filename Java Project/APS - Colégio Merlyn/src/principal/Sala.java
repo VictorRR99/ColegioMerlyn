@@ -69,6 +69,10 @@ public class Sala implements Serializable {
 		return discDaSalas;
 	}
 	
+	static void criarSala(String a) {
+		listaSalas.add(new Sala(a));
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {
