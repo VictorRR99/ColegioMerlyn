@@ -1,5 +1,6 @@
 package principal;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Call {
@@ -25,9 +26,7 @@ public class Call {
 		
 		Scanner leitorInt = new Scanner(System.in);
 		Scanner leitorStr = new Scanner(System.in);
-		
-		Diretor diretor = new Diretor("SuperDiretor", "11", "11", "11", null);
-		
+				
 		InterfaceGrafica.welcome();
 		
 		/*Variáveis Cadastro Aluno*/
@@ -46,6 +45,7 @@ public class Call {
 			userSelect = leitorInt.nextInt();
 			
 			if(userSelect == 1) {
+				
 				InterfaceGrafica.cadastrarAluno();
 				
 				System.out.println("Digite nome:");
@@ -72,12 +72,13 @@ public class Call {
 				System.out.println("Digite senha:");
 				senha = leitorStr.nextLine();
 				
-				//Arrumar a verificação de true e false
+				//Arrumar a verificação dos problemas relacionado com serie e sala
 				
 				Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 				
 				
 			}else if(userSelect == 2) {
+				
 				InterfaceGrafica.cadastrarProfessor();
 				
 				System.out.println("Digite nome:");
@@ -99,10 +100,40 @@ public class Call {
 				
 				Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
 				
+			}else if(userSelect == 5) {
+				
+				InterfaceGrafica.lineBreaker();
+				InterfaceGrafica.separator();
+				
+				List<Aluno> listaAlunos = Aluno.getLista();
+				
+				System.out.println("+Nomes dos Alunos:");
+				for(Aluno x : listaAlunos) {
+					System.out.println(x.getNome());
+				}
+				
+				InterfaceGrafica.separator();
+				InterfaceGrafica.lineBreaker();
+				
+			}else if(userSelect == 6) {
+				
+				InterfaceGrafica.lineBreaker();
+				InterfaceGrafica.separator();
+				
+				List<Professor> listaProfessores = Professor.getLista();
+				
+				System.out.println("+Nomes dos Professores:");
+				for(Professor x : listaProfessores) {
+					System.out.println(x.getNome());
+				}
+				
+				InterfaceGrafica.separator();
+				InterfaceGrafica.lineBreaker();
+				
 			}else if(userSelect == 0) {
 				rep++;
 			}else {
-				System.out.println("Operação não existente");
+				System.out.println("Operação não existe.");
 			}
 				
 			//Sair repetição
