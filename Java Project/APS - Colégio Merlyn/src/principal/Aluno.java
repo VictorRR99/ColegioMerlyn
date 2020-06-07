@@ -24,7 +24,8 @@ public class Aluno extends Pessoa implements Serializable{
 		super(nome, cpf, rg, dtNasc);
 		this.serie = serie;
 		nmTotalMat++;
-		
+		// implementar escolha de classe
+		mat = sala + "" + "" + serie + "" + nmTotalMat; 
 	}
 	
 	/* M�todos B�sicos */
