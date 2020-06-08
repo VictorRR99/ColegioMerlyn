@@ -168,6 +168,7 @@ public class Operation {
 		PreparedStatement ps = conexao.prepareStatement(sql);
 				
 		ps.execute();
+		ps.close();
 		
 //		Select na tabela pessoa para pegar o cd_pessoa
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
@@ -207,13 +208,14 @@ public class Operation {
         
 //		Inserindo na tabela Professor
         
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ cd_pessoa + "', '"+ cd_disc + "')";
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ cd_pessoa + "', "+ cd_disc + ")";
 				
 		conexao = Conexao.getConnection();
 				
 		ps = conexao.prepareStatement(sql);
 				
 		ps.execute();
+		ps.close();
         
 	}
 
@@ -226,6 +228,15 @@ public class Operation {
 		Diretor.cadastrarDisciplina(nomeDisc);
 		
 		InterfaceGrafica.lineBreaker();
+		
+		sql = "INSERT INTO Disciplina(nm_disc) VALUES('" + nomeDisc + "')";
+		
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
 	}
 	
 	/* Permitido por: Diretor, Professor */
