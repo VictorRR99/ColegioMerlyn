@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Sala implements Serializable {
 	
-	public static List<Sala> listaSalas = new ArrayList<>();
+	private static List<Sala> listaSalas = new ArrayList<>();
 	
 	private List<Professor> professoresQueLecionam = new ArrayList<Professor>();
 	

@@ -51,10 +51,10 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 			disc.put("Historia", null);
 			disc.put("Arte", null);
 		}
-		for(int i = 0; i < Sala.listaSalas.size(); i++) {
-			if(sala == Sala.listaSalas.get(i).getSala()) {
-				Sala.listaSalas.get(i).addAluno(this);
-				this.sala = Sala.listaSalas.get(i);
+		for(Sala x : Sala.getLista()) {
+			if(sala == x.getSala()) {
+				x.addAluno(this);
+				this.sala = x;
 			}
 		}
 	}

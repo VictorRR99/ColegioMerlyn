@@ -55,7 +55,7 @@ CREATE TABLE Sala_disc (
 CREATE TABLE Professor (
 	cd_prof SERIAL UNIQUE NOT NULL,    /* [PK] */
 	cd_pessoa INTEGER UNIQUE NOT NULL, /* [FK] */
-	cd_disc INTEGER UNIQUE NOT NULL    /* [FK] */
+	cd_disc INTEGER NOT NULL    /* [FK] */
 );
 
 --CRIANDO TABELA DIRETOR

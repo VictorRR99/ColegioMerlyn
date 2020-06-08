@@ -64,6 +64,7 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+//		Inserindo na tabela Pessoa
 		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
 				cpf + "', '" + rg + "', '" + senha +"')";
 				
@@ -73,7 +74,67 @@ public class Operation {
 				
 		ps.execute();
 		
+
+		
 		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+		
+		int matProvi = 0;
+		
+		for(Aluno x : Aluno.getLista()) {
+			if(x.getCpf().equals(cpf)) {
+				matProvi = x.getMat();
+			}
+		}
+		
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        
+        int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        for(Sala x : sala) {
+        	
+        }
+        
+        sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        
+        String cd_sala;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+		
+		
+		
+//		insert na tabela Aluno
+		sql = "INSERT INTO Aluno(cd_aluno, pessoa_cd_pessoa, cd_sala, serie, turno) VALUES("+ matProvi + ", '"+ cd_pessoa +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		conexao = Conexao.getConnection();
+				
+		ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
 		
 		System.out.println("Cadastro concluído com sucesso!");
 	}
