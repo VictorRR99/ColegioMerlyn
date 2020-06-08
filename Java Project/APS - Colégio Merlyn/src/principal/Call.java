@@ -31,7 +31,22 @@ public class Call {
 		/* Menu das Operações */
 		while(rep == 0) {
 			
-			
+//			InterfaceGrafica.loginMode();
+//			
+//			userSelect = leitorSelection.nextInt();
+//			
+//			switch(userSelect) {
+//			case 1:
+//				
+//				break;
+//			case 2:
+//				
+//				break;
+//			case 3:
+//				
+//				break;
+//			
+//			}
 			
 			InterfaceGrafica.operations();
 			
