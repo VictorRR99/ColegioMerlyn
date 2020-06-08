@@ -78,10 +78,9 @@ public class Operation {
 		
 		System.out.println("Digite a disciplina a ser lecionada:");
 		disc = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
 		
-		Disciplina a;
-		
-		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, );
+		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
 	}
 	
 	public void verAlunos() {
