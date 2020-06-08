@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Disciplina {
 
-	private static List<Disciplina> listaDisciplinas = new ArrayList<>();
+	public static List<Disciplina> listaDisciplinas = new ArrayList<>();
 	
 	private String nomeDisc;
 	
@@ -29,7 +29,7 @@ public class Disciplina {
 		return nomeDisc;
 	}
 	
-	boolean checaDuplicata(String a) {
+	public static boolean checaDuplicata(String a) {
 		for(int i = 0; i < listaDisciplinas.size(); i++) {
 			if(listaDisciplinas.get(i).getNomeDisc() == a) {
 				return true;

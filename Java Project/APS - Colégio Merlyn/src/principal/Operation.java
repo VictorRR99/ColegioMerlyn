@@ -9,7 +9,8 @@ public class Operation {
 	private Scanner leitorStr = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, cpf, rg, dtNasc, turno, sala, senha, disc;
+	private String nome, cpf, rg, dtNasc, turno, sala, senha;
+	private Disciplina disc;
 	private int serie;
 	
 	public void cadastrarAluno(){
@@ -77,7 +78,13 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 		System.out.println("Digite a disciplina a ser lecionada:");
-		disc = leitorStr.nextLine();
+		String check;
+		check = leitorStr.nextLine();
+		for(int i = 0; i < Disciplina.listaDisciplinas.size(); i++) {
+			if(Disciplina.listaDisciplinas.get(i).getNomeDisc() == check) {
+				disc = Disciplina.listaDisciplinas.get(i);
+			}
+		}
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);

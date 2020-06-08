@@ -21,10 +21,9 @@ public class Professor extends Pessoa implements Serializable{
 	
 	private Sala sala;
 	
-	Professor(String nome, String cpf, String rg, String dtNasc, String senha, String disciplina) {
+	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, senha);
-		Disciplina disc;
-		this.disciplina = disciplina;
+		this.disciplina = disciplina.getNomeDisc();
 	}
 	
 	String getDisc() {

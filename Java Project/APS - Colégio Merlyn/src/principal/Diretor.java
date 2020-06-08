@@ -14,7 +14,7 @@ public class Diretor extends Professor {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, String disciplina) {
+	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
 		this.senha = senha;
 	}
@@ -96,7 +96,7 @@ public class Diretor extends Professor {
 	
 	/* Cadastro Aluno */
 	
-	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, String disciplina) {
+	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 
 		Professor.colocarNaLista(new Professor(nome, cpf, rg, dtNasc, senha, disciplina));
 		
