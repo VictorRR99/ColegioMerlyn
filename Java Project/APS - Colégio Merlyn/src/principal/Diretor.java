@@ -17,10 +17,8 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina)
-			throws SQLException {
+	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, senha, disciplina);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/* Autenticação */

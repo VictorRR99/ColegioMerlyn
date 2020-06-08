@@ -22,7 +22,7 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	
 	private Sala sala;
 	
-	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
+	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, senha);
 		this.disciplina = disciplina.getNomeDisc();
 	}
