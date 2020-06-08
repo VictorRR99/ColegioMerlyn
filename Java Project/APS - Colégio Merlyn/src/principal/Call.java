@@ -22,7 +22,7 @@ public class Call {
 		Operation operacao = new Operation();
 
 		/* Seleção */
-		int userSelect;
+		String userSelect;
 		/* Condição de parada While */
 		int rep=0;
 		
@@ -50,30 +50,30 @@ public class Call {
 			
 			InterfaceGrafica.operations();
 			
-			userSelect = leitorSelection.nextInt();
+			userSelect = leitorSelection.nextLine();
 			
 			switch(userSelect) {
-			case 1:
+			case "1":
 				
 				operacao.cadastrarAluno();
 				
 				break;
-			case 2:
+			case "2":
 				
 				operacao.cadastrarProfessor();
 				
 				break;
-			case 5:
+			case "5":
 				
 				operacao.verAlunos();
 				
 				break;
-			case 6:
+			case "6":
 				
 				operacao.verProfessores();
 				
 				break;
-			case 0:
+			case "0":
 				
 				rep++;
 				
