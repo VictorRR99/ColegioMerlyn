@@ -216,6 +216,26 @@ public class Operation {
 				
 		ps.execute();
 		ps.close();
+		
+//		Select na tabela Professor
+		sql = "SELECT cd_prof FROM Professor WHERE cd_pessoa = " + cd_pessoa;
+		
+		int cd_prof = 0;
+		
+		try (Connection conn = Conexao.getConnection();
+	            Statement stmt = conn.createStatement();
+	            ResultSet rs = stmt.executeQuery(sql)) {
+	            rs.next();
+	            cd_prof = rs.getInt(1);
+	            
+	            rs.close();
+	            stmt.close();
+	            conn.close();
+	        } catch (SQLException ex) {
+	            System.out.println(ex.getMessage());
+	        }
+		
+		sql = "INSERT INTO Diretor(cd_prof) VALUES(" + cd_prof + ")";
         
 	}
 
