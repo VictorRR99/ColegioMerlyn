@@ -1,6 +1,6 @@
 --Arrumar Data
-SHOW datestyle;
-SET datestyle TO ISO, DMY;
+-- SHOW datestyle;
+-- SET datestyle TO ISO, DMY;
 
 --BLOCO DE CRIAÇÃO DE TABELAS--
 
@@ -90,43 +90,43 @@ ALTER TABLE Disciplina ADD PRIMARY KEY(cd_disc);
 
 -- CRIANDO FK'S
 
--- CRIANDO PK DE ALUNO
-ALTER TABLE Aluno ADD CONSTRAINT pessoa_cd_pessoa_fk FOREIGN KEY(pessoa_cd_pessoa) REFERENCES Pessoa(cd_pessoa)
+-- CRIANDO FK DE ALUNO
+ALTER TABLE Aluno ADD CONSTRAINT aluno_pessoa_cd_pessoa_fk FOREIGN KEY(pessoa_cd_pessoa) REFERENCES Pessoa(cd_pessoa)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
-ALTER TABLE Aluno ADD CONSTRAINT cd_sala_fk FOREIGN KEY(cd_sala) REFERENCES Sala(cd_sala)
+ALTER TABLE Aluno ADD CONSTRAINT aluno_cd_sala_fk FOREIGN KEY(cd_sala) REFERENCES Sala(cd_sala)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
--- CRIANDO PK DE NOTAS
-ALTER TABLE Notas ADD CONSTRAINT cd_aluno_fk FOREIGN KEY(cd_aluno) REFERENCES Aluno(cd_aluno)
+-- CRIANDO FK DE NOTAS
+ALTER TABLE Notas ADD CONSTRAINT notas_cd_aluno_fk FOREIGN KEY(cd_aluno) REFERENCES Aluno(cd_aluno)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
-ALTER TABLE Notas ADD CONSTRAINT cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
+ALTER TABLE Notas ADD CONSTRAINT notas_cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
--- CRIANDO PK DE PROFESSOR
-ALTER TABLE Professor ADD CONSTRAINT cd_pessoa_fk FOREIGN KEY(cd_pessoa) REFERENCES Pessoa(cd_pessoa)
+-- CRIANDO FK DE PROFESSOR
+ALTER TABLE Professor ADD CONSTRAINT professor_cd_pessoa_fk FOREIGN KEY(cd_pessoa) REFERENCES Pessoa(cd_pessoa)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
-ALTER TABLE Professor ADD CONSTRAINT cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
+ALTER TABLE Professor ADD CONSTRAINT professor_cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
--- CRIANDO PK DE DIRETOR
-ALTER TABLE Diretor ADD CONSTRAINT cd_prof_fk FOREIGN KEY(cd_prof) REFERENCES Professor(cd_prof)
+-- CRIANDO FK DE DIRETOR
+ALTER TABLE Diretor ADD CONSTRAINT diretor_cd_prof_fk FOREIGN KEY(cd_prof) REFERENCES Professor(cd_prof)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
--- CRIANDO PK DE SALA_DISC
-ALTER TABLE Sala_disc ADD CONSTRAINT cd_sala_fk FOREIGN KEY(cd_sala) REFERENCES Sala(cd_sala)
+-- CRIANDO FK DE SALA_DISC
+ALTER TABLE Sala_disc ADD CONSTRAINT sala_disc_cd_sala_fk FOREIGN KEY(cd_sala) REFERENCES Sala(cd_sala)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;
 
-ALTER TABLE Sala_disc ADD CONSTRAINT cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
+ALTER TABLE Sala_disc ADD CONSTRAINT sala_disc_cd_disc_fk FOREIGN KEY(cd_disc) REFERENCES Disciplina(cd_disc)
 ON UPDATE CASCADE
 ON DELETE NO ACTION;

@@ -59,6 +59,7 @@ public class Operation {
 		
 		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
+		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
 	public void cadastrarProfessor() throws SQLException {
@@ -87,14 +88,16 @@ public class Operation {
 		System.out.println("Digite a disciplina a ser lecionada:");
 		String check;
 		check = leitorStr.nextLine();
-		for(int i = 0; i < Disciplina.listaDisciplinas.size(); i++) {
-			if(Disciplina.listaDisciplinas.get(i).getNomeDisc() == check) {
-				disc = Disciplina.listaDisciplinas.get(i);
+		for(int i = 0; i < Disciplina.getLista().size(); i++) {
+			if(Disciplina.getLista().get(i).getNomeDisc() == check) {
+				disc = Disciplina.getLista().get(i);
 			}
 		}
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
+		
+		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
 	public void cadastrarDiretor() throws SQLException {
@@ -120,17 +123,27 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		//Checar se existe alguma disciplina
+		if(!Disciplina.getLista().isEmpty()) {
 		System.out.println("Digite a disciplina a ser lecionada:");
 		String check;
 		check = leitorStr.nextLine();
-		for(int i = 0; i < Disciplina.listaDisciplinas.size(); i++) {
-			if(Disciplina.listaDisciplinas.get(i).getNomeDisc() == check) {
-				disc = Disciplina.listaDisciplinas.get(i);
+		
+			for(int i = 0; i < Disciplina.getLista().size(); i++) {
+				if(Disciplina.getLista().get(i).getNomeDisc() == check) {
+					disc = Disciplina.getLista().get(i);
+				}
 			}
+		}else {
+			//Pode dar problema 
+			disc = new Disciplina("SuperUsuário");
 		}
+		
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
+		
+		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
 	public void verAlunos() {

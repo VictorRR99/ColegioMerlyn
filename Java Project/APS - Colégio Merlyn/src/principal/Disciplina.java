@@ -6,12 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Disciplina {
+@SuppressWarnings("serial")
+public class Disciplina implements Serializable {
 
-	public static List<Disciplina> listaDisciplinas = new ArrayList<>();
+	private static List<Disciplina> listaDisciplinas = new ArrayList<>();
 	
 	private String nomeDisc;
 	
@@ -25,6 +27,8 @@ public class Disciplina {
 		}
 	}
 	
+	/*Métodos Básicos*/
+	
 	String getNomeDisc() {
 		return nomeDisc;
 	}
@@ -36,6 +40,14 @@ public class Disciplina {
 			}
 		}
 		return false;
+	}
+	
+	public static List<Disciplina> getLista(){
+		return listaDisciplinas;
+	}
+	
+	public static void colocarNaLista(Disciplina disciplina){
+		listaDisciplinas.add(disciplina);
 	}
 	
 	/* Serialization Handler */

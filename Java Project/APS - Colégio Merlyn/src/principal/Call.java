@@ -23,10 +23,18 @@ public class Call {
 		
 		List<Diretor> checagem = Diretor.getListaDir();
 		
+		
+		
 		Scanner leitorLogin = new Scanner(System.in);
 		
 		Operation operacao = new Operation();
 
+		/* Usuarios */
+		
+		Diretor userDiretor;
+		Professor userProfessor;
+		Aluno userAluno;
+		
 		/* Login */
 		String cpf, senha;
 		boolean isLogged = false;
@@ -58,7 +66,8 @@ public class Call {
 				case "3":
 					
 					while(!isLogged) {
-						Diretor usuario = null;
+						Diretor call = Diretor.getListaDir().get(0);
+						boolean userCheck = false;
 						
 						System.out.println("Digite o cpf:");
 						cpf = leitorLogin.nextLine();
@@ -66,8 +75,17 @@ public class Call {
 						System.out.println("Digite a senha:");
 						senha = leitorLogin.nextLine();
 						
-						if(usuario.autenticar(cpf, senha) != null) {
+						userCheck = call.autenticar(cpf, senha);
+						
+						if(userCheck == true) {
 							isLogged = true;
+							
+							for(Diretor x : Diretor.getListaDir()) {
+								if(cpf == x.getCpf()) {
+									userDiretor = x;
+									break;
+								}
+							}
 						}
 						
 					}
@@ -126,7 +144,9 @@ public class Call {
 				//Main Switch end
 			}else {
 				
+				InterfaceGrafica.separator();
 				InterfaceGrafica.semDiretor();
+				InterfaceGrafica.separator();
 				
 				operacao.cadastrarDiretor();
 				

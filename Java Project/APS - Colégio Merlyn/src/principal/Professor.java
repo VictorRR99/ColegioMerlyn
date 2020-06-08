@@ -30,27 +30,29 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	/* Autenticação */
 	
 	@Override
-	public Professor autenticar(String cpf, String senha) {
+	public boolean autenticar(String cpf, String senha) {
 		
 		Professor usuario = null;
 		
 		for(Professor x : listaProfessores) {
 			if(cpf == x.getCpf()) {
 				usuario = x;
+				break;
 			}
 		}
 		
 		if(usuario.senha == senha) {
-			return usuario;
+			return true;
 		}else if(usuario.senha != senha){
 			InterfaceGrafica.erroAutenticacao("Senha Incorreta.");
-			return null;
+			return false;
 		}else{
 			InterfaceGrafica.erroAutenticacao("Usuario não Existe.");
-			return null;
+			return false;
 		}
 		
 	}
+	
 	
 	/* Métodos Básicos */
 	

@@ -9,6 +9,18 @@ SELECT * FROM Professor;
 SELECT * FROM Diretor;
 --END-- Facilitador DROP TABLE
 
+--Facilitador DROP CONSTRAINT
+ALTER TABLE Aluno DROP CONSTRAINT aluno_pessoa_cd_pessoa_fk;
+ALTER TABLE Aluno DROP CONSTRAINT aluno_cd_sala_fk;
+ALTER TABLE Notas DROP CONSTRAINT notas_cd_aluno_fk;
+ALTER TABLE Notas DROP CONSTRAINT notas_cd_disc_fk;
+ALTER TABLE Professor DROP CONSTRAINT professor_cd_pessoa_fk;
+ALTER TABLE Professor DROP CONSTRAINT professor_cd_disc_fk;
+ALTER TABLE Diretor DROP CONSTRAINT diretor_cd_prof_fk;
+ALTER TABLE Sala_Disc DROP CONSTRAINT sala_disc_cd_sala_fk;
+ALTER TABLE Sala_Disc DROP CONSTRAINT sala_disc_cd_disc_fk;
+--END--Facilitador DROP CONSTRAINT
+
 --Facilitador DROP TABLE
 DROP TABLE Pessoa;
 DROP TABLE Sala;

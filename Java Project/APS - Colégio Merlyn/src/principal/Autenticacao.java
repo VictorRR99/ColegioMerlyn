@@ -2,6 +2,6 @@ package principal;
 
 public interface Autenticacao {
 
-	public Pessoa autenticar(String cpf, String senha);
+	public boolean autenticar(String cpf, String senha);
 	
 }

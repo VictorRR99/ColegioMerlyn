@@ -61,11 +61,26 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	/* Autenticação */
 	
 	@Override
-	public Aluno autenticar(String cpf,String senha) {
-
+	public boolean autenticar(String cpf, String senha) {
+		
 		Aluno usuario = null;
 		
-		return usuario;
+		for(Aluno x : listaAlunos) {
+			if(cpf == x.getCpf()) {
+				usuario = x;
+				break;
+			}
+		}
+		
+		if(usuario.senha == senha) {
+			return true;
+		}else if(usuario.senha != senha){
+			InterfaceGrafica.erroAutenticacao("Senha Incorreta.");
+			return false;
+		}else{
+			InterfaceGrafica.erroAutenticacao("Usuario não Existe.");
+			return false;
+		}
 		
 	}
 	
