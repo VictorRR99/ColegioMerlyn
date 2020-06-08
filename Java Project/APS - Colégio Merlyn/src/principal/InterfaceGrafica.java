@@ -8,6 +8,10 @@ public abstract class InterfaceGrafica {
 		System.out.println("Bem vindo(a), digite o numero da operação desejada:");
 	}
 	
+	public static void loginMode() {
+		
+	}
+	
 	public static void operations() {
 		System.out.println("1 - Cadastrar Aluno;");
 		System.out.println("2 - Cadastrar Professor;");

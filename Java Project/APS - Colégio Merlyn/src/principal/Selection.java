@@ -12,5 +12,10 @@ public enum Selection {
 		operacao = x;
 	}
 	
+	public int metodo() {
+		
+		return operacao;
+		
+	}
 	
 }
