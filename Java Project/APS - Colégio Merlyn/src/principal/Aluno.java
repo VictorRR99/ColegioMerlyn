@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	private String mat;
 	private String turno;
 	
-	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) throws SQLException {
 		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
 		this.turno = turno;
