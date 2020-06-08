@@ -133,6 +133,12 @@ public class Call {
 									operacao.serializeAll();
 									
 									break;
+								case "4":
+									
+									operacao.cadastrarProfessor();
+									operacao.serializeAll();
+									
+									break;
 								case "5":
 									
 									operacao.verAlunos();

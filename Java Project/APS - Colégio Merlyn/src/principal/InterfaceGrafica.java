@@ -22,6 +22,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("1 - Cadastrar Aluno;");
 		System.out.println("2 - Cadastrar Professor;");
 		System.out.println("3 - Cadastrar Sala;");
+		System.out.println("4 - Cadastrar Diretor;");
 		System.out.println("5 - Ver todos os Alunos;");
 		System.out.println("6 - Ver todos os Professores;");
 		System.out.println("0 - Sair do Sistema.");
