@@ -189,7 +189,7 @@ public class Operation {
         }
         
 //        Select na tabela Disciplina para pegar cd_disc
-        sql = "SELECT cd_disc FROM Pessoa WHERE nm_disc = '" + disc.getNomeDisc().toLowerCase() + "'";
+        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc().toLowerCase() + "'";
         
         int cd_disc = 0;
 
