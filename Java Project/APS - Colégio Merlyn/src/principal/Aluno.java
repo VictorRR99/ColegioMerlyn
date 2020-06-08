@@ -24,15 +24,16 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	
 	private int serie;
 	private Sala sala;
-	private String mat;
+	private int mat;
 	private String turno;
 	
-	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) throws SQLException {
+	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
 		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
 		this.turno = turno;
 		nmTotalMat++;
-		mat = sala + "" + "" + serie + "" + nmTotalMat;
+		String matSwap = sala + "" + "" + serie + "" + nmTotalMat;
+		mat = Integer.parseInt(matSwap);
 		
 		if(serie < 6) {
 			disc.put("Portugues", null);
@@ -100,7 +101,7 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		listaAlunos.add(aluno);
 	}
 	
-	public String getMat() {
+	public int getMat() {
 		return mat;
 	}
 	

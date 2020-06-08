@@ -1,8 +1,12 @@
 package principal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+
+import bdConnection.Conexao;
 
 public class Operation {
 
@@ -10,7 +14,7 @@ public class Operation {
 	private Scanner leitorStr = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, cpf, rg, dtNasc, turno, sala, senha;
+	private String nome, cpf, rg, dtNasc, turno, sala, senha, sql;
 	private Disciplina disc;
 	private int serie;
 	
@@ -57,6 +61,15 @@ public class Operation {
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
+		
+		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
 		
 		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
@@ -143,6 +156,15 @@ public class Operation {
 		}
 		
 		InterfaceGrafica.lineBreaker();
+		
+		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
 		
 		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
 		
