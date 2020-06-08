@@ -23,8 +23,12 @@ public abstract class InterfaceGrafica {
 		System.out.println("2 - Cadastrar Professor;");
 		System.out.println("3 - Cadastrar Sala;");
 		System.out.println("4 - Cadastrar Diretor;");
-		System.out.println("5 - Ver todos os Alunos;");
-		System.out.println("6 - Ver todos os Professores;");
+		System.out.println("5 - Cadastrar Disciplina;");
+		System.out.println("11 - Ver todos os Alunos;");
+		System.out.println("12 - Ver todos os Professores;");
+		System.out.println("13 - Ver todos as Salas;");
+		System.out.println("14 - Ver todos os Diretores;");
+		System.out.println("15 - Ver todas as Disciplinas;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
