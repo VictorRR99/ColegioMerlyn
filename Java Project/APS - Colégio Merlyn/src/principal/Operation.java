@@ -2,7 +2,9 @@ package principal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Scanner;
 
@@ -157,6 +159,7 @@ public class Operation {
 		
 		InterfaceGrafica.lineBreaker();
 		
+//		Inserindo na tabela Pessoa
 		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
 				cpf + "', '" + rg + "', '" + senha +"')";
 				
@@ -166,9 +169,46 @@ public class Operation {
 				
 		ps.execute();
 		
-		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
+//		Inserindo na tabela Professor
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        
+        int queryPessoa = 0;
+        
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ queryPessoa + "', '"+ dtNasc +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		conexao = Conexao.getConnection();
+				
+		ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
 		
-		System.out.println("Cadastro concluído com sucesso!");
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        
+        int queryPessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            queryPessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ queryPessoa + "', '"+ dtNasc +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		conexao = Conexao.getConnection();
+				
+		ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+        
 	}
 
 	/* Permitido por: Diretor, Professor */
