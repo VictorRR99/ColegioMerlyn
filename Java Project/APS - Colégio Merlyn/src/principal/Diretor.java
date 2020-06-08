@@ -25,8 +25,8 @@ public class Diretor extends Professor {
 		return listaDiretores;
 	}
 	
-	public static void colocarNaLista(Diretor aluno){
-		listaDiretores.add(aluno);
+	public static void colocarNaLista(Diretor diretor){
+		listaDiretores.add(diretor);
 	}
 	
 	/* Serialization Handler */
