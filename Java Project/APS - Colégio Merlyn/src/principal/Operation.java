@@ -148,9 +148,10 @@ public class Operation {
 		String check;
 		check = leitorStr.nextLine();
 			
-		for(int i = 0; i < Disciplina.getLista().size(); i++) {
-			if(Disciplina.getLista().get(i).getNomeDisc().toLowerCase() == check.toLowerCase()) {
-				disc = Disciplina.getLista().get(i);
+		for(Disciplina x : Disciplina.getLista()) {
+			if(x.getNomeDisc().equals(check)) {
+				disc = x;
+				System.out.println("Opa to aqui");
 			}
 		}
 		
