@@ -15,7 +15,7 @@ import bdConnection.*;
 public abstract class Pessoa implements Serializable{
 	
 	private String nome, cpf, rg, dtNasc;
-	protected String senha;
+	private String senha;
 	
 	Pessoa(String nome, String cpf, String rg, String dtNasc, String senha) {
 		this.nome = nome;
@@ -41,6 +41,10 @@ public abstract class Pessoa implements Serializable{
 
 	public String getDtNasc() {
 		return dtNasc;
+	}
+	
+	public String getSenha() {
+		return senha;
 	}
 	
 	/* M�todos de Relat�rio [Pesquisa] JAVA */

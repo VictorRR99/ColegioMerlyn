@@ -18,7 +18,6 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
 		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
-		this.senha = senha;
 	}
 	
 	/* Autenticação */
@@ -40,9 +39,9 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 			return false;
 		}
 		
-		if(usuario.senha.equals(senha)) {
+		if(usuario.getSenha().equals(senha)) {
 			return true;
-		}else if(!usuario.senha.equals(senha)){
+		}else if(!usuario.getSenha().equals(senha)){
 			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
 			return false;
 		}else {

@@ -78,9 +78,9 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 			return false;
 		}
 		
-		if(usuario.senha.equals(senha)) {
+		if(usuario.getSenha().equals(senha)) {
 			return true;
-		}else if(!usuario.senha.equals(senha)){
+		}else if(!usuario.getSenha().equals(senha)){
 			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
 			return false;
 		}else {

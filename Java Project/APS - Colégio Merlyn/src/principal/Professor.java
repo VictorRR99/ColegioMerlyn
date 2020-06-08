@@ -44,9 +44,9 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 		if(usuario == null) {
 			InterfaceGrafica.resultAutenticacao("Usuario não Existe.");
 			return false;
-		}else if(usuario.senha.equals(senha)) {
+		}else if(usuario.getSenha().equals(senha)) {
 			return true;
-		}else if(!usuario.senha.equals(senha)){
+		}else if(!usuario.getSenha().equals(senha)){
 			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
 			return false;
 		}else {
