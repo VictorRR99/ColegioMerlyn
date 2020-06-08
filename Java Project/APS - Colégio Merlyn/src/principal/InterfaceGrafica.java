@@ -1,5 +1,7 @@
 package principal;
 
+import java.util.List;
+
 public abstract class InterfaceGrafica {
 
 	/* Criar outra Classe para fazer a leitura de entradas do teclado */
@@ -26,10 +28,10 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void operationsProfessor() {
-		System.out.println("1 - Cadastrar Aluno;");
-		System.out.println("2 - Cadastrar Professor;");
+		System.out.println("1 - ****;");
+		System.out.println("2 - ****;");
 		System.out.println("5 - Ver todos os Alunos;");
-		System.out.println("6 - Ver todos os Professores;");
+		System.out.println("6 - ****;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
@@ -53,6 +55,10 @@ public abstract class InterfaceGrafica {
 		System.out.println("Digite as informações do Diretor:");	
 	}
 	
+	public static void cadastrarDisciplina() {
+		System.out.println("Digite a informação da Disciplina:");
+	}
+	
 	public static void resultAutenticacao(String result) {
 		System.out.println(result);
 	}
@@ -74,6 +80,28 @@ public abstract class InterfaceGrafica {
 		System.out.println("Por favor cadastre um Diretor:");
 		
 	}
+	
+	public static void semDisciplina() {
+		System.out.println("Este sistema ainda não possui nenhuma Disciplina.");
+		System.out.println("Por favor cadastre uma Disciplina:");
+		
+	}
+
+	public static void mostrarDisciplinas() {
+
+		List<Disciplina> disciplinas = Disciplina.getLista();
+		
+		InterfaceGrafica.separator();
+		System.out.println("As disciplinas existentes são:");
+		InterfaceGrafica.lineBreaker();
+		for(Disciplina x : disciplinas) {
+			System.out.println(x.getNomeDisc());
+		}
+		InterfaceGrafica.separator();
+		
+	}
+
+	
 
 	
 

@@ -15,6 +15,7 @@ public class Call {
 		Diretor.desserialization();
 		Aluno.desserialization();
 		Sala.desserialization();
+		Disciplina.desserialization();
 		/* Leitura dos arquivos */
 		
 		System.out.println("Desserialização completa!");
@@ -28,8 +29,11 @@ public class Call {
 		/* Leitor do menu */
 		Scanner leitorSelection = new Scanner(System.in);
 
+		//Arrumar o método do getLista de diretor pra dar Override na de Professor
 		/* Checagem da existencia de um Diretor no sistema */
-		List<Diretor> checagem = Diretor.getListaDir();
+		List<Diretor> checagemDiretor = Diretor.getListaDir();
+		/* Checagem da existencia de um Diretor no sistema */
+		List<Disciplina> checagemDisciplina = Disciplina.getLista();
 		
 		/* Instancia para chamada das operacoes*/
 		Operation operacao = new Operation();
@@ -55,7 +59,7 @@ public class Call {
 		while(!repStop) {
 			
 			//Checagem se existe um Diretor no sistema
-			if(!checagem.isEmpty()) {
+			if(!checagemDiretor.isEmpty()) {
 				InterfaceGrafica.loginMode();
 				
 				userLogin = leitorSelection.nextLine();
@@ -105,54 +109,54 @@ public class Call {
 						}
 
 						if(isLogged) {
-						while(!userStop) {
-							InterfaceGrafica.operationsDiretor();
-							
-							userSelect = leitorSelection.nextLine();
-							
-							switch(userSelect) {
-							case "1":
+							while(!userStop) {
+								InterfaceGrafica.operationsDiretor();
 								
-								operacao.cadastrarAluno();
-								operacao.serializeAll();
+								userSelect = leitorSelection.nextLine();
 								
-								break;
-							case "2":
-								
-								operacao.cadastrarProfessor();
-								operacao.serializeAll();
-								
-								break;
-							case "5":
-								
-								operacao.verAlunos();
-								
-								break;
-							case "6":
-								
-								operacao.verProfessores();
-								
-								break;
-							case "0":
-								
-								repStop = true;
-								userStop = true;
-								
-								break;
-							case "/":
-								
-								userStop = true;
-								
-								break;
-							default:
-								
-								System.out.println("Operação selecionada não existe.");
-								
+								switch(userSelect) {
+								case "1":
+									
+									operacao.cadastrarAluno();
+									operacao.serializeAll();
+									
+									break;
+								case "2":
+									
+									operacao.cadastrarProfessor();
+									operacao.serializeAll();
+									
+									break;
+								case "5":
+									
+									operacao.verAlunos();
+									
+									break;
+								case "6":
+									
+									operacao.verProfessores();
+									
+									break;
+								case "0":
+									
+									repStop = true;
+									userStop = true;
+									
+									break;
+								case "/":
+									
+									userStop = true;
+									
+									break;
+								default:
+									
+									System.out.println("Operação selecionada não existe.");
+									
+								}
+								//Switch end
 							}
-							//Switch end
+							//While end
 						}
-						//While end
-					}
 						
 					}
 					//IF end
@@ -167,20 +171,35 @@ public class Call {
 				//Main Switch end
 			}else {
 				
-				InterfaceGrafica.separator();
-				InterfaceGrafica.semDiretor();
-				InterfaceGrafica.separator();
+				if(!checagemDisciplina.isEmpty()) {
+					InterfaceGrafica.separator();
+					InterfaceGrafica.semDiretor();
+					InterfaceGrafica.separator();
+					
+					operacao.cadastrarDiretor();
+					
+					/*Serializar*/
+					operacao.serializeAll();
+				}else {
+					InterfaceGrafica.separator();
+					InterfaceGrafica.semDisciplina();
+					InterfaceGrafica.separator();
+					
+					operacao.cadastrarDisciplina();
+					
+					InterfaceGrafica.separator();
+					InterfaceGrafica.semDiretor();
+					InterfaceGrafica.separator();
+					
+					operacao.cadastrarDiretor();
+					
+					/*Serializar*/
+					operacao.serializeAll();
+				}
 				
-				operacao.cadastrarDiretor();
 				
-				/*Serializar*/
-				operacao.serializeAll();
 				
 			}
-			
-			
-			
-			
 			
 		}
 		

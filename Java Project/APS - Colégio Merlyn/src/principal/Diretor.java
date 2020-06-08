@@ -14,7 +14,6 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Diretor extends Professor implements Serializable, Autenticacao {
 	
-	
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
 	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
@@ -54,7 +53,7 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	}
 	
 	/* Métodos Básicos */
-
+	
 	public static List<Diretor> getListaDir(){
 		return listaDiretores;
 	}
@@ -131,17 +130,19 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	/* Cadastro Aluno */
 	
 	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
-
 		Professor.colocarNaLista(new Professor(nome, cpf, rg, dtNasc, senha, disciplina));
-		
 	}
 	
 	/* Cadastro Diretor */
 	
 	public static void cadastrarDiretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
-
 		Diretor.colocarNaLista(new Diretor(nome, cpf, rg, dtNasc, senha, disciplina));
-		
+	}
+
+	/* Cadastro Disciplina */
+	
+	public static void cadastrarDisciplina(String nomeDisc) {
+		Disciplina.colocarNaLista(new Disciplina(nomeDisc));
 	}
 
 }

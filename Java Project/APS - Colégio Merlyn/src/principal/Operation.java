@@ -16,7 +16,7 @@ public class Operation {
 	private Scanner leitorStr = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, cpf, rg, dtNasc, turno, sala, senha, sql;
+	private String nome, nomeDisc, cpf, rg, dtNasc, turno, sala, senha, sql;
 	private Disciplina disc;
 	private int serie;
 	
@@ -141,21 +141,20 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		//Checar se existe alguma disciplina
-		if(!Disciplina.getLista().isEmpty()) {
+		/* Lidar com digitação incorreta de disciplina */
+		// Talvez fazer um menu enumerado igual ao main
 		System.out.println("Digite a disciplina a ser lecionada:");
+		InterfaceGrafica.mostrarDisciplinas();
 		String check;
 		check = leitorStr.nextLine();
-		
-			for(int i = 0; i < Disciplina.getLista().size(); i++) {
-				if(Disciplina.getLista().get(i).getNomeDisc() == check) {
-					disc = Disciplina.getLista().get(i);
-				}
+			
+		for(int i = 0; i < Disciplina.getLista().size(); i++) {
+			if(Disciplina.getLista().get(i).getNomeDisc() == check) {
+				disc = Disciplina.getLista().get(i);
 			}
-		}else {
-			//Pode dar problema 
-			disc = new Disciplina("SuperUsuário");
 		}
+		
+		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
 		
 		InterfaceGrafica.lineBreaker();
 		
@@ -185,7 +184,7 @@ public class Operation {
 		
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
         
-        int queryPessoa = 0;
+        queryPessoa = 0;
 
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
@@ -211,6 +210,17 @@ public class Operation {
         
 	}
 
+	public void cadastrarDisciplina() throws SQLException {
+		InterfaceGrafica.cadastrarDisciplina();
+		
+		System.out.println("Digite nome da Disciplina:");
+		nomeDisc = leitorStr.nextLine();
+		
+		Diretor.cadastrarDisciplina(nomeDisc);
+		
+		InterfaceGrafica.lineBreaker();
+	}
+	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
 		InterfaceGrafica.lineBreaker();
@@ -251,6 +261,7 @@ public class Operation {
 		Diretor.serialization();
 		Aluno.serialization();
 		Sala.serialization();
+		Disciplina.desserialization();
 	}
 	
 	public void closeScanners() {

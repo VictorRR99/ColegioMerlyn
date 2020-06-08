@@ -18,13 +18,13 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	
 	private List<Aluno> listaAlunosDoProfessor = new ArrayList();
 	
-	private String disciplina;
+	private Disciplina disciplina;
 	
 	private Sala sala;
 	
 	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, senha);
-		this.disciplina = disciplina.getNomeDisc();
+		this.disciplina = disciplina;
 	}
 
 	/* Autenticação */
@@ -60,7 +60,7 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	/* Métodos Básicos */
 	
 	String getDisc() {
-		return disciplina;
+		return disciplina.getNomeDisc();
 	}
 	
 	void setSala(Sala sala) {
