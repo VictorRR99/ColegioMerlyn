@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
+	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
 		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
 		this.senha = senha;
 	}

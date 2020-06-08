@@ -2,7 +2,7 @@ package principal;
 
 import java.io.Serializable;
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,12 +18,19 @@ public abstract class Pessoa implements Serializable{
 	private String nome, cpf, rg, dtNasc;
 	protected String senha;
 	
-	Pessoa(String nome, String cpf, String rg, String dtNasc, String senha){
+	Pessoa(String nome, String cpf, String rg, String dtNasc, String senha) throws SQLException{
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.dtNasc = dtNasc;
 		this.senha = senha;
+		
+		String sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
+		cpf + "', '" + rg + "', '" + senha +"')";
+		
+		Connection conexao = Conexao.getConnection();
+		
+		PreparedStatement ps = conexao.prepareStatement(sql);
 	}
 	
 	/* Métodos Básicos*/

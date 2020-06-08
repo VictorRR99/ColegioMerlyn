@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	
 	private Sala sala;
 	
-	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
+	Professor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
 		super(nome, cpf, rg, dtNasc, senha);
 		this.disciplina = disciplina.getNomeDisc();
 	}
