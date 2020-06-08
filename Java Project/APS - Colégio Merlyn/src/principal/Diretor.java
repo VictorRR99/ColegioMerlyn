@@ -28,22 +28,28 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 		
 		Diretor usuario = null;
 		
-		for(Diretor x : listaDiretores) {
-			if(cpf == x.getCpf()) {
-				usuario = x;
+		for(int x=0; x<listaDiretores.size(); x++) {
+			if(cpf.equals(listaDiretores.get(x).getCpf())) {
+				usuario = listaDiretores.get(x);
 				break;
 			}
 		}
 		
-		if(usuario.senha == senha) {
-			return true;
-		}else if(usuario.senha != senha){
-			InterfaceGrafica.erroAutenticacao("Senha Incorreta.");
-			return false;
-		}else{
-			InterfaceGrafica.erroAutenticacao("Usuario não Existe.");
+		if(usuario == null) {
+			InterfaceGrafica.resultAutenticacao("Usuario não Existe.");
 			return false;
 		}
+		
+		if(usuario.senha.equals(senha)) {
+			return true;
+		}else if(!usuario.senha.equals(senha)){
+			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
+			return false;
+		}else {
+			System.out.println("n sei o motivo");
+			return false;
+		}
+		
 		
 	}
 	

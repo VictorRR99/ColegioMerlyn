@@ -178,6 +178,13 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
+	public void serializeAll() {
+		Professor.serialization();
+		Diretor.serialization();
+		Aluno.serialization();
+		Sala.serialization();
+	}
+	
 	public void closeScanners() {
 		leitorInt.close();
 		leitorStr.close();

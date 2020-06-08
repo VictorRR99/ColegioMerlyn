@@ -34,20 +34,23 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 		
 		Professor usuario = null;
 		
-		for(Professor x : listaProfessores) {
-			if(cpf == x.getCpf()) {
-				usuario = x;
+		for(int x=0; x<listaProfessores.size(); x++) {
+			if(cpf.equals(listaProfessores.get(x).getCpf())) {
+				usuario = listaProfessores.get(x);
 				break;
 			}
 		}
 		
-		if(usuario.senha == senha) {
-			return true;
-		}else if(usuario.senha != senha){
-			InterfaceGrafica.erroAutenticacao("Senha Incorreta.");
+		if(usuario == null) {
+			InterfaceGrafica.resultAutenticacao("Usuario não Existe.");
 			return false;
-		}else{
-			InterfaceGrafica.erroAutenticacao("Usuario não Existe.");
+		}else if(usuario.senha.equals(senha)) {
+			return true;
+		}else if(!usuario.senha.equals(senha)){
+			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
+			return false;
+		}else {
+			System.out.println("n sei o motivo");
 			return false;
 		}
 		

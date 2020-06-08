@@ -65,6 +65,8 @@ public class Call {
 					break;
 				case "3":
 					
+					isLogged = false;
+					
 					while(!isLogged) {
 						Diretor call = Diretor.getListaDir().get(0);
 						boolean userCheck = false;
@@ -81,7 +83,7 @@ public class Call {
 							isLogged = true;
 							
 							for(Diretor x : Diretor.getListaDir()) {
-								if(cpf == x.getCpf()) {
+								if(cpf.equals(x.getCpf())) {
 									userDiretor = x;
 									break;
 								}
@@ -123,7 +125,7 @@ public class Call {
 								userStop = true;
 								
 								break;
-							case "9":
+							case "/":
 								
 								userStop = true;
 								
@@ -139,8 +141,12 @@ public class Call {
 					//IF end
 					
 					break;
-				
+				case "0":
+					repStop = true;
+					userStop = true;
 				}
+				
+				
 				//Main Switch end
 			}else {
 				
@@ -149,6 +155,9 @@ public class Call {
 				InterfaceGrafica.separator();
 				
 				operacao.cadastrarDiretor();
+				
+				/*Serializar*/
+				operacao.serializeAll();
 				
 			}
 			
@@ -163,10 +172,7 @@ public class Call {
 		operacao.closeScanners();
 			
 		/* Salvamento dos arquivos */
-		Professor.serialization();
-		Diretor.serialization();
-		Aluno.serialization();
-		Sala.serialization();
+		operacao.serializeAll();
 		/* Salvamento dos arquivos */
 		
 		System.out.println("Serialização completa!");

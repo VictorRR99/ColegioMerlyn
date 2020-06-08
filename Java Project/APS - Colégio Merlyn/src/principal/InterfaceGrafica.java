@@ -13,6 +13,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("1 - Aluno");
 		System.out.println("2 - Professor");
 		System.out.println("3 - Diretor");
+		System.out.println("0 - Sair do Sistema");
 	}
 	
 	public static void operations() {
@@ -21,7 +22,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("5 - Ver todos os Alunos;");
 		System.out.println("6 - Ver todos os Professores;");
 		System.out.println("0 - Sair do Sistema.");
-		System.out.println("9 - Voltar ao Login.");
+		System.out.println("/ - Voltar ao Login.");
 	}
 	
 	public static void cadastrarAluno() {
@@ -36,8 +37,8 @@ public abstract class InterfaceGrafica {
 		System.out.println("Digite as informações do Diretor:");	
 	}
 	
-	public static void erroAutenticacao(String erro) {
-		System.out.println(erro);
+	public static void resultAutenticacao(String result) {
+		System.out.println(result);
 	}
 	
 	public static void lineBreaker() {
