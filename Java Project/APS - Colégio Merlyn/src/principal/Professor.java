@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	
 	private static List<Professor> listaProfessores = new ArrayList<>();
 	
-	private List<Aluno> listaAlunosDoProfessor = new ArrayList();
+	private List<Aluno> listaAlunosDoProfessor = new ArrayList<Aluno>();
 	
 	private Disciplina disciplina;
 	
