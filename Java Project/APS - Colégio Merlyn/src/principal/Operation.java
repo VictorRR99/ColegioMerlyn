@@ -103,10 +103,6 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
         
-//        for(Sala x : Sala.getLista()) {
-//        	if()
-//        }
-        
         sql = "SELECT cd_sala FROM Sala WHERE nm_sala = '" + sala + "'";
         
         int cd_sala = 0;
@@ -331,6 +327,15 @@ public class Operation {
 		Diretor.cadastrarSala(numSala);
 		
 		InterfaceGrafica.lineBreaker();
+		
+		sql = "INSERT INTO Sala(cd_Sala) VALUES('" + Integer.parseInt(numSala) + "')";
+		
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
 	}
 	
 	/* Permitido por: Diretor, Professor */
