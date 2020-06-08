@@ -103,19 +103,19 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
         
-        for(Sala x : sala) {
-        	
-        }
+//        for(Sala x : Sala.getLista()) {
+//        	if()
+//        }
         
-        sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        sql = "SELECT cd_sala FROM Sala WHERE nm_sala = '" + sala + "'";
         
-        String cd_sala;
+        int cd_sala = 0;
 
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
             rs.next();
-            cd_pessoa = rs.getInt(1);
+            cd_sala = rs.getInt(1);
             
             rs.close();
             stmt.close();
@@ -128,7 +128,7 @@ public class Operation {
 		
 //		insert na tabela Aluno
 		sql = "INSERT INTO Aluno(cd_aluno, pessoa_cd_pessoa, cd_sala, serie, turno) VALUES("+ matProvi + ", '"+ cd_pessoa +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
+				cd_sala + "', '" + serie + "', '" + turno +"')";
 				
 		conexao = Conexao.getConnection();
 				
