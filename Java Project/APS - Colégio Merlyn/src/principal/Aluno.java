@@ -19,8 +19,6 @@ public class Aluno extends Pessoa implements Serializable{
 	
 	private Map<String, Float[]> disc = new HashMap<String, Float[]>();
 	
-	private List<Float> notas = new ArrayList();
-	
 	private static int nmTotalMat;
 	
 	private int serie;
