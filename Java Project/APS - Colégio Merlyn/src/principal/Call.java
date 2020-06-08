@@ -127,6 +127,12 @@ public class Call {
 									operacao.serializeAll();
 									
 									break;
+								case "3":
+									
+									operacao.cadastrarSala();
+									operacao.serializeAll();
+									
+									break;
 								case "5":
 									
 									operacao.verAlunos();
