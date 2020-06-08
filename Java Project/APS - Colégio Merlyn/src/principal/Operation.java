@@ -102,29 +102,10 @@ public class Operation {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        sql = "SELECT cd_sala FROM Sala WHERE nm_sala = '" + sala + "'";
-        
-        int cd_sala = 0;
 
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_sala = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-		
-		
-		
 //		insert na tabela Aluno
 		sql = "INSERT INTO Aluno(cd_aluno, pessoa_cd_pessoa, cd_sala, serie, turno) VALUES("+ matProvi + ", '"+ cd_pessoa +"', '" + 
-				cd_sala + "', '" + serie + "', '" + turno +"')";
+				Integer.parseInt(sala) + "', '" + serie + "', '" + turno +"')";
 				
 		conexao = Conexao.getConnection();
 				
