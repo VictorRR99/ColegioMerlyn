@@ -59,6 +59,10 @@ public abstract class InterfaceGrafica {
 		System.out.println("Digite a informação da Disciplina:");
 	}
 	
+	public static void cadastrarSala() {
+		System.out.println("Digite a informação da Sala:");		
+	}
+	
 	public static void resultAutenticacao(String result) {
 		System.out.println(result);
 	}
@@ -100,6 +104,8 @@ public abstract class InterfaceGrafica {
 		InterfaceGrafica.separator();
 		
 	}
+
+	
 
 	
 

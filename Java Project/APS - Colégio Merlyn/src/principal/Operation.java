@@ -16,7 +16,7 @@ public class Operation {
 	private Scanner leitorStr = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, nomeDisc, cpf, rg, dtNasc, turno, sala, senha, sql;
+	private String nome, nomeDisc, numSala, cpf, rg, dtNasc, turno, sala, senha, sql;
 	private Disciplina disc;
 	private int serie;
 	
@@ -239,6 +239,7 @@ public class Operation {
         
 	}
 
+	/* Permitido por: Diretor */
 	public void cadastrarDisciplina() throws SQLException {
 		InterfaceGrafica.cadastrarDisciplina();
 		
@@ -257,6 +258,18 @@ public class Operation {
 				
 		ps.execute();
 		ps.close();
+	}
+	
+	/* Permitido por: Diretor */
+	public void cadastrarSala() throws SQLException {
+		InterfaceGrafica.cadastrarSala();
+		
+		System.out.println("Digite numero da Sala:");
+		numSala = leitorStr.nextLine();
+		
+		Diretor.cadastrarSala(numSala);
+		
+		InterfaceGrafica.lineBreaker();
 	}
 	
 	/* Permitido por: Diretor, Professor */

@@ -19,13 +19,15 @@ public class Sala implements Serializable {
 	
 	private List<Aluno> alunosDaSala = new ArrayList<Aluno>();
 	
-	String nmSala;
+	String numSala;
 	
-	Sala(String nmSala){
-		if(this.checarSalas(nmSala)) System.out.println("Sala já existe");
-		else this.nmSala = nmSala;
+	Sala(String numSala){
+		if(this.checarSalas(numSala)) System.out.println("Sala já existe");
+		else this.numSala = numSala;
 		
 	}
+	
+	/* Métodos Básicos */
 	
 	boolean checarSalas(String a) {
 		for(int i = 0; i < listaSalas.size(); i++) {
@@ -35,7 +37,7 @@ public class Sala implements Serializable {
 	}
 	
 	public String getSala() {
-		return nmSala;
+		return numSala;
 	}
 	
 	boolean addProfessor(Professor nmProf) {
@@ -69,16 +71,22 @@ public class Sala implements Serializable {
 		return discDaSalas;
 	}
 	
-	static void criarSala(String a) {
-		listaSalas.add(new Sala(a));
-	}
-	
 	static boolean checarSalaCerta(int x, String sala) {
 		if("" + sala.charAt(0) == Integer.toString(x)) {
 			System.out.println("Sala errada para série escolhida!");
 			return false;
 		}
 		return true;
+	}
+	
+	/* Método Lista */
+	
+	public static List<Sala> getLista(){
+		return listaSalas;
+	}
+	
+	public static void colocarNaLista(Sala sala){
+		listaSalas.add(sala);
 	}
 	
 	/* Serialization Handler */

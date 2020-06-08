@@ -144,5 +144,12 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	public static void cadastrarDisciplina(String nomeDisc) {
 		Disciplina.colocarNaLista(new Disciplina(nomeDisc));
 	}
+	
+	
+	/*Cadastro Sala */
+	
+	static void cadastrarSala(String nmSala) {
+		Sala.colocarNaLista(new Sala(nmSala));
+	}
 
 }
