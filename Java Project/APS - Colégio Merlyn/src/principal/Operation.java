@@ -327,6 +327,15 @@ public class Operation {
 		Diretor.cadastrarSala(numSala);
 		
 		InterfaceGrafica.lineBreaker();
+		
+		sql = "INSERT INTO Sala(cd_Sala) VALUES('" + Integer.parseInt(numSala) + "')";
+		
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
 	}
 	
 	/* Permitido por: Diretor, Professor */
