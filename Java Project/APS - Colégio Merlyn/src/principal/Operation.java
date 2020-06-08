@@ -227,7 +227,7 @@ public class Operation {
         }
         
 //        Select na tabela Disciplina para pegar cd_disc
-        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc().toLowerCase() + "'";
+        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc() + "'";
         
         int cd_disc = 0;
 
@@ -336,7 +336,7 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
-	/* Permitido por: Diretor*/
+	/* Permitido por: Diretor */
 	public void verProfessores() {
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separator();
@@ -351,6 +351,60 @@ public class Operation {
 		
 		InterfaceGrafica.separator();
 		InterfaceGrafica.lineBreaker();
+	}
+	
+	/* Permitido por: Diretor */
+	public void verSalas() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Sala> listaSalas = Sala.getLista();
+		
+		System.out.println("+Nomes dos Professores:");
+		InterfaceGrafica.lineBreaker();
+		for(Sala x : listaSalas) {
+			System.out.println(x.getSala());
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	/* Permitido por: Diretor */
+	public void verDiretores() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Diretor> listaDiretores = Diretor.getListaDir();
+		
+		System.out.println("+Nomes dos Professores:");
+		InterfaceGrafica.lineBreaker();
+		for(Diretor x : listaDiretores) {
+			System.out.println(x.getNome());
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	/* Permitido por: Diretor */
+	public void verDisciplinas() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Disciplina> listaDisciplinas = Disciplina.getLista();
+		
+		System.out.println("+Nomes dos Professores:");
+		InterfaceGrafica.lineBreaker();
+		for(Disciplina x : listaDisciplinas) {
+			System.out.println(x.getNomeDisc());
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
 	}
 	
 	/* Operação Geral */

@@ -135,18 +135,39 @@ public class Call {
 									break;
 								case "4":
 									
-									operacao.cadastrarProfessor();
+									operacao.cadastrarDiretor();
 									operacao.serializeAll();
 									
 									break;
 								case "5":
 									
+									operacao.cadastrarDisciplina();
+									operacao.serializeAll();
+									
+									break;
+								case "11":
+									
 									operacao.verAlunos();
 									
 									break;
-								case "6":
+								case "12":
 									
 									operacao.verProfessores();
+									
+									break;
+								case "13":
+									
+									operacao.verSalas();
+									
+									break;
+								case "14":
+									
+									operacao.verDiretores();
+									
+									break;
+								case "15":
+									
+									operacao.verDisciplinas();
 									
 									break;
 								case "0":
