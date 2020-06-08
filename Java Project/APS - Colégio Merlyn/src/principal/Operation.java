@@ -208,7 +208,9 @@ public class Operation {
         
 //		Inserindo na tabela Professor
         
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ cd_pessoa + "', "+ cd_disc + ")";
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES("+ cd_pessoa + ", "+ cd_disc + ")";
+        
+        sql = "SELECT * FROM Professor";
 				
 		conexao = Conexao.getConnection();
 				
