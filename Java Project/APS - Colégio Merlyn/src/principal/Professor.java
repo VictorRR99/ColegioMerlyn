@@ -75,6 +75,18 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 		listaProfessores.add(professor);
 	}
 	
+	void receberAlunos() {
+		for(Aluno x : Aluno.getLista()) {
+			if(x.getSala().equals(this.sala.getSala())) {
+				this.getListaAluno().add(x);
+			}
+		}
+	}
+	
+	List<Aluno> getListaAluno(){
+		return listaAlunosDoProfessor;
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {
