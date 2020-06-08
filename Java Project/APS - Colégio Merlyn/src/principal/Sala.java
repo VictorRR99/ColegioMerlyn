@@ -73,6 +73,14 @@ public class Sala implements Serializable {
 		listaSalas.add(new Sala(a));
 	}
 	
+	static boolean checarSalaCerta(int x, String sala) {
+		if("" + sala.charAt(0) == Integer.toString(x)) {
+			System.out.println("Sala errada para série escolhida!");
+			return false;
+		}
+		return true;
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {
