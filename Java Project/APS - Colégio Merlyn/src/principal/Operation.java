@@ -3,7 +3,7 @@ package principal;
 import java.util.List;
 import java.util.Scanner;
 
-public class Operations {
+public class Operation {
 
 	private Scanner leitorInt = new Scanner(System.in);
 	private Scanner leitorStr = new Scanner(System.in);

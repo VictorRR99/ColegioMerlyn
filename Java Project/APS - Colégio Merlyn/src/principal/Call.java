@@ -11,16 +11,15 @@ public class Call {
 		
 		/* Leitura dos arquivos */
 		Professor.desserialization();
-//		Diretor.desserialization();
+		Diretor.desserialization();
 		Aluno.desserialization();
-//		Sala.desserialization();
-//		Disciplina.desserialization();
+		Sala.desserialization();
 		/* Leitura dos arquivos */
 		
 		System.out.println("Desserialização completa!");
 		
 		Scanner leitorSelection = new Scanner(System.in);
-		Operations operacao = new Operations();
+		Operation operacao = new Operation();
 
 		/* Seleção */
 		int userSelect;
@@ -29,46 +28,57 @@ public class Call {
 		
 		InterfaceGrafica.welcome();
 		
-		/* Operações */
+		/* Menu das Operações */
 		while(rep == 0) {
+			
+			
 			
 			InterfaceGrafica.operations();
 			
 			userSelect = leitorSelection.nextInt();
 			
-			if(userSelect == 1) {
+			switch(userSelect) {
+			case 1:
 				
 				operacao.cadastrarAluno();
 				
-			}else if(userSelect == 2) {
+				break;
+			case 2:
 				
 				operacao.cadastrarProfessor();
 				
-			}else if(userSelect == 5) {
+				break;
+			case 5:
 				
 				operacao.verAlunos();
 				
-			}else if(userSelect == 6) {
+				break;
+			case 6:
 				
 				operacao.verProfessores();
 				
-			}else if(userSelect == 0) {
+				break;
+			case 0:
+				
 				rep++;
-			}else {
+				
+				break;
+			default:
 				System.out.println("Operação não existe.");
 				
 			}
 			
 		}
 		
+		leitorSelection.close();
+		
 		operacao.closeScanners();
 			
 		/* Salvamento dos arquivos */
 		Professor.serialization();
-//		Diretor.serialization();
+		Diretor.serialization();
 		Aluno.serialization();
-//		Sala.serialization();
-//		Disciplina.serialization();
+		Sala.serialization();
 		/* Salvamento dos arquivos */
 		
 		System.out.println("Serialização completa!");
