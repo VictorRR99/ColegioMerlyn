@@ -31,6 +31,8 @@ public abstract class Pessoa implements Serializable{
 		Connection conexao = Conexao.getConnection();
 		
 		PreparedStatement ps = conexao.prepareStatement(sql);
+		
+		ps.execute();
 	}
 	
 	/* Métodos Básicos*/
