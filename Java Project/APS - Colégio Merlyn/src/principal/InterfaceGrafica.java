@@ -9,18 +9,34 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void loginMode() {
-		System.out.println("Você deseja logar como:");
+		System.out.println("Você deseja logar entrar:");
 		System.out.println("1 - Aluno");
 		System.out.println("2 - Professor");
 		System.out.println("3 - Diretor");
 		System.out.println("0 - Sair do Sistema");
 	}
 	
-	public static void operations() {
+	public static void operationsDiretor() {
 		System.out.println("1 - Cadastrar Aluno;");
 		System.out.println("2 - Cadastrar Professor;");
 		System.out.println("5 - Ver todos os Alunos;");
 		System.out.println("6 - Ver todos os Professores;");
+		System.out.println("0 - Sair do Sistema.");
+		System.out.println("/ - Voltar ao Login.");
+	}
+	
+	public static void operationsProfessor() {
+		System.out.println("1 - Cadastrar Aluno;");
+		System.out.println("2 - Cadastrar Professor;");
+		System.out.println("5 - Ver todos os Alunos;");
+		System.out.println("6 - Ver todos os Professores;");
+		System.out.println("0 - Sair do Sistema.");
+		System.out.println("/ - Voltar ao Login.");
+	}
+	
+	public static void operationsAluno() {
+		System.out.println("1 - ****");
+		System.out.println("2 - ****");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
@@ -55,7 +71,7 @@ public abstract class InterfaceGrafica {
 
 	public static void semDiretor() {
 		System.out.println("Este sistema ainda não possui nenhum Diretor.");
-		System.out.println("Por favor crie um Diretor:");
+		System.out.println("Por favor cadastre um Diretor:");
 		
 	}
 

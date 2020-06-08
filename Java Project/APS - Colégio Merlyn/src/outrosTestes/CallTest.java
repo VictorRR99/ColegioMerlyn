@@ -34,7 +34,7 @@ public class CallTest {
 		/* Operações */
 		while(rep == 0) {
 			
-			InterfaceGrafica.operations();
+//			InterfaceGrafica.operations();
 			
 			userSelect = leitorSelection.nextInt();
 			

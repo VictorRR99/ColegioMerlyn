@@ -18,36 +18,40 @@ public class Call {
 		/* Leitura dos arquivos */
 		
 		System.out.println("Desserialização completa!");
+		InterfaceGrafica.separator();
+	
+		System.out.println();
 		
+		
+		/* Leitor do menu de login */
+		Scanner leitorLogin = new Scanner(System.in);
+		/* Leitor do menu */
 		Scanner leitorSelection = new Scanner(System.in);
-		
+
+		/* Checagem da existencia de um Diretor no sistema */
 		List<Diretor> checagem = Diretor.getListaDir();
 		
-		
-		
-		Scanner leitorLogin = new Scanner(System.in);
-		
+		/* Instancia para chamada das operacoes*/
 		Operation operacao = new Operation();
 
 		/* Usuarios */
-		
-		Diretor userDiretor;
+		Diretor userDiretor = null;
 		Professor userProfessor;
 		Aluno userAluno;
 		
 		/* Login */
 		String cpf, senha;
 		boolean isLogged = false;
-		/* Seleção */
+		/* SeleÃ§Ã£o nos menus */
 		String userSelect;
 		String userLogin;
-		/* Condição de parada While */
+		/* CondiÃ§Ã£o de parada While */
 		boolean repStop = false;
 		boolean userStop = false;
 		
 		InterfaceGrafica.welcome();
 		
-		/* Menu das Operações */
+		/* Menu Principal das Operacoes */
 		while(!repStop) {
 			
 			//Checagem se existe um Diretor no sistema
@@ -65,15 +69,19 @@ public class Call {
 					break;
 				case "3":
 					
+					//Login Diretor
+
 					isLogged = false;
 					
 					while(!isLogged) {
 						Diretor call = Diretor.getListaDir().get(0);
 						boolean userCheck = false;
 						
+						InterfaceGrafica.lineBreaker();
 						System.out.println("Digite o cpf:");
 						cpf = leitorLogin.nextLine();
 						
+						InterfaceGrafica.lineBreaker();
 						System.out.println("Digite a senha:");
 						senha = leitorLogin.nextLine();
 						
@@ -82,19 +90,23 @@ public class Call {
 						if(userCheck == true) {
 							isLogged = true;
 							
+							InterfaceGrafica.lineBreaker();
+							InterfaceGrafica.separator();
+							System.out.println("Acesso Garantido!");
 							for(Diretor x : Diretor.getListaDir()) {
 								if(cpf.equals(x.getCpf())) {
 									userDiretor = x;
 									break;
 								}
 							}
+							System.out.println("Bem vindo, " + userDiretor.getNome() +"!");
+							InterfaceGrafica.separator();
+							InterfaceGrafica.lineBreaker();
 						}
-						
-					}
-					
-					if(isLogged) {
+
+						if(isLogged) {
 						while(!userStop) {
-							InterfaceGrafica.operations();
+							InterfaceGrafica.operationsDiretor();
 							
 							userSelect = leitorSelection.nextLine();
 							
@@ -102,11 +114,13 @@ public class Call {
 							case "1":
 								
 								operacao.cadastrarAluno();
+								operacao.serializeAll();
 								
 								break;
 							case "2":
 								
 								operacao.cadastrarProfessor();
+								operacao.serializeAll();
 								
 								break;
 							case "5":
@@ -131,12 +145,15 @@ public class Call {
 								
 								break;
 							default:
-								System.out.println("Operação não existe.");
+								
+								System.out.println("Operação selecionada não existe.");
 								
 							}
 							//Switch end
 						}
 						//While end
+					}
+						
 					}
 					//IF end
 					
@@ -175,8 +192,9 @@ public class Call {
 		operacao.serializeAll();
 		/* Salvamento dos arquivos */
 		
+		InterfaceGrafica.separator();
 		System.out.println("Serialização completa!");
-		
+		InterfaceGrafica.separator();
 		InterfaceGrafica.end();
 		
 //-----------------------------------------------------------------------------------------------------------------------------------------------------\\
@@ -186,7 +204,7 @@ public class Call {
 		
 //		ClasseTeste1.desserialization();
 //		SubClasseTeste2.desserialization();
-//		System.out.println("Desserialização Completa!");
+//		System.out.println("Desserializaï¿½ï¿½o Completa!");
 //				
 //		int rep=0;
 //		
@@ -226,7 +244,7 @@ public class Call {
 //			}else if(select == 5){
 //				rep++;
 //			}else {
-//				System.out.println("OP não exite");
+//				System.out.println("OP nï¿½o exite");
 //				rep++;
 //				break;
 //			}
@@ -238,14 +256,14 @@ public class Call {
 //		
 //		ClasseTeste1.serialization();
 //		SubClasseTeste2.serialization();
-//		System.out.println("Serialização Completa!");
+//		System.out.println("Serializaï¿½ï¿½o Completa!");
 //-----------------------------------------------------------------------------------------------------------------------------------------------------\\
 
 		/* Serialization Test*/
 		
 //		Aluno victor = new Aluno("Victor Rodrigues", "08618351903", "6021469", "22/02/2001");
 //		Aluno vinicius = new Aluno("Vinicius Amorim", "12345678911", "1234567", "04/08/2000");
-//		Aluno leticia = new Aluno("Letícia Oliveira", "11987654321", "7654321", "16/07/2001");
+//		Aluno leticia = new Aluno("Letï¿½cia Oliveira", "11987654321", "7654321", "16/07/2001");
 //		Aluno samuel = new Aluno("Samuel Costa", "12345612345", "1234123", "01/01/2001");
 //		Aluno altair = new Aluno("Altair Vega", "99224852158", "9874563", "09/05/1995");
 //

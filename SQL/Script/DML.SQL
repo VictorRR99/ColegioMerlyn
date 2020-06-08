@@ -32,6 +32,17 @@ DROP TABLE Professor;
 DROP TABLE Diretor;
 --END-- Facilitador DROP TABLE
 
+-- Facilitador DELETE
+DELETE FROM Pessoa;
+DELETE FROM Sala;
+DELETE FROM Aluno;
+DELETE FROM Notas;
+DELETE FROM Disciplina;
+DELETE FROM Sala_Disc;
+DELETE FROM Professor;
+DELETE FROM Diretor;
+--END-- Facilitador DELETE
+
 -- PESQUISAS NO SISTEMA
 
 -- ALUNOS COM MAIS DE 15 ANOS

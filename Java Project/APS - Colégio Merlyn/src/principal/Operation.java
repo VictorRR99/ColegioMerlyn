@@ -14,6 +14,7 @@ public class Operation {
 	private Disciplina disc;
 	private int serie;
 	
+	/* Permitido por: Diretor */
 	public void cadastrarAluno() throws SQLException{
 		InterfaceGrafica.cadastrarAluno();
 		
@@ -62,6 +63,7 @@ public class Operation {
 		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
+	/* Permitido por: Diretor */
 	public void cadastrarProfessor() throws SQLException {
 		InterfaceGrafica.cadastrarProfessor();
 		
@@ -100,6 +102,7 @@ public class Operation {
 		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
+	/* Permitido por: Diretor */
 	public void cadastrarDiretor() throws SQLException {
 		InterfaceGrafica.cadastrarDiretor();
 		
@@ -145,7 +148,8 @@ public class Operation {
 		
 		System.out.println("Cadastro concluído com sucesso!");
 	}
-	
+
+	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separator();
@@ -162,6 +166,7 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
+	/* Permitido por: Diretor*/
 	public void verProfessores() {
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separator();
@@ -178,6 +183,7 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
+	/* Operação Geral */
 	public void serializeAll() {
 		Professor.serialization();
 		Diretor.serialization();
