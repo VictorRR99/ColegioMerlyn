@@ -23,12 +23,24 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	/* Autenticação */
 	
 	@Override
-	public boolean autenticar(String senha) {
-
-		if(this.senha == senha) {
-			return true;
-		}else {
-			return false;
+	public Diretor autenticar(String cpf, String senha) {
+		
+		Diretor usuario = null;
+		
+		for(Diretor x : listaDiretores) {
+			if(cpf == x.getCpf()) {
+				usuario = x;
+			}
+		}
+		
+		if(usuario.senha == senha) {
+			return usuario;
+		}else if(usuario.senha != senha){
+			InterfaceGrafica.erroAutenticacao("Senha Incorreta.");
+			return null;
+		}else{
+			InterfaceGrafica.erroAutenticacao("Usuario não Existe.");
+			return null;
 		}
 		
 	}

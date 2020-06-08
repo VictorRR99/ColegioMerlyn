@@ -20,18 +20,24 @@ public class Call {
 		
 		Scanner leitorSelection = new Scanner(System.in);
 		
+		Scanner leitorLogin = new Scanner(System.in);
+		
 		Operation operacao = new Operation();
 
+		/* Login */
+		String cpf, senha;
+		boolean isLogged = false;
 		/* Seleção */
 		String userSelect;
 		String userLogin;
 		/* Condição de parada While */
-		int rep=0;
+		boolean repStop = false;
+		boolean userStop = false;
 		
 		InterfaceGrafica.welcome();
 		
 		/* Menu das Operações */
-		while(rep == 0) {
+		while(!repStop) {
 			
 			InterfaceGrafica.loginMode();
 			
@@ -46,40 +52,56 @@ public class Call {
 				break;
 			case "3":
 				
+				while(!isLogged) {
+					Diretor usuario = null;
+					
+					System.out.println("Digite o cpf:");
+					cpf = leitorLogin.nextLine();
+					
+					System.out.println("Digite a senha:");
+					senha = leitorLogin.nextLine();
+					
+					if(usuario.autenticar(cpf, senha) != null) {
+						isLogged = true;
+					}
+					
+				}
 				
-				InterfaceGrafica.operations();
-				
-				userSelect = leitorSelection.nextLine();
-				
-				switch(userSelect) {
-				case "1":
+				while(!userStop) {
+					InterfaceGrafica.operations();
 					
-					operacao.cadastrarAluno();
+					userSelect = leitorSelection.nextLine();
 					
-					break;
-				case "2":
-					
-					operacao.cadastrarProfessor();
-					
-					break;
-				case "5":
-					
-					operacao.verAlunos();
-					
-					break;
-				case "6":
-					
-					operacao.verProfessores();
-					
-					break;
-				case "0":
-					
-					rep++;
-					
-					break;
-				default:
-					System.out.println("Operação não existe.");
-					
+					switch(userSelect) {
+					case "1":
+						
+						operacao.cadastrarAluno();
+						
+						break;
+					case "2":
+						
+						operacao.cadastrarProfessor();
+						
+						break;
+					case "5":
+						
+						operacao.verAlunos();
+						
+						break;
+					case "6":
+						
+						operacao.verProfessores();
+						
+						break;
+					case "0":
+						
+						repStop = true;
+						
+						break;
+					default:
+						System.out.println("Operação não existe.");
+						
+					}
 				}
 				
 				break;

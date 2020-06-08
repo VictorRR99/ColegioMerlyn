@@ -31,6 +31,10 @@ public abstract class InterfaceGrafica {
 		System.out.println("Digite as informações do Professor:");
 	}
 	
+	public static void erroAutenticacao(String erro) {
+		System.out.println(erro);
+	}
+	
 	public static void lineBreaker() {
 		System.out.println("");
 	}
