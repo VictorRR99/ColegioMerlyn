@@ -210,8 +210,6 @@ public class Operation {
         
         sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES("+ cd_pessoa + ", "+ cd_disc + ")";
         
-        sql = "SELECT * FROM Professor";
-				
 		conexao = Conexao.getConnection();
 				
 		ps = conexao.prepareStatement(sql);
