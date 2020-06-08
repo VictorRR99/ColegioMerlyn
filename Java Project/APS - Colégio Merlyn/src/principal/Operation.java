@@ -149,7 +149,7 @@ public class Operation {
 		check = leitorStr.nextLine();
 			
 		for(int i = 0; i < Disciplina.getLista().size(); i++) {
-			if(Disciplina.getLista().get(i).getNomeDisc() == check) {
+			if(Disciplina.getLista().get(i).getNomeDisc().toLowerCase() == check.toLowerCase()) {
 				disc = Disciplina.getLista().get(i);
 			}
 		}
