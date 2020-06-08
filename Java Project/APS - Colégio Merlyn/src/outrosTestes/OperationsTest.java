@@ -71,7 +71,7 @@ public class OperationsTest {
 		
 		//Arrumar a verificação dos problemas relacionado com serie e sala
 		
-		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+//		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
 	}
 	
@@ -100,7 +100,7 @@ public class OperationsTest {
 		
 		//Disciplina?
 		
-		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
+//		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
 	}
 	
 	public void verAlunos() {

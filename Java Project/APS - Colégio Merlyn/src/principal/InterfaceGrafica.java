@@ -21,6 +21,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("5 - Ver todos os Alunos;");
 		System.out.println("6 - Ver todos os Professores;");
 		System.out.println("0 - Sair do Sistema.");
+		System.out.println("9 - Voltar ao Login.");
 	}
 	
 	public static void cadastrarAluno() {
@@ -29,6 +30,10 @@ public abstract class InterfaceGrafica {
 	
 	public static void cadastrarProfessor() {
 		System.out.println("Digite as informações do Professor:");
+	}
+	
+	public static void cadastrarDiretor() {
+		System.out.println("Digite as informações do Diretor:");	
 	}
 	
 	public static void erroAutenticacao(String erro) {
@@ -46,6 +51,14 @@ public abstract class InterfaceGrafica {
 	public static void end() {
 		System.out.println("Alterações salvas, fechando programa...");
 	}
+
+	public static void semDiretor() {
+		System.out.println("Este sistema ainda não possui nenhum Diretor.");
+		System.out.println("Por favor crie um Diretor:");
+		
+	}
+
+	
 
 	
 	

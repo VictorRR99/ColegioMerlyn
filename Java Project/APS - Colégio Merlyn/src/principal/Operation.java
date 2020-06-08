@@ -1,5 +1,6 @@
 package principal;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class Operation {
 	private Disciplina disc;
 	private int serie;
 	
-	public void cadastrarAluno(){
+	public void cadastrarAluno() throws SQLException{
 		InterfaceGrafica.cadastrarAluno();
 		
 		System.out.println("Digite nome:");
@@ -44,6 +45,7 @@ public class Operation {
 		sala = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		//Checagem se não há inconsistência nas séries e salas
 		boolean check = Sala.checarSalaCerta(serie, sala);
 		while(!check) {
 			System.out.println("Digite uma sala válida:");
@@ -55,13 +57,11 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		//Arrumar a verificação dos problemas relacionado com serie e sala
-		
 		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
 	}
 	
-	public void cadastrarProfessor() {
+	public void cadastrarProfessor() throws SQLException {
 		InterfaceGrafica.cadastrarProfessor();
 		
 		System.out.println("Digite nome:");
@@ -95,6 +95,42 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
+	}
+	
+	public void cadastrarDiretor() throws SQLException {
+		InterfaceGrafica.cadastrarDiretor();
+		
+		System.out.println("Digite nome:");
+		nome = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Digite cpf:");
+		cpf = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Digite rg:");
+		rg = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Digite data de nascimento:");
+		dtNasc = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Digite senha:");
+		senha = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Digite a disciplina a ser lecionada:");
+		String check;
+		check = leitorStr.nextLine();
+		for(int i = 0; i < Disciplina.listaDisciplinas.size(); i++) {
+			if(Disciplina.listaDisciplinas.get(i).getNomeDisc() == check) {
+				disc = Disciplina.listaDisciplinas.get(i);
+			}
+		}
+		InterfaceGrafica.lineBreaker();
+		
+		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
 	}
 	
 	public void verAlunos() {

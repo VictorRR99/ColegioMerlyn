@@ -1,11 +1,12 @@
 package principal;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Call {
 	
-	public static void main(String[] args) throws ClassNotFoundException {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
 		/*Principal*/
 		
@@ -19,6 +20,8 @@ public class Call {
 		System.out.println("Desserialização completa!");
 		
 		Scanner leitorSelection = new Scanner(System.in);
+		
+		List<Diretor> checagem = Diretor.getListaDir();
 		
 		Scanner leitorLogin = new Scanner(System.in);
 		
@@ -39,74 +42,97 @@ public class Call {
 		/* Menu das Operações */
 		while(!repStop) {
 			
-			InterfaceGrafica.loginMode();
-			
-			userLogin = leitorSelection.nextLine();
-			
-			switch(userLogin) {
-			case "1":
+			//Checagem se existe um Diretor no sistema
+			if(!checagem.isEmpty()) {
+				InterfaceGrafica.loginMode();
 				
-				break;
-			case "2":
+				userLogin = leitorSelection.nextLine();
 				
-				break;
-			case "3":
-				
-				while(!isLogged) {
-					Diretor usuario = null;
+				switch(userLogin) {
+				case "1":
 					
-					System.out.println("Digite o cpf:");
-					cpf = leitorLogin.nextLine();
+					break;
+				case "2":
 					
-					System.out.println("Digite a senha:");
-					senha = leitorLogin.nextLine();
+					break;
+				case "3":
 					
-					if(usuario.autenticar(cpf, senha) != null) {
-						isLogged = true;
+					while(!isLogged) {
+						Diretor usuario = null;
+						
+						System.out.println("Digite o cpf:");
+						cpf = leitorLogin.nextLine();
+						
+						System.out.println("Digite a senha:");
+						senha = leitorLogin.nextLine();
+						
+						if(usuario.autenticar(cpf, senha) != null) {
+							isLogged = true;
+						}
+						
 					}
 					
-				}
-				
-				while(!userStop) {
-					InterfaceGrafica.operations();
-					
-					userSelect = leitorSelection.nextLine();
-					
-					switch(userSelect) {
-					case "1":
-						
-						operacao.cadastrarAluno();
-						
-						break;
-					case "2":
-						
-						operacao.cadastrarProfessor();
-						
-						break;
-					case "5":
-						
-						operacao.verAlunos();
-						
-						break;
-					case "6":
-						
-						operacao.verProfessores();
-						
-						break;
-					case "0":
-						
-						repStop = true;
-						
-						break;
-					default:
-						System.out.println("Operação não existe.");
-						
+					if(isLogged) {
+						while(!userStop) {
+							InterfaceGrafica.operations();
+							
+							userSelect = leitorSelection.nextLine();
+							
+							switch(userSelect) {
+							case "1":
+								
+								operacao.cadastrarAluno();
+								
+								break;
+							case "2":
+								
+								operacao.cadastrarProfessor();
+								
+								break;
+							case "5":
+								
+								operacao.verAlunos();
+								
+								break;
+							case "6":
+								
+								operacao.verProfessores();
+								
+								break;
+							case "0":
+								
+								repStop = true;
+								userStop = true;
+								
+								break;
+							case "9":
+								
+								userStop = true;
+								
+								break;
+							default:
+								System.out.println("Operação não existe.");
+								
+							}
+							//Switch end
+						}
+						//While end
 					}
-				}
+					//IF end
+					
+					break;
 				
-				break;
-			
+				}
+				//Main Switch end
+			}else {
+				
+				InterfaceGrafica.semDiretor();
+				
+				operacao.cadastrarDiretor();
+				
 			}
+			
+			
 			
 			
 			

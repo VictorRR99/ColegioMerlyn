@@ -109,7 +109,7 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	/* Cadastrar Professor */
 	
-	public static boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+	public static boolean cadastrarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) throws SQLException {
 
 		if("" + sala.charAt(0) == Integer.toString(serie)) {
 			System.out.println("Sala errada para série escolhida!");
@@ -123,9 +123,17 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	/* Cadastro Aluno */
 	
-	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
+	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
 
 		Professor.colocarNaLista(new Professor(nome, cpf, rg, dtNasc, senha, disciplina));
+		
+	}
+	
+	/* Cadastro Diretor */
+	
+	public static void cadastrarDiretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
+
+		Diretor.colocarNaLista(new Diretor(nome, cpf, rg, dtNasc, senha, disciplina));
 		
 	}
 
