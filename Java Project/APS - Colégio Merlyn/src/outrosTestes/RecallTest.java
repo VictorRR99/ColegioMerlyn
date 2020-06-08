@@ -1,6 +1,10 @@
-package principal;
+package outrosTestes;
 
 import java.util.*;
+
+import principal.Aluno;
+import principal.InterfaceGrafica;
+import principal.Professor;
 
 public class RecallTest {
 	public static void main(String[] args) {

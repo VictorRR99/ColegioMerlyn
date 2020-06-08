@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 @SuppressWarnings("serial")
-public class Aluno extends Pessoa implements Serializable{
+public class Aluno extends Pessoa implements Serializable, Autenticacao {
 
 	private static List<Aluno> listaAlunos =  new ArrayList<>();
 	
@@ -55,6 +55,19 @@ public class Aluno extends Pessoa implements Serializable{
 				this.sala = Sala.listaSalas.get(i);
 			}
 		}
+	}
+	
+	/* Autenticação */
+	
+	@Override
+	public boolean autenticar(String senha) {
+
+		if(this.senha == senha) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	/* Métodos Básicos */

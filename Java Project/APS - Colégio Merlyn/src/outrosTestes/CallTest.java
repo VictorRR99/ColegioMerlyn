@@ -1,6 +1,10 @@
-package principal;
+package outrosTestes;
 
 import java.util.Scanner;
+
+import principal.Aluno;
+import principal.InterfaceGrafica;
+import principal.Professor;
 
 public class CallTest {
 

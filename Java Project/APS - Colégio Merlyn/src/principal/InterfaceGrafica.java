@@ -9,7 +9,10 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void loginMode() {
-		
+		System.out.println("Você deseja logar como:");
+		System.out.println("1 - Aluno");
+		System.out.println("2 - Professor");
+		System.out.println("3 - Diretor");
 	}
 	
 	public static void operations() {

@@ -1,7 +1,14 @@
-package principal;
+package outrosTestes;
 
 import java.util.List;
 import java.util.Scanner;
+
+import principal.Aluno;
+import principal.Diretor;
+import principal.Disciplina;
+import principal.InterfaceGrafica;
+import principal.Professor;
+import principal.Selection;
 
 public class OperationsTest {
 
@@ -93,7 +100,7 @@ public class OperationsTest {
 		
 		//Disciplina?
 		
-		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, Disciplina.matematica);
+		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, null);
 	}
 	
 	public void verAlunos() {

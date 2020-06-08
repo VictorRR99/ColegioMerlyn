@@ -19,10 +19,12 @@ public class Call {
 		System.out.println("Desserialização completa!");
 		
 		Scanner leitorSelection = new Scanner(System.in);
+		
 		Operation operacao = new Operation();
 
 		/* Seleção */
 		String userSelect;
+		String userLogin;
 		/* Condição de parada While */
 		int rep=0;
 		
@@ -31,57 +33,60 @@ public class Call {
 		/* Menu das Operações */
 		while(rep == 0) {
 			
-//			InterfaceGrafica.loginMode();
-//			
-//			userSelect = leitorSelection.nextInt();
-//			
-//			switch(userSelect) {
-//			case 1:
-//				
-//				break;
-//			case 2:
-//				
-//				break;
-//			case 3:
-//				
-//				break;
-//			
-//			}
+			InterfaceGrafica.loginMode();
 			
-			InterfaceGrafica.operations();
+			userLogin = leitorSelection.nextLine();
 			
-			userSelect = leitorSelection.nextLine();
-			
-			switch(userSelect) {
+			switch(userLogin) {
 			case "1":
-				
-				operacao.cadastrarAluno();
 				
 				break;
 			case "2":
 				
-				operacao.cadastrarProfessor();
+				break;
+			case "3":
+				
+				
+				InterfaceGrafica.operations();
+				
+				userSelect = leitorSelection.nextLine();
+				
+				switch(userSelect) {
+				case "1":
+					
+					operacao.cadastrarAluno();
+					
+					break;
+				case "2":
+					
+					operacao.cadastrarProfessor();
+					
+					break;
+				case "5":
+					
+					operacao.verAlunos();
+					
+					break;
+				case "6":
+					
+					operacao.verProfessores();
+					
+					break;
+				case "0":
+					
+					rep++;
+					
+					break;
+				default:
+					System.out.println("Operação não existe.");
+					
+				}
 				
 				break;
-			case "5":
-				
-				operacao.verAlunos();
-				
-				break;
-			case "6":
-				
-				operacao.verProfessores();
-				
-				break;
-			case "0":
-				
-				rep++;
-				
-				break;
-			default:
-				System.out.println("Operação não existe.");
-				
+			
 			}
+			
+			
 			
 		}
 		

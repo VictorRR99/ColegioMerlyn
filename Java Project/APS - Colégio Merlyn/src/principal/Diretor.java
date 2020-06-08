@@ -6,17 +6,31 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class Diretor extends Professor {
+public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
 	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
 		super(nome, cpf, rg, dtNasc, dtNasc, disciplina);
 		this.senha = senha;
+	}
+	
+	/* Autenticação */
+	
+	@Override
+	public boolean autenticar(String senha) {
+
+		if(this.senha == senha) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	/* Métodos Básicos */
@@ -101,5 +115,5 @@ public class Diretor extends Professor {
 		Professor.colocarNaLista(new Professor(nome, cpf, rg, dtNasc, senha, disciplina));
 		
 	}
-	
+
 }

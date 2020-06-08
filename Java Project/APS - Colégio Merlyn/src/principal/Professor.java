@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class Professor extends Pessoa implements Serializable{
+public class Professor extends Pessoa implements Serializable, Autenticacao {
 	
 	private static List<Professor> listaProfessores = new ArrayList<>();
 	
@@ -25,6 +25,21 @@ public class Professor extends Pessoa implements Serializable{
 		super(nome, cpf, rg, dtNasc, senha);
 		this.disciplina = disciplina.getNomeDisc();
 	}
+
+	/* Autenticação */
+	
+	@Override
+	public boolean autenticar(String senha) {
+
+		if(this.senha == senha) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	/* Métodos Básicos */
 	
 	String getDisc() {
 		return disciplina;
@@ -33,8 +48,6 @@ public class Professor extends Pessoa implements Serializable{
 	void setSala(Sala sala) {
 		this.sala = sala;
 	}
-
-	/* Métodos Básicos */
 	
 	public static List<Professor> getLista(){
 		return listaProfessores;
