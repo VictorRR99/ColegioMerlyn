@@ -168,29 +168,16 @@ public class Operation {
 				
 		ps.execute();
 		
-//		Inserindo na tabela Professor
+//		Select na tabela pessoa para pegar o cd_pessoa
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
         
-        int queryPessoa = 0;
-        
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ queryPessoa + "', '"+ dtNasc +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
-				
-		conexao = Conexao.getConnection();
-				
-		ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
-        
-        queryPessoa = 0;
+        int cd_pessoa = 0;
 
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
             rs.next();
-            queryPessoa = rs.getInt(1);
+            cd_pessoa = rs.getInt(1);
             
             rs.close();
             stmt.close();
@@ -199,8 +186,27 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
         
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ queryPessoa + "', '"+ dtNasc +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
+//        Select na tabela Disciplina para pegar cd_disc
+        sql = "SELECT cd_disc FROM Pessoa WHERE nm_disc = '" + disc.getNomeDisc().toLowerCase() + "'";
+        
+        int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+//		Inserindo na tabela Professor
+        
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES('"+ cd_pessoa + "', '"+ cd_disc + "')";
 				
 		conexao = Conexao.getConnection();
 				
