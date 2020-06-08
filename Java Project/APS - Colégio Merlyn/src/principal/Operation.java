@@ -44,6 +44,13 @@ public class Operation {
 		sala = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		boolean check = Sala.checarSalaCerta(serie, sala);
+		while(!check) {
+			System.out.println("Digite uma sala válida:");
+			sala = leitorStr.nextLine();
+			InterfaceGrafica.lineBreaker();
+		}
+		
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
