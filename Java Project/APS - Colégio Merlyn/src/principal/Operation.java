@@ -470,7 +470,7 @@ public class Operation {
 		
 		Diretor.deletarDiretor(cpf);
 		
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf = '" + cpf + "'";
+		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = " + cpf;
 		
 		int cd_pessoa = 0;
 
