@@ -67,6 +67,92 @@ public class Call {
 				switch(userLogin) {
 				case "1":
 					
+					//Login Aluno
+					
+					isLogged = false;
+					
+					while(!isLogged) {
+						if(Aluno.getLista().isEmpty()) {
+							InterfaceGrafica.semAluno();
+							break;
+						}
+						Aluno call = Aluno.getLista().get(0);
+						boolean userCheck = false;
+						
+						InterfaceGrafica.lineBreaker();
+						System.out.println("Digite o Cpf:");
+						cpf = leitorLogin.nextLine();
+						
+						InterfaceGrafica.lineBreaker();
+						System.out.println("Digite a Senha:");
+						senha = leitorLogin.nextLine();
+						
+						userCheck = call.autenticar(cpf, senha);
+						
+						if(userCheck == true) {
+							isLogged = true;
+							
+							InterfaceGrafica.lineBreaker();
+							InterfaceGrafica.separator();
+							System.out.println("Acesso Garantido!");
+							for(Aluno x : Aluno.getLista()) {
+								if(cpf.equals(x.getCpf())) {
+									userAluno = x;
+									break;
+								}
+							}
+							System.out.println("Bem vindo, " + userAluno.getNome() +"!");
+							InterfaceGrafica.separator();
+							InterfaceGrafica.lineBreaker();
+						}
+
+						if(isLogged) {
+							
+							while(!userStop) {
+								InterfaceGrafica.operationsAluno();
+								
+								userSelect = leitorSelection.nextLine();
+								
+								switch(userSelect) {
+								case "1":
+
+									System.out.println("Operação não Implementada.");
+			
+									break;
+								case "2":
+
+									System.out.println("Operação não Implementada.");
+									
+									break;
+								case "3":
+
+									System.out.println("Operação não Implementada.");
+									
+									break;
+								case "0":
+									
+									repStop = true;
+									userStop = true;
+									
+									break;
+								case "/":
+									
+									userStop = true;
+									
+									break;
+								default:
+									
+									System.out.println("Operação selecionada não existe.");
+									
+								}
+								//Switch end
+							}
+							//While end
+						}
+						//IF isLogged end
+					}
+					//Main While end
+					
 					break;
 				case "2":
 					
@@ -119,27 +205,27 @@ public class Call {
 								switch(userSelect) {
 								case "1":
 
-									
+									System.out.println("Operação não Implementada.");
 			
 									break;
 								case "2":
 
-									
+									System.out.println("Operação não Implementada.");
 									
 									break;
 								case "11":
 
-									
+									System.out.println("Operação não Implementada.");
 									
 									break;
 								case "22":
 
-									
+									System.out.println("Operação não Implementada.");
 									
 									break;
 								case "33":
 
-									
+									System.out.println("Operação não Implementada.");
 									
 									break;
 								case "0":
@@ -344,117 +430,7 @@ public class Call {
 		System.out.println("Serialização completa!");
 		InterfaceGrafica.separator();
 		InterfaceGrafica.end();
-		
-//-----------------------------------------------------------------------------------------------------------------------------------------------------\\
-		
-		/*ClasseTeste1 e SubClasseTeste2*/
-		/* Debugando serialization */
-		
-//		ClasseTeste1.desserialization();
-//		SubClasseTeste2.desserialization();
-//		System.out.println("Desserializaï¿½ï¿½o Completa!");
-//				
-//		int rep=0;
-//		
-//		Scanner leitorInt = new Scanner(System.in);
-//		Scanner leitorStr = new Scanner(System.in);
-//		
-//		int select;
-//		
-//		String nome, dataNasc;
-//		
-//		while(rep == 0) {
-//			
-//			
-//			System.out.println("1 - Cadastrar Classe");
-//			System.out.println("2 - Cadastrar SubClasse");
-//			System.out.println("5 - Sair");
-//			
-//			select = leitorInt.nextInt();
-//			
-//			if(select == 1) {
-//				System.out.println("Digite nome da Classe:");
-//				nome = leitorStr.nextLine();
-//				
-//				System.out.println("Digite a data de nascimento da Classe:");
-//				dataNasc = leitorStr.nextLine();
-//				
-//				ClasseTeste1.cadastrarClasse(nome, dataNasc);
-//				
-//			}else if(select == 2) {
-//				System.out.println("Digite nome da SubClasse:");
-//				nome = leitorStr.nextLine();
-//				
-//				System.out.println("Digite a data de nascimento da Classe:");
-//				dataNasc = leitorStr.nextLine();
-//				
-//				SubClasseTeste2.cadastrarSubClasse(nome, dataNasc);
-//			}else if(select == 5){
-//				rep++;
-//			}else {
-//				System.out.println("OP nï¿½o exite");
-//				rep++;
-//				break;
-//			}
-//			
-//		}
-//		
-//		leitorInt.close();
-//		leitorStr.close();
-//		
-//		ClasseTeste1.serialization();
-//		SubClasseTeste2.serialization();
-//		System.out.println("Serializaï¿½ï¿½o Completa!");
-//-----------------------------------------------------------------------------------------------------------------------------------------------------\\
-
-		/* Serialization Test*/
-		
-//		Aluno victor = new Aluno("Victor Rodrigues", "08618351903", "6021469", "22/02/2001");
-//		Aluno vinicius = new Aluno("Vinicius Amorim", "12345678911", "1234567", "04/08/2000");
-//		Aluno leticia = new Aluno("Letï¿½cia Oliveira", "11987654321", "7654321", "16/07/2001");
-//		Aluno samuel = new Aluno("Samuel Costa", "12345612345", "1234123", "01/01/2001");
-//		Aluno altair = new Aluno("Altair Vega", "99224852158", "9874563", "09/05/1995");
-//
-//		List<Pessoa> listaAlunos = new ArrayList<>();
-//		
-//		listaAlunos.add(victor);
-//		listaAlunos.add(vinicius);
-//		listaAlunos.add(leticia);
-//		listaAlunos.add(samuel);
-//		listaAlunos.add(altair);
-//		
-//		List<Pessoa> listaProfessores = new ArrayList<>();
-//		
-//		Pessoa.saveObjectList(listaAlunos, "Alunos");
-//		System.out.println("Serializado!");
-		
-		/* Original */
-        
-//		Aluno victor = new Aluno("Victor", "08618351903", "6021469", "22/02/2020");
-//		
-//		System.out.println("\n*Quantidade de Pessoas");
-//		System.out.println(victor.getPessoaCount());
-//		
-//		System.out.println("\n===============");
-//		
-//		//All Pessoas
-		
-//		System.out.println("\n*Nome de todas as pessoas cadastradas na Escola");
-//		List<String> allPessoas = new ArrayList<String>();
-//		
-//		allPessoas.addAll(victor.getAllPessoa());
-//		
-//		for(String x : allPessoas) {
-//			System.out.println(x);
-//		}
-		
-//		//All Pessoas
-//		
-//		System.out.println("\n===============");
-//		
-//		System.out.println("\n*Data de Nascimento de: " + victor.getNome());
-//		System.out.println(victor.getPessoaDtNasc());
-		
+				
 	}
 	
 }
