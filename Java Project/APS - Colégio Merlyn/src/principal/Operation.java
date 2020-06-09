@@ -327,6 +327,8 @@ public class Operation {
 		
 		Aluno.deletarAluno(matDeleta);
 		
+		sql = "DELETE FROM Aluno WHERE cd_pessoa = " + matDeleta;
+		
 		System.out.println("Aluno deletado com sucesso!");
 		
 		InterfaceGrafica.lineBreaker();

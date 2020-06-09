@@ -151,5 +151,14 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	static void cadastrarSala(String nmSala) {
 		Sala.colocarNaLista(new Sala(nmSala));
 	}
+	
+	/*Destruir diretor */
+	static void deletarDiretor(String cpf) {
+		for(Diretor x : Diretor.getListaDir()) {
+			if(x.getCpf().equals(cpf)) {
+				Diretor.getListaDir().remove(x);
+			}
+		}
+	}
 
 }
