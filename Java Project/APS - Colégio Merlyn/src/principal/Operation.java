@@ -321,13 +321,29 @@ public class Operation {
 	}
 	
 	//Deletar Aluno
-	public void deletarAluno() {
+	public void deletarAluno() throws SQLException {
 		System.out.println("Digite o aluno que deseja deletar:");
 		int matDeleta = leitorInt.nextInt();
 		
 		Aluno.deletarAluno(matDeleta);
 		
+		sql = "DELETE FROM Notas WHERE cd_aluno = " + matDeleta;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
 		sql = "DELETE FROM Aluno WHERE cd_pessoa = " + matDeleta;
+		
+		con = Conexao.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
 		
 		System.out.println("Aluno deletado com sucesso!");
 		
