@@ -36,9 +36,20 @@ public class Operation {
 		rg = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		boolean lock = true;
+		
 		System.out.println("Digite data de nascimento:");
-		dtNasc = leitorStr.nextLine();
-		InterfaceGrafica.lineBreaker();
+		while(lock) {
+			dtNasc = leitorStr.nextLine();
+			InterfaceGrafica.lineBreaker();
+			if(dtNasc.length() != 10) {
+				System.out.println("Data inserida errada, por favor insira corretamente!");
+				System.out.println("Modelo de data: 31/12/2020");
+				InterfaceGrafica.lineBreaker();
+			}else {
+				lock = false;
+			}
+		}
 		
 		System.out.println("Digite serie:");
 		serie = leitorInt.nextInt();
