@@ -45,10 +45,10 @@ public class Call {
 		/* Login */
 		String cpf, senha;
 		boolean isLogged = false;
-		/* SeleÃ§Ã£o nos menus */
+		/* Seleção nos menus */
 		String userSelect;
 		String userLogin;
-		/* CondiÃ§Ã£o de parada While */
+		/* Condição de parada While */
 		boolean repStop = false;
 		boolean userStop = false;
 

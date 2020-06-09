@@ -157,6 +157,7 @@ public class Diretor extends Pessoa implements Serializable, Autenticacao {
 		for(Diretor x : Diretor.getListaDir()) {
 			if(x.getCpf().equals(cpf)) {
 				Diretor.getListaDir().remove(x);
+				break;
 			}
 		}
 	}

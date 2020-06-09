@@ -470,7 +470,7 @@ public class Operation {
 		
 		Diretor.deletarDiretor(cpf);
 		
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf = '" + cpf + "'";
 		
 		int cd_pessoa = 0;
 
