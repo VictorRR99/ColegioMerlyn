@@ -518,6 +518,31 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
+	public void updateProfessor() throws SQLException {
+		System.out.println("Digite o CPF do Professor que deseja alterar:");
+		this.deletarProfessor();
+		InterfaceGrafica.lineBreaker();
+		
+		this.cadastrarProfessor();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Professor alterado com sucesso!");
+		InterfaceGrafica.lineBreaker();
+	}
+	
+	public void updateDiretor() throws SQLException {
+		System.out.println("Digite o CPF do Diretor que deseja alterar:");
+		String a = null;
+		this.deletarDiretor(a);
+		InterfaceGrafica.lineBreaker();
+		
+		this.cadastrarDiretor();
+		InterfaceGrafica.lineBreaker();
+		
+		System.out.println("Diretor alterado com sucesso!");
+		InterfaceGrafica.lineBreaker();
+	}
+	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
 		InterfaceGrafica.lineBreaker();
