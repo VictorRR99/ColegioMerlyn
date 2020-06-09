@@ -29,9 +29,9 @@ public abstract class InterfaceGrafica {
 		System.out.println("33 - Ver todos as Salas;");
 		System.out.println("44 - Ver todos os Diretores;");
 		System.out.println("55 - Ver todas as Disciplinas;");
-		System.out.println("111 - Deletar todos os Alunos;");
-		System.out.println("222 - Deletar todos os Professores;");
-		System.out.println("444 - Deletar todos os Diretores;");
+		System.out.println("111 - Deletar Aluno;");
+		System.out.println("222 - Deletar Professor;");
+		System.out.println("444 - Deletar Diretor;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}

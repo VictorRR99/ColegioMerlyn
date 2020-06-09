@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class Call {
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		
-		/*Principal*/
-		
+	public static void main(final String[] args) throws ClassNotFoundException, SQLException {
+
+		/* Principal */
+
 		/* Leitura dos arquivos */
 		Professor.desserialization();
 		Diretor.desserialization();
@@ -17,32 +17,31 @@ public class Call {
 		Sala.desserialization();
 		Disciplina.desserialization();
 		/* Leitura dos arquivos */
-		
-		System.out.println("Desserialização completa!");
-		InterfaceGrafica.separator();
-	
-		System.out.println();
-		
-		
-		/* Leitor do menu de login */
-		Scanner leitorLogin = new Scanner(System.in);
-		/* Leitor do menu */
-		Scanner leitorSelection = new Scanner(System.in);
 
-		//Arrumar o método do getLista de diretor pra dar Override na de Professor
+		System.out.println("Desserializaï¿½ï¿½o completa!");
+		InterfaceGrafica.separator();
+
+		/* Leitor do menu de login */
+		final Scanner leitorLogin = new Scanner(System.in);
+		/* Leitor do menu */
+		final Scanner leitorSelection = new Scanner(System.in);
+
+		// Arrumar o Método do getLista de diretor pra dar Override na de Professor
+		// Se for possivel claro
+		//Talvez não seja possível no atual design do professor
 		/* Checagem da existencia de um Diretor no sistema */
-		List<Diretor> checagemDiretor = Diretor.getListaDir();
+		final List<Diretor> checagemDiretor = Diretor.getListaDir();
 		/* Checagem da existencia de um Diretor no sistema */
-		List<Disciplina> checagemDisciplina = Disciplina.getLista();
-		
-		/* Instancia para chamada das operacoes*/
-		Operation operacao = new Operation();
+		final List<Disciplina> checagemDisciplina = Disciplina.getLista();
+
+		/* Instancia para chamada das operacoes */
+		final Operation operacao = new Operation();
 
 		/* Usuarios */
 		Diretor userDiretor = null;
 		Professor userProfessor = null;
 		Aluno userAluno = null;
-		
+
 		/* Login */
 		String cpf, senha;
 		boolean isLogged = false;
@@ -52,234 +51,234 @@ public class Call {
 		/* CondiÃ§Ã£o de parada While */
 		boolean repStop = false;
 		boolean userStop = false;
-		
+
 		InterfaceGrafica.welcome();
-		
+
 		/* Menu Principal das Operacoes */
-		while(!repStop) {
-			
-			//Checagem se existe um Diretor no sistema
-			if(!checagemDiretor.isEmpty()) {
+		while (!repStop) {
+
+			// Checagem se existe um Diretor no sistema
+			if (!checagemDiretor.isEmpty()) {
 				InterfaceGrafica.loginMode();
-				
+
 				userLogin = leitorSelection.nextLine();
-				
-				switch(userLogin) {
-				case "1":
-					
-					//Login Aluno
-					
-					isLogged = false;
-					
-					while(!isLogged) {
-						if(Aluno.getLista().isEmpty()) {
-							InterfaceGrafica.semAluno();
-							break;
-						}
-						Aluno call = Aluno.getLista().get(0);
-						boolean userCheck = false;
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite o Cpf:");
-						cpf = leitorLogin.nextLine();
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite a Senha:");
-						senha = leitorLogin.nextLine();
-						
-						userCheck = call.autenticar(cpf, senha);
-						
-						if(userCheck == true) {
-							isLogged = true;
-							
-							InterfaceGrafica.lineBreaker();
-							InterfaceGrafica.separator();
-							System.out.println("Acesso Garantido!");
-							for(Aluno x : Aluno.getLista()) {
-								if(cpf.equals(x.getCpf())) {
-									userAluno = x;
-									break;
-								}
+
+				switch (userLogin) {
+					case "1":
+
+						// Login Aluno
+
+						isLogged = false;
+
+						while (!isLogged) {
+							if (Aluno.getLista().isEmpty()) {
+								InterfaceGrafica.semAluno();
+								break;
 							}
-							System.out.println("Bem vindo, " + userAluno.getNome() +"!");
-							InterfaceGrafica.separator();
+							final Aluno call = Aluno.getLista().get(0);
+							boolean userCheck = false;
+
 							InterfaceGrafica.lineBreaker();
-						}
+							System.out.println("Digite o Cpf:");
+							cpf = leitorLogin.nextLine();
 
-						if(isLogged) {
-							
-							while(!userStop) {
-								InterfaceGrafica.operationsAluno();
-								
-								userSelect = leitorSelection.nextLine();
-								
-								switch(userSelect) {
-								case "1":
+							InterfaceGrafica.lineBreaker();
+							System.out.println("Digite a Senha:");
+							senha = leitorLogin.nextLine();
 
-									System.out.println("Operação não Implementada.");
-			
-									break;
-								case "2":
+							userCheck = call.autenticar(cpf, senha);
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "3":
+							if (userCheck == true) {
+								isLogged = true;
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "0":
-									
-									repStop = true;
-									userStop = true;
-									
-									break;
-								case "/":
-									
-									userStop = true;
-									
-									break;
-								default:
-									
-									System.out.println("Operação selecionada não existe.");
-									
+								InterfaceGrafica.lineBreaker();
+								InterfaceGrafica.separator();
+								System.out.println("Acesso Garantido!");
+								for (final Aluno x : Aluno.getLista()) {
+									if (cpf.equals(x.getCpf())) {
+										userAluno = x;
+										break;
+									}
 								}
-								//Switch end
+								System.out.println("Bem vindo, " + userAluno.getNome() + "!");
+								InterfaceGrafica.separator();
+								InterfaceGrafica.lineBreaker();
 							}
-							//While end
-						}
-						//IF isLogged end
-					}
-					//Main While end
-					
-					break;
-				case "2":
-					
-					//Login Professor
-					
-					isLogged = false;
-					
-					while(!isLogged) {
-						if(Professor.getLista().isEmpty()) {
-							InterfaceGrafica.semProfessor();
-							break;
-						}
-						Professor call = Professor.getLista().get(0);
-						boolean userCheck = false;
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite o Cpf:");
-						cpf = leitorLogin.nextLine();
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite a Senha:");
-						senha = leitorLogin.nextLine();
-						
-						userCheck = call.autenticar(cpf, senha);
-						
-						if(userCheck == true) {
-							isLogged = true;
-							
-							InterfaceGrafica.lineBreaker();
-							InterfaceGrafica.separator();
-							System.out.println("Acesso Garantido!");
-							for(Professor x : Professor.getLista()) {
-								if(cpf.equals(x.getCpf())) {
-									userProfessor = x;
-									break;
+
+							if (isLogged) {
+
+								while (!userStop) {
+									InterfaceGrafica.operationsAluno();
+
+									userSelect = leitorSelection.nextLine();
+
+									switch (userSelect) {
+										case "1":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "2":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "3":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "0":
+
+											repStop = true;
+											userStop = true;
+
+											break;
+										case "/":
+
+											userStop = true;
+
+											break;
+										default:
+
+											System.out.println("Operação selecionada não existe.");
+
+									}
+									// Switch end
 								}
+								// While end
 							}
-							System.out.println("Bem vindo(a), " + userProfessor.getNome() +"!");
-							InterfaceGrafica.separator();
-							InterfaceGrafica.lineBreaker();
+							// IF isLogged end
 						}
+						// Main While end
 
-						if(isLogged) {
-							
-							while(!userStop) {
-								InterfaceGrafica.operationsProfessor();
-								
-								userSelect = leitorSelection.nextLine();
-								
-								switch(userSelect) {
-								case "1":
+						break;
+					case "2":
 
-									System.out.println("Operação não Implementada.");
-			
-									break;
-								case "2":
+						// Login Professor
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "11":
+						isLogged = false;
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "22":
+						while (!isLogged) {
+							if (Professor.getLista().isEmpty()) {
+								InterfaceGrafica.semProfessor();
+								break;
+							}
+							final Professor call = Professor.getLista().get(0);
+							boolean userCheck = false;
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "33":
+							InterfaceGrafica.lineBreaker();
+							System.out.println("Digite o Cpf:");
+							cpf = leitorLogin.nextLine();
 
-									System.out.println("Operação não Implementada.");
-									
-									break;
-								case "0":
-									
-									repStop = true;
-									userStop = true;
-									
-									break;
-								case "/":
-									
-									userStop = true;
-									
-									break;
-								default:
-									
-									System.out.println("Operação selecionada não existe.");
-									
+							InterfaceGrafica.lineBreaker();
+							System.out.println("Digite a Senha:");
+							senha = leitorLogin.nextLine();
+
+							userCheck = call.autenticar(cpf, senha);
+
+							if (userCheck == true) {
+								isLogged = true;
+
+								InterfaceGrafica.lineBreaker();
+								InterfaceGrafica.separator();
+								System.out.println("Acesso Garantido!");
+								for (final Professor x : Professor.getLista()) {
+									if (cpf.equals(x.getCpf())) {
+										userProfessor = x;
+										break;
+									}
 								}
-								//Switch end
+								System.out.println("Bem vindo(a), " + userProfessor.getNome() + "!");
+								InterfaceGrafica.separator();
+								InterfaceGrafica.lineBreaker();
 							}
-							//While end
-						}
-						//IF isLogged end
-					}
-					//Main While end
-					
-					break;
-				case "3":
-					
-					//Login Diretor
 
-					isLogged = false;
-					
-					while(!isLogged) {
-						Diretor call = Diretor.getListaDir().get(0);
-						boolean userCheck = false;
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite o Cpf:");
-						cpf = leitorLogin.nextLine();
-						
-						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite a Senha:");
-						senha = leitorLogin.nextLine();
-						
-						userCheck = call.autenticar(cpf, senha);
-						
-						if(userCheck == true) {
-							isLogged = true;
-							
+							if (isLogged) {
+
+								while (!userStop) {
+									InterfaceGrafica.operationsProfessor();
+
+									userSelect = leitorSelection.nextLine();
+
+									switch (userSelect) {
+										case "1":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "2":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "11":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "22":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "33":
+
+											System.out.println("Operação não Implementada.");
+
+											break;
+										case "0":
+
+											repStop = true;
+											userStop = true;
+
+											break;
+										case "/":
+
+											userStop = true;
+
+											break;
+										default:
+
+											System.out.println("Operação selecionada não existe.");
+
+									}
+									// Switch end
+								}
+								// While end
+							}
+							// IF isLogged end
+						}
+						// Main While end
+
+						break;
+					case "3":
+
+						// Login Diretor
+
+						isLogged = false;
+
+						while (!isLogged) {
+							final Diretor call = Diretor.getListaDir().get(0);
+							boolean userCheck = false;
+
 							InterfaceGrafica.lineBreaker();
-							InterfaceGrafica.separator();
-							System.out.println("Acesso Garantido!");
-							for(Diretor x : Diretor.getListaDir()) {
+							System.out.println("Digite o Cpf:");
+							cpf = leitorLogin.nextLine();
+
+							InterfaceGrafica.lineBreaker();
+							System.out.println("Digite a Senha:");
+							senha = leitorLogin.nextLine();
+
+							userCheck = call.autenticar(cpf, senha);
+
+							if (userCheck == true) {
+								isLogged = true;
+
+								InterfaceGrafica.lineBreaker();
+								InterfaceGrafica.separator();
+								System.out.println("Acesso Garantido!");
+								for (final Diretor x : Diretor.getListaDir()) {
 								if(cpf.equals(x.getCpf())) {
 									userDiretor = x;
 									break;
@@ -299,14 +298,14 @@ public class Call {
 								switch(userSelect) {
 								case "1":
 									
-									//Colocar um IF aqui para verificar se a lista de salas não está vazia
+									//Colocar um IF aqui para verificar se a lista de salas nï¿½o estï¿½ vazia
 									operacao.cadastrarAluno();
 									operacao.serializeAll();
 									
 									break;
 								case "2":
 									
-									//Colocar um IF aqui para verificar se a lista de disciplinas não está vazia
+									//Colocar um IF aqui para verificar se a lista de disciplinas nï¿½o estï¿½ vazia
 									operacao.cadastrarProfessor();
 									operacao.serializeAll();
 									
@@ -401,9 +400,8 @@ public class Call {
 					repStop = true;
 					userStop = true;
 				}
-				
-				
 				//Main Switch end
+
 			}else {
 				
 				if(!checagemDisciplina.isEmpty()) {
@@ -431,9 +429,7 @@ public class Call {
 					/*Serializar*/
 					operacao.serializeAll();
 				}
-				
-				
-				
+
 			}
 			
 		}
@@ -450,7 +446,7 @@ public class Call {
 		System.out.println("Serialização completa!");
 		InterfaceGrafica.separator();
 		InterfaceGrafica.end();
-				
+		
 	}
 	
 }
