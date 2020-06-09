@@ -190,7 +190,7 @@ public class Call {
 									break;
 								}
 							}
-							System.out.println("Bem vindo, " + userProfessor.getNome() +"!");
+							System.out.println("Bem vindo(a), " + userProfessor.getNome() +"!");
 							InterfaceGrafica.separator();
 							InterfaceGrafica.lineBreaker();
 						}
@@ -350,6 +350,24 @@ public class Call {
 								case "55":
 									
 									operacao.verDisciplinas();
+									
+									break;
+								case "111":
+									
+									System.out.println("Operação não Implementada.");
+									//operacao.deletarAluno();
+									
+									break;
+								case "222":
+									
+									System.out.println("Operação não Implementada.");
+									//operacao.deletarProfessor();
+									
+									break;
+								case "444":
+									
+									System.out.println("Operação não Implementada.");
+									//operacao.deletarDiretor();
 									
 									break;
 								case "0":

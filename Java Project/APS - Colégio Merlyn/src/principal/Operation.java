@@ -48,6 +48,7 @@ public class Operation {
 		turno = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		InterfaceGrafica.mostrarSalas(serie);
 		System.out.println("Digite sala:");
 		sala = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
@@ -141,11 +142,13 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 		System.out.println("Digite a disciplina a ser lecionada:");
+		InterfaceGrafica.mostrarDisciplinas();
 		String check;
 		check = leitorStr.nextLine();
-		for(int i = 0; i < Disciplina.getLista().size(); i++) {
-			if(Disciplina.getLista().get(i).getNomeDisc() == check) {
-				disc = Disciplina.getLista().get(i);
+			
+		for(Disciplina x : Disciplina.getLista()) {
+			if(x.getNomeDisc().equals(check)) {
+				disc = x;
 			}
 		}
 		InterfaceGrafica.lineBreaker();
@@ -247,7 +250,6 @@ public class Operation {
 		for(Disciplina x : Disciplina.getLista()) {
 			if(x.getNomeDisc().equals(check)) {
 				disc = x;
-				System.out.println("Opa to aqui");
 			}
 		}
 		
@@ -455,7 +457,7 @@ public class Operation {
 		
 		List<Sala> listaSalas = Sala.getLista();
 		
-		System.out.println("+Nomes dos Professores:");
+		System.out.println("+Nomes das Salas:");
 		InterfaceGrafica.lineBreaker();
 		for(Sala x : listaSalas) {
 			System.out.println(x.getSala());
@@ -473,7 +475,7 @@ public class Operation {
 		
 		List<Diretor> listaDiretores = Diretor.getListaDir();
 		
-		System.out.println("+Nomes dos Professores:");
+		System.out.println("+Nomes dos Diretores:");
 		InterfaceGrafica.lineBreaker();
 		for(Diretor x : listaDiretores) {
 			System.out.println(x.getNome());
@@ -491,7 +493,7 @@ public class Operation {
 		
 		List<Disciplina> listaDisciplinas = Disciplina.getLista();
 		
-		System.out.println("+Nomes dos Professores:");
+		System.out.println("+Nomes das Disciplinas:");
 		InterfaceGrafica.lineBreaker();
 		for(Disciplina x : listaDisciplinas) {
 			System.out.println(x.getNomeDisc());

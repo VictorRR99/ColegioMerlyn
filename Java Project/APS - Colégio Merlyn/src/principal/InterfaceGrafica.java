@@ -103,28 +103,46 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void semProfessor() {
+		InterfaceGrafica.separator();
 		System.out.println("Este sistema ainda não possui nenhum Professor.");
+		System.out.println("Voltando ao Login.");
+		InterfaceGrafica.separator();
 	}
 	
 	public static void semAluno() {
+		InterfaceGrafica.separator();
 		System.out.println("Este sistema ainda não possui nenhum Aluno.");
+		System.out.println("Voltando ao Login.");
+		InterfaceGrafica.separator();
 	}
 
 	public static void mostrarDisciplinas() {
 
-		List<Disciplina> disciplinas = Disciplina.getLista();
-		
 		InterfaceGrafica.separator();
 		System.out.println("As disciplinas existentes são:");
 		InterfaceGrafica.lineBreaker();
-		for(Disciplina x : disciplinas) {
+		for(Disciplina x : Disciplina.getLista()) {
 			System.out.println(x.getNomeDisc());
 		}
 		InterfaceGrafica.separator();
 		
 	}
 
-	
+	public static void mostrarSalas(int serie) {
+		
+		InterfaceGrafica.separator();
+		
+		System.out.println("Salas disponíveis pra série em questão: ");
+		InterfaceGrafica.lineBreaker();
+		for(Sala x : Sala.getLista()) {
+			if("" + x.getSala().charAt(0) == Integer.toString(serie)) {
+				System.out.println(x.getSala());
+			}
+		}
+		
+		InterfaceGrafica.separator();
+		
+	}
 
 	
 
