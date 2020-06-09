@@ -251,20 +251,20 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		/* Lidar com digitação incorreta de disciplina */
-		// Talvez fazer um menu enumerado igual ao main
-		System.out.println("Digite a disciplina a ser lecionada:");
-		InterfaceGrafica.mostrarDisciplinas();
-		String check;
-		check = leitorStr.nextLine();
-			
-		for(Disciplina x : Disciplina.getLista()) {
-			if(x.getNomeDisc().equals(check)) {
-				disc = x;
-			}
-		}
+//		/* Lidar com digitação incorreta de disciplina */
+//		// Talvez fazer um menu enumerado igual ao main
+//		System.out.println("Digite a disciplina a ser lecionada:");
+//		InterfaceGrafica.mostrarDisciplinas();
+//		String check;
+//		check = leitorStr.nextLine();
+//			
+//		for(Disciplina x : Disciplina.getLista()) {
+//			if(x.getNomeDisc().equals(check)) {
+//				disc = x;
+//			}
+//		}
 		
-		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha, disc);
+		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
 		
 		InterfaceGrafica.lineBreaker();
 		
@@ -297,54 +297,8 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
         
-//        Select na tabela Disciplina para pegar cd_disc
-        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc() + "'";
-        
-        int cd_disc = 0;
 
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_disc = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-//		Inserindo na tabela Professor
-        
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES("+ cd_pessoa + ", "+ cd_disc + ")";
-        
-		conexao = Conexao.getConnection();
-				
-		ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-		
-//		Select na tabela Professor
-		sql = "SELECT cd_prof FROM Professor WHERE cd_pessoa = " + cd_pessoa;
-		
-		int cd_prof = 0;
-		
-		try (Connection conn = Conexao.getConnection();
-	            Statement stmt = conn.createStatement();
-	            ResultSet rs = stmt.executeQuery(sql)) {
-	            rs.next();
-	            cd_prof = rs.getInt(1);
-	            
-	            rs.close();
-	            stmt.close();
-	            conn.close();
-	        } catch (SQLException ex) {
-	            System.out.println(ex.getMessage());
-	        }
-		
-		sql = "INSERT INTO Diretor(cd_prof) VALUES(" + cd_prof + ")";
+		sql = "INSERT INTO Diretor(cd_pessoa) VALUES(" + cd_pessoa + ")";
 		
 		conexao = Conexao.getConnection();
 		

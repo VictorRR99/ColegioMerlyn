@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class Diretor extends Professor implements Serializable, Autenticacao {
-	
+public class Diretor extends Pessoa implements Serializable, Autenticacao {
+
 	private static List<Diretor> listaDiretores = new ArrayList<Diretor>();
 	
-	Diretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) {
-		super(nome, cpf, rg, dtNasc, senha, disciplina);
+	Diretor(String nome, String cpf, String rg, String dtNasc, String senha) {
+		super(nome, cpf, rg, dtNasc, senha);
 	}
 	
 	/* Autenticação */
@@ -135,8 +135,8 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 	
 	/* Cadastro Diretor */
 	
-	public static void cadastrarDiretor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
-		Diretor.colocarNaLista(new Diretor(nome, cpf, rg, dtNasc, senha, disciplina));
+	public static void cadastrarDiretor(String nome, String cpf, String rg, String dtNasc, String senha) throws SQLException {
+		Diretor.colocarNaLista(new Diretor(nome, cpf, rg, dtNasc, senha));
 	}
 
 	/* Cadastro Disciplina */
