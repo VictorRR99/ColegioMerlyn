@@ -521,7 +521,7 @@ public class Operation {
 		Diretor.serialization();
 		Aluno.serialization();
 		Sala.serialization();
-		Disciplina.desserialization();
+		Disciplina.serialization();
 	}
 	
 	public void closeScanners() {
