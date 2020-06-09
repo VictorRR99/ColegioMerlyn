@@ -416,7 +416,7 @@ public class Operation {
 	
 	public void deletarProfessor() throws SQLException {
 		System.out.println("Digite o CPF do Diretor que deseja deletar:");
-		cpf = leitorInt.nextLine();
+		cpf = leitorStr.nextLine();
 		
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
 		
@@ -453,6 +453,48 @@ public class Operation {
         ps.execute();
         ps.close();
         
+	}
+	
+	public void deletarDiretor() throws SQLException {
+		System.out.println("Digite o CPF do Diretor que deseja destruir:");
+		cpf = leitorStr.nextLine();
+		
+		Diretor.deletarDiretor(cpf);
+		
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		
+		int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        sql = "DELETE FROM Diretor WHERE cd_pessoa =" + cd_pessoa;
+        
+        Connection con = Conexao.getConnection();
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+        
+        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
 	}
 	
 	/* Permitido por: Diretor, Professor */
