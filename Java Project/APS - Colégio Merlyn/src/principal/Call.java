@@ -432,27 +432,21 @@ public class Call {
 									
 									break;
 								case "111":
-									
-									InterfaceGrafica.separator();
-									System.out.println("Operação não Implementada.");
-									InterfaceGrafica.separator();
-									//operacao.deletarAluno();
+
+									InterfaceGrafica.deletarAluno();
+									operacao.deletarAluno();
 									
 									break;
 								case "222":
 									
-									InterfaceGrafica.separator();
-									System.out.println("Operação não Implementada.");
-									InterfaceGrafica.separator();
-									//operacao.deletarProfessor();
+									InterfaceGrafica.deletarProfessor();
+									operacao.deletarProfessor();
 									
 									break;
 								case "444":
-									
-									InterfaceGrafica.separator();
-									System.out.println("Operação não Implementada.");
-									InterfaceGrafica.separator();
-									//operacao.deletarDiretor();
+
+									InterfaceGrafica.deletarDiretor();
+									operacao.deletarDiretor(userDiretor.getCpf());
 									
 									break;
 								case "0":
