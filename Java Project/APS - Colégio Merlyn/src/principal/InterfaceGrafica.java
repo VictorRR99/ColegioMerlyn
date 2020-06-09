@@ -74,6 +74,20 @@ public abstract class InterfaceGrafica {
 		System.out.println("Digite a informação da Sala:");		
 	}
 	
+	/* DELETES */
+	public static void deletarAluno() {
+		System.out.println("Digite a matrícula do aluno que deseja deletar:");
+	}
+	
+	public static void deletarProfessor() {
+		System.out.println("Digite o CPF do Professor que deseja deletar:");
+	}
+	
+	public static void deletarDiretor() {
+		System.out.println("Digite o CPF do Diretor que deseja deletar:");
+	}
+	/* END * DELETES */
+	
 	public static void resultAutenticacao(String result) {
 		System.out.println(result);
 	}
