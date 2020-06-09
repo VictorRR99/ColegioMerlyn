@@ -353,7 +353,6 @@ public class Operation {
 	
 	//Deletar Aluno
 	public void deletarAluno() throws SQLException {
-		System.out.println("Digite a matrícula do aluno que deseja deletar:");
 		int matDeleta = leitorInt.nextInt();
 		
 		Aluno.deletarAluno(matDeleta);
@@ -415,7 +414,6 @@ public class Operation {
 	}	
 	
 	public void deletarProfessor() throws SQLException {
-		System.out.println("Digite o CPF do Diretor que deseja deletar:");
 		cpf = leitorStr.nextLine();
 		
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
@@ -456,7 +454,6 @@ public class Operation {
 	}
 	
 	public void deletarDiretor() throws SQLException {
-		System.out.println("Digite o CPF do Diretor que deseja destruir:");
 		cpf = leitorStr.nextLine();
 		
 		Diretor.deletarDiretor(cpf);
@@ -495,6 +492,12 @@ public class Operation {
         
         ps.execute();
         ps.close();
+	}
+	
+	public void updateAluno() {
+		System.out.println("Digite a matrícula do aluno que deseja alterar:");
+		
+		
 	}
 	
 	/* Permitido por: Diretor, Professor */
