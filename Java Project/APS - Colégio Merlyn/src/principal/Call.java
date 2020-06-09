@@ -299,12 +299,14 @@ public class Call {
 								switch(userSelect) {
 								case "1":
 									
+									//Colocar um IF aqui para verificar se a lista de salas não está vazia
 									operacao.cadastrarAluno();
 									operacao.serializeAll();
 									
 									break;
 								case "2":
 									
+									//Colocar um IF aqui para verificar se a lista de disciplinas não está vazia
 									operacao.cadastrarProfessor();
 									operacao.serializeAll();
 									
