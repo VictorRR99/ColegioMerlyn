@@ -134,5 +134,14 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 		return(lista);
 		
 	}
+	
+	//Destroi Professor
+	static void deletarProfessor(String cpf) {
+		for(Professor x : Professor.getLista()) {
+			if(x.getCpf().equals(cpf)) {
+				Diretor.getListaDir().remove(x);
+			}
+		}
+	}
 
 }
