@@ -494,10 +494,16 @@ public class Operation {
         ps.close();
 	}
 	
-	public void updateAluno() {
+	public void updateAluno() throws SQLException {
 		System.out.println("Digite a matrícula do aluno que deseja alterar:");
+		this.deletarAluno();
+		InterfaceGrafica.lineBreaker();
 		
+		this.cadastrarAluno();
+		InterfaceGrafica.lineBreaker();
 		
+		System.out.println("Aluno alterado com sucesso!");
+		InterfaceGrafica.lineBreaker();
 	}
 	
 	/* Permitido por: Diretor, Professor */
