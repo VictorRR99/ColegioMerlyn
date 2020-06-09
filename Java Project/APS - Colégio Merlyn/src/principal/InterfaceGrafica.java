@@ -144,6 +144,11 @@ public abstract class InterfaceGrafica {
 		
 	}
 
+	public static void backLogin() {
+		System.out.println("1 - Tentar Novamente;");
+		System.out.println("0 - Voltar.");
+	}
+
 	
 
 	

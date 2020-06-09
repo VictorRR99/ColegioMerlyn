@@ -96,7 +96,6 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 			InterfaceGrafica.resultAutenticacao("Senha Incorreta.");
 			return false;
 		}else {
-			System.out.println("n sei o motivo");
 			return false;
 		}
 		

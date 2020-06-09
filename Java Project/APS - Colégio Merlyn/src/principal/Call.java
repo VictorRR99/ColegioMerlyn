@@ -18,7 +18,7 @@ public class Call {
 		Disciplina.desserialization();
 		/* Leitura dos arquivos */
 
-		System.out.println("Desserializaï¿½ï¿½o completa!");
+		System.out.println("Desserialização completa!");
 		InterfaceGrafica.separator();
 
 		/* Leitor do menu de login */
@@ -69,6 +69,7 @@ public class Call {
 						// Login Aluno
 
 						isLogged = false;
+						userStop = false;
 
 						while (!isLogged) {
 							if (Aluno.getLista().isEmpty()) {
@@ -103,6 +104,32 @@ public class Call {
 								System.out.println("Bem vindo, " + userAluno.getNome() + "!");
 								InterfaceGrafica.separator();
 								InterfaceGrafica.lineBreaker();
+							}else {
+								String continuar;
+								
+								System.out.println("Você deseja:");
+								InterfaceGrafica.backLogin();
+								
+								continuar = leitorSelection.next();
+								
+								switch(continuar) {
+								case "1":
+									
+									
+									break;
+								case "0":
+									
+									isLogged = true;
+									userStop = true;
+									
+									break;
+								default:
+									
+									InterfaceGrafica.separator();
+									System.out.println("Operação selecionada não existe.");
+									InterfaceGrafica.separator();
+									
+								}
 							}
 
 							if (isLogged) {
@@ -115,17 +142,23 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "2":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "3":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "0":
@@ -140,8 +173,10 @@ public class Call {
 
 											break;
 										default:
-
+											
+											InterfaceGrafica.separator();
 											System.out.println("Operação selecionada não existe.");
+											InterfaceGrafica.separator();
 
 									}
 									// Switch end
@@ -158,6 +193,7 @@ public class Call {
 						// Login Professor
 
 						isLogged = false;
+						userStop = false;
 
 						while (!isLogged) {
 							if (Professor.getLista().isEmpty()) {
@@ -192,10 +228,39 @@ public class Call {
 								System.out.println("Bem vindo(a), " + userProfessor.getNome() + "!");
 								InterfaceGrafica.separator();
 								InterfaceGrafica.lineBreaker();
+							}else {
+								String continuar;
+								
+								InterfaceGrafica.separator();
+								System.out.println("Você deseja:");
+								InterfaceGrafica.separator();
+								InterfaceGrafica.backLogin();
+								
+								
+								continuar = leitorSelection.next();
+								
+								switch(continuar) {
+								case "1":
+									
+									
+									break;
+								case "0":
+									
+									isLogged = true;
+									userStop = true;
+									
+									break;
+								default:
+									
+									InterfaceGrafica.separator();
+									System.out.println("Operação selecionada não existe.");
+									InterfaceGrafica.separator();
+									
+								}
 							}
 
 							if (isLogged) {
-
+								
 								while (!userStop) {
 									InterfaceGrafica.operationsProfessor();
 
@@ -204,27 +269,37 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "2":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "11":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "22":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "33":
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação não Implementada.");
+											InterfaceGrafica.separator();
 
 											break;
 										case "0":
@@ -240,7 +315,9 @@ public class Call {
 											break;
 										default:
 
+											InterfaceGrafica.separator();
 											System.out.println("Operação selecionada não existe.");
+											InterfaceGrafica.separator();
 
 									}
 									// Switch end
@@ -257,6 +334,7 @@ public class Call {
 						// Login Diretor
 
 						isLogged = false;
+						userStop = false;
 
 						while (!isLogged) {
 							final Diretor call = Diretor.getListaDir().get(0);
@@ -355,19 +433,25 @@ public class Call {
 									break;
 								case "111":
 									
+									InterfaceGrafica.separator();
 									System.out.println("Operação não Implementada.");
+									InterfaceGrafica.separator();
 									//operacao.deletarAluno();
 									
 									break;
 								case "222":
 									
+									InterfaceGrafica.separator();
 									System.out.println("Operação não Implementada.");
+									InterfaceGrafica.separator();
 									//operacao.deletarProfessor();
 									
 									break;
 								case "444":
 									
+									InterfaceGrafica.separator();
 									System.out.println("Operação não Implementada.");
+									InterfaceGrafica.separator();
 									//operacao.deletarDiretor();
 									
 									break;
@@ -384,7 +468,9 @@ public class Call {
 									break;
 								default:
 									
+									InterfaceGrafica.separator();
 									System.out.println("Operação selecionada não existe.");
+									InterfaceGrafica.separator();
 									
 								}
 								//Switch end
@@ -399,6 +485,13 @@ public class Call {
 				case "0":
 					repStop = true;
 					userStop = true;
+					break;
+				default:
+					
+					InterfaceGrafica.separator();
+					System.out.println("Operação selecionada não existe.");
+					InterfaceGrafica.separator();
+					
 				}
 				//Main Switch end
 
