@@ -56,4 +56,5 @@ SELECT cd_aluno FROM Aluno UNION SELECT cd_aluno FROM Notas;
 SELECT nome FROM Aluno LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;
 
 -- NOME DOS ALUNOS QUE ESTÃO ACIMA DA MÉDIA POR BIMESTRE
-SELECT nome FROM Aluno WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);
+SELECT pessoa.nome FROM Aluno INNER JOIN Pessoa ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa
+WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);
