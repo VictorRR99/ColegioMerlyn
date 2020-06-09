@@ -163,6 +163,11 @@ public abstract class InterfaceGrafica {
 		System.out.println("0 - Voltar.");
 	}
 
+	public static void spaceInLine() {
+		System.out.print("    ");
+		
+	}
+
 	
 
 	

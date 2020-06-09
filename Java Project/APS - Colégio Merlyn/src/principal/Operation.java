@@ -470,7 +470,7 @@ public class Operation {
 		
 		Diretor.deletarDiretor(cpf);
 		
-		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = " + cpf;
+		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = '" + cpf + "'";
 		
 		int cd_pessoa = 0;
 
@@ -551,9 +551,21 @@ public class Operation {
 		List<Aluno> listaAlunos = Aluno.getLista();
 		
 		System.out.println("+Nomes dos Alunos:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("|");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("CPF");
+		
 		InterfaceGrafica.lineBreaker();
 		for(Aluno x : listaAlunos) {
-			System.out.println(x.getNome());
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print("|");
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			InterfaceGrafica.lineBreaker();
 		}
 		
 		InterfaceGrafica.separator();
@@ -568,9 +580,22 @@ public class Operation {
 		List<Professor> listaProfessores = Professor.getLista();
 		
 		System.out.println("+Nomes dos Professores:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("|");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("CPF");
+		
 		InterfaceGrafica.lineBreaker();
 		for(Professor x : listaProfessores) {
-			System.out.println(x.getNome());
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print("|");
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			
+			InterfaceGrafica.lineBreaker();
 		}
 		
 		InterfaceGrafica.separator();
@@ -603,9 +628,22 @@ public class Operation {
 		List<Diretor> listaDiretores = Diretor.getListaDir();
 		
 		System.out.println("+Nomes dos Diretores:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("|");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("CPF");
+		
 		InterfaceGrafica.lineBreaker();
 		for(Diretor x : listaDiretores) {
-			System.out.println(x.getNome());
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print("|");
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			
+			InterfaceGrafica.lineBreaker();
 		}
 		
 		InterfaceGrafica.separator();
