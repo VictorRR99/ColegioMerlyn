@@ -64,6 +64,8 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+		
 //		Inserindo na tabela Pessoa
 		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
 				cpf + "', '" + rg + "', '" + senha +"')";
@@ -74,9 +76,6 @@ public class Operation {
 				
 		ps.execute();
 		ps.close();
-
-		
-		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
 		int matProvi = 0;
 		
@@ -436,6 +435,17 @@ public class Operation {
 		InterfaceGrafica.separator();
 		InterfaceGrafica.lineBreaker();
 		
+	}
+	
+	/* Mostra as salas disponíveis por série*/
+	public void mostrarSalas(int serie){
+		System.out.println("Salas disponíveis pra série em questão: ");
+		InterfaceGrafica.lineBreaker();
+		for(Sala x : Sala.getLista()) {
+			if("" + x.getSala().charAt(0) == Integer.toString(serie)) {
+				System.out.println(x.getSala());
+			}
+		}
 	}
 	
 	/* Operação Geral */
