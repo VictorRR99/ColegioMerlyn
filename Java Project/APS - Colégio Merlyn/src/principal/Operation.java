@@ -524,6 +524,22 @@ public class Operation {
 		Disciplina.serialization();
 	}
 	
+	public void keepUpToDate() throws SQLException {
+		sql = "SELECT cd_aluno FROM Pessoa";
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			for(Aluno x : Aluno.getLista()) {
+				
+			}
+		}
+	}
+	
 	public void closeScanners() {
 		leitorInt.close();
 		leitorStr.close();
