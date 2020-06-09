@@ -11,7 +11,7 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void loginMode() {
-		System.out.println("Você deseja logar entrar:");
+		System.out.println("Você deseja entrar como:");
 		System.out.println("1 - Aluno");
 		System.out.println("2 - Professor");
 		System.out.println("3 - Diretor");
@@ -25,26 +25,31 @@ public abstract class InterfaceGrafica {
 		System.out.println("4 - Cadastrar Diretor;");
 		System.out.println("5 - Cadastrar Disciplina;");
 		System.out.println("11 - Ver todos os Alunos;");
-		System.out.println("12 - Ver todos os Professores;");
-		System.out.println("13 - Ver todos as Salas;");
-		System.out.println("14 - Ver todos os Diretores;");
-		System.out.println("15 - Ver todas as Disciplinas;");
+		System.out.println("22 - Ver todos os Professores;");
+		System.out.println("33 - Ver todos as Salas;");
+		System.out.println("44 - Ver todos os Diretores;");
+		System.out.println("55 - Ver todas as Disciplinas;");
+		System.out.println("111 - Deletar todos os Alunos;");
+		System.out.println("222 - Deletar todos os Professores;");
+		System.out.println("444 - Deletar todos os Diretores;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
 	
 	public static void operationsProfessor() {
-		System.out.println("1 - ****;");
-		System.out.println("2 - ****;");
-		System.out.println("5 - Ver todos os Alunos;");
-		System.out.println("6 - ****;");
+		System.out.println("1 - Colocar NP1 de uma Aluno;");//Problema sem Alunos
+		System.out.println("2 - Colocar NP2 de uma Aluno;");//Problema sem Alunos
+		System.out.println("11 - Ver todos as notas da NP1;");
+		System.out.println("22 - Ver todos as notas da NP1;");
+		System.out.println("33 - Ver todos os Alunos;");//Problema sem Alunos
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
 	
 	public static void operationsAluno() {
-		System.out.println("1 - ****");
-		System.out.println("2 - ****");
+		System.out.println("1 - Ver NP1 de todas as Disciplinas;");
+		System.out.println("2 - Ver NP2 de todas as Disciplinas;");
+		System.out.println("3 - Ver Média de todas as Disciplinas;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
@@ -95,6 +100,14 @@ public abstract class InterfaceGrafica {
 		System.out.println("Este sistema ainda não possui nenhuma Disciplina.");
 		System.out.println("Por favor cadastre uma Disciplina:");
 		
+	}
+	
+	public static void semProfessor() {
+		System.out.println("Este sistema ainda não possui nenhum Professor.");
+	}
+	
+	public static void semAluno() {
+		System.out.println("Este sistema ainda não possui nenhum Aluno.");
 	}
 
 	public static void mostrarDisciplinas() {

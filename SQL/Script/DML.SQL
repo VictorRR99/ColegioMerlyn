@@ -50,7 +50,7 @@ SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno
 AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;
 
 -- NOME DE TODOS OS ALUNOS COM SUAS NOTAS
-SELECT cd_aluno FROM Alunos UNION SELECT cd_aluno FROM Notas;
+SELECT cd_aluno FROM Aluno UNION SELECT cd_aluno FROM Notas;
 
 -- NOME DOS ALUNOS QUE NÃO POSSUEM NOTAS
 SELECT nome FROM Aluno LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;

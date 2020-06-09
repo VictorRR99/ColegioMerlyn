@@ -40,8 +40,8 @@ public class Call {
 
 		/* Usuarios */
 		Diretor userDiretor = null;
-		Professor userProfessor;
-		Aluno userAluno;
+		Professor userProfessor = null;
+		Aluno userAluno = null;
 		
 		/* Login */
 		String cpf, senha;
@@ -70,6 +70,102 @@ public class Call {
 					break;
 				case "2":
 					
+					//Login Professor
+					
+					isLogged = false;
+					
+					while(!isLogged) {
+						if(Professor.getLista().isEmpty()) {
+							InterfaceGrafica.semProfessor();
+							break;
+						}
+						Professor call = Professor.getLista().get(0);
+						boolean userCheck = false;
+						
+						InterfaceGrafica.lineBreaker();
+						System.out.println("Digite o Cpf:");
+						cpf = leitorLogin.nextLine();
+						
+						InterfaceGrafica.lineBreaker();
+						System.out.println("Digite a Senha:");
+						senha = leitorLogin.nextLine();
+						
+						userCheck = call.autenticar(cpf, senha);
+						
+						if(userCheck == true) {
+							isLogged = true;
+							
+							InterfaceGrafica.lineBreaker();
+							InterfaceGrafica.separator();
+							System.out.println("Acesso Garantido!");
+							for(Professor x : Professor.getLista()) {
+								if(cpf.equals(x.getCpf())) {
+									userProfessor = x;
+									break;
+								}
+							}
+							System.out.println("Bem vindo, " + userProfessor.getNome() +"!");
+							InterfaceGrafica.separator();
+							InterfaceGrafica.lineBreaker();
+						}
+
+						if(isLogged) {
+							
+							while(!userStop) {
+								InterfaceGrafica.operationsProfessor();
+								
+								userSelect = leitorSelection.nextLine();
+								
+								switch(userSelect) {
+								case "1":
+
+									
+			
+									break;
+								case "2":
+
+									
+									
+									break;
+								case "11":
+
+									
+									
+									break;
+								case "22":
+
+									
+									
+									break;
+								case "33":
+
+									
+									
+									break;
+								case "0":
+									
+									repStop = true;
+									userStop = true;
+									
+									break;
+								case "/":
+									
+									userStop = true;
+									
+									break;
+								default:
+									
+									System.out.println("Operação selecionada não existe.");
+									
+								}
+								//Switch end
+							}
+							//While end
+						}
+						//IF isLogged end
+					}
+					//Main While end
+					
 					break;
 				case "3":
 					
@@ -82,11 +178,11 @@ public class Call {
 						boolean userCheck = false;
 						
 						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite o cpf:");
+						System.out.println("Digite o Cpf:");
 						cpf = leitorLogin.nextLine();
 						
 						InterfaceGrafica.lineBreaker();
-						System.out.println("Digite a senha:");
+						System.out.println("Digite a Senha:");
 						senha = leitorLogin.nextLine();
 						
 						userCheck = call.autenticar(cpf, senha);
@@ -150,22 +246,22 @@ public class Call {
 									operacao.verAlunos();
 									
 									break;
-								case "12":
+								case "22":
 									
 									operacao.verProfessores();
 									
 									break;
-								case "13":
+								case "33":
 									
 									operacao.verSalas();
 									
 									break;
-								case "14":
+								case "44":
 									
 									operacao.verDiretores();
 									
 									break;
-								case "15":
+								case "55":
 									
 									operacao.verDisciplinas();
 									
@@ -190,9 +286,9 @@ public class Call {
 							}
 							//While end
 						}
-						
+						//IF isLogged end
 					}
-					//IF end
+					//Main While end
 					
 					break;
 				case "0":
