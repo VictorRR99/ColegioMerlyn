@@ -453,8 +453,20 @@ public class Operation {
         
 	}
 	
-	public void deletarDiretor() throws SQLException {
+	public void deletarDiretor(String cpfDigitado) throws SQLException {
 		cpf = leitorStr.nextLine();
+		boolean check = true;
+		
+		while(check) {
+			if(cpfDigitado == cpf) {
+				System.out.println("Você não pode se deletar!");
+				System.out.println("Digite um CPF válido:");
+				cpf = leitorStr.nextLine();
+			}else {
+				check = false;
+			}
+		}
+		
 		
 		Diretor.deletarDiretor(cpf);
 		
