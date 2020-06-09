@@ -151,6 +151,64 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
+		
+//		Inserindo na tabela Pessoa
+		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
+				cpf + "', '" + rg + "', '" + senha +"')";
+				
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
+		
+//		Select na tabela pessoa para pegar o cd_pessoa
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
+        
+        int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+//        Select na tabela Disciplina para pegar cd_disc
+        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc() + "'";
+        
+        int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+//		Inserindo na tabela Professor
+        
+        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES("+ cd_pessoa + ", "+ cd_disc + ")";
+        
+		conexao = Conexao.getConnection();
+				
+		ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
 
 		System.out.println("Cadastro concluído com sucesso!");
 	}
@@ -274,6 +332,13 @@ public class Operation {
 	        }
 		
 		sql = "INSERT INTO Diretor(cd_prof) VALUES(" + cd_prof + ")";
+		
+		conexao = Conexao.getConnection();
+		
+		ps = conexao.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
         
 	}
 
