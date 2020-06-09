@@ -353,7 +353,7 @@ public class Operation {
 	
 	//Deletar Aluno
 	public void deletarAluno() throws SQLException {
-		System.out.println("Digite o aluno que deseja deletar:");
+		System.out.println("Digite a matrícula do aluno que deseja deletar:");
 		int matDeleta = leitorInt.nextInt();
 		
 		Aluno.deletarAluno(matDeleta);
@@ -367,7 +367,40 @@ public class Operation {
 		ps.execute();
 		ps.close();
 		
-		sql = "DELETE FROM Aluno WHERE cd_pessoa = " + matDeleta;
+		sql = "SELECT pessoa_cd_pessoa FROM Aluno WHERE cd_aluno =" + matDeleta;
+		
+		int pessoa_cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            pessoa_cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+		
+		sql = "DELETE FROM Aluno WHERE pessoa_cd_pessoa = " + pessoa_cd_pessoa;
+		
+		con = Conexao.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+		sql = "DELETE FROM Pessoa WHERE cd_pessoa = " + pessoa_cd_pessoa;
 		
 		con = Conexao.getConnection();
 		
@@ -380,6 +413,47 @@ public class Operation {
 		
 		InterfaceGrafica.lineBreaker();
 	}	
+	
+	public void deletarProfessor() throws SQLException {
+		System.out.println("Digite o CPF do Diretor que deseja deletar:");
+		cpf = leitorInt.nextLine();
+		
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		
+		int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        sql = "DELETE FROM Professor WHERE cd_pessoa =" + cd_pessoa;
+        
+        Connection con = Conexao.getConnection();
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+        
+        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+        
+	}
 	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
