@@ -160,5 +160,4 @@ public class Diretor extends Professor implements Serializable, Autenticacao {
 			}
 		}
 	}
-
 }
