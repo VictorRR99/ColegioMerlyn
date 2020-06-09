@@ -59,6 +59,18 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		}
 	}
 	
+	static void deletarAluno(int mat) {
+		for(Aluno x : Aluno.getLista()) {
+			if(x.getMat() == mat) {
+				Aluno.getLista().remove(x);
+			}
+		}
+	}
+	
+	void atualizarAluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
+		
+	}
+	
 	/* Autenticação */
 	
 	@Override

@@ -73,7 +73,7 @@ public class Operation {
 		PreparedStatement ps = conexao.prepareStatement(sql);
 				
 		ps.execute();
-		
+		ps.close();
 
 		
 		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
@@ -116,6 +116,7 @@ public class Operation {
 		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
+	
 	/* Permitido por: Diretor */
 	public void cadastrarProfessor() throws SQLException {
 		InterfaceGrafica.cadastrarProfessor();
@@ -151,7 +152,7 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
-		
+
 		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
@@ -318,6 +319,18 @@ public class Operation {
 		ps.execute();
 		ps.close();
 	}
+	
+	//Deletar Aluno
+	public void deletarAluno() {
+		System.out.println("Digite o aluno que deseja deletar:");
+		int matDeleta = leitorInt.nextInt();
+		
+		Aluno.deletarAluno(matDeleta);
+		
+		System.out.println("Aluno deletado com sucesso!");
+		
+		InterfaceGrafica.lineBreaker();
+	}	
 	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
