@@ -569,6 +569,8 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
 		
+		InterfaceGrafica.separator();
+		
 		InterfaceGrafica.lineBreaker();
 		for(Aluno x : listaAlunos) {
 			System.out.print(x.getNome());
@@ -597,6 +599,12 @@ public class Operation {
 		System.out.print("|");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("|");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Disciplina");
+		
+		InterfaceGrafica.separator();
 		
 		InterfaceGrafica.lineBreaker();
 		for(Professor x : listaProfessores) {
@@ -605,6 +613,10 @@ public class Operation {
 			System.out.print("|");
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getCpf());
+			InterfaceGrafica.spaceInLine();
+			System.out.print("|");
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getDisc());
 			
 			InterfaceGrafica.lineBreaker();
 		}
@@ -645,6 +657,8 @@ public class Operation {
 		System.out.print("|");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
+		
+		InterfaceGrafica.separator();
 		
 		InterfaceGrafica.lineBreaker();
 		for(Diretor x : listaDiretores) {
