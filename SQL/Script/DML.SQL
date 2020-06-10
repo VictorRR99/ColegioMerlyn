@@ -56,7 +56,7 @@ SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno RIGHT OUTER JOIN Notas ON
 
 -- NOME DOS ALUNOS QUE NÃO POSSUEM NOTAS
 SELECT Pessoa.nome FROM Pessoa
-INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.cd_pessoa
+INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa
 LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;
 
 -- NOME DOS ALUNOS QUE ESTÃO ACIMA DA MÉDIA
