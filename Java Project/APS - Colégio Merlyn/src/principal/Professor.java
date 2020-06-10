@@ -61,6 +61,10 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	String getDisc() {
 		return disciplina.getNomeDisc();
 	}
+
+	String getSala() {
+		return sala.getSala();
+	}
 	
 	void setSala(Sala sala) {
 		this.sala = sala;

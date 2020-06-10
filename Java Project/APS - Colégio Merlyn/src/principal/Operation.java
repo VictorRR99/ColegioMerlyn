@@ -601,6 +601,8 @@ public class Operation {
 	
 	public void setNP1(Professor professor) {
 		
+		this.verAlunosDoProfessor(professor);
+		
 		System.out.println("Digite a matrícula do aluno para alterar/adicionar NP1:");
 		matricula = leitorStr.nextLine();
 		
@@ -608,7 +610,7 @@ public class Operation {
 		
 		String mat;
 		
-		for(Aluno x : Aluno.getLista()) {
+		for(Aluno x : professor.getListaAluno()) {
 			mat = "" + x.getMat();
 			
 			if(matricula.equals(mat)) {
@@ -625,6 +627,8 @@ public class Operation {
 	}
 	
 	public void setNP2(Professor professor) {
+		
+		this.verAlunosDoProfessor(professor);
 		
 		System.out.println("Digite a matrícula do aluno para alterar/adicionar NP2");
 		matricula = leitorStr.nextLine();
@@ -645,12 +649,13 @@ public class Operation {
 		System.out.println("Digite a nota da NP2:");
 		np2 = leitorFloat.nextFloat();
 		
-		instanciaAluno.setNP1(np2, professor);
+		instanciaAluno.setNP2(np2, professor);
 		
 	}
 	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
+		
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separator();
 		
@@ -680,6 +685,41 @@ public class Operation {
 		
 		InterfaceGrafica.separator();
 		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	public void verAlunosDoProfessor(Professor professor) {	
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Aluno> listaAlunosDoProfessor = professor.getListaAluno();
+		
+		System.out.println("+Nomes dos Alunos:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Matricula");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Sala");
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separatorLight();
+		
+		InterfaceGrafica.lineBreaker();
+		for(Aluno x : listaAlunosDoProfessor) {
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getMat());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getSala());
+			
+			InterfaceGrafica.lineBreaker();
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
 	}
 	
 	/* Permitido por: Diretor */
@@ -696,6 +736,8 @@ public class Operation {
 		System.out.print("CPF");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Disciplina");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Sala");
 		
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separatorLight();
@@ -707,6 +749,8 @@ public class Operation {
 			System.out.print(x.getCpf());
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getDisc());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getSala());
 			
 			InterfaceGrafica.lineBreaker();
 		}
