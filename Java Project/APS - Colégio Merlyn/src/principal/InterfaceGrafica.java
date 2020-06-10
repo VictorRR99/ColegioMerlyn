@@ -99,6 +99,12 @@ public abstract class InterfaceGrafica {
 		System.out.println("<>============<>");
 	}
 	
+	public static void separatorLight() {
+		System.out.println("----------------");
+		
+		
+	}
+	
 	public static void end() {
 		System.out.println("Alterações salvas, fechando programa...");
 	}
@@ -172,6 +178,8 @@ public abstract class InterfaceGrafica {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 	
 
