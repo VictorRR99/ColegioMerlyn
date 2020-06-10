@@ -143,16 +143,10 @@ public class Call {
 											break;
 										case "3":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+//											InterfaceGrafica.getMedia();
+//											operacao.getMedia(userAluno);
+											operacao.serializeAll();
 
-											break;
-										case "33":
-											
-											//Ajeitar pra ser só os alunos desse professor
-											operacao.verAlunos();
-											
 											break;
 										case "0":
 
@@ -256,23 +250,23 @@ public class Call {
 											break;
 										case "11":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
-
+											
+											InterfaceGrafica.getAllNP1();
+											operacao.getAllNP1(userProfessor);
+											operacao.serializeAll();
+										
 											break;
 										case "22":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+											InterfaceGrafica.getAllNP2();
+											operacao.getAllNP2(userProfessor);
+											operacao.serializeAll();
 
 											break;
 										case "33":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+											operacao.verAlunosDoProfessor(userProfessor);
+											operacao.serializeAll();
 
 											break;
 										case "0":
@@ -413,6 +407,7 @@ public class Call {
 
 									InterfaceGrafica.deletarAluno();
 									operacao.deletarAluno();
+									System.out.println("Aluno deletado com sucesso!");
 									operacao.serializeAll();
 									
 									break;
@@ -420,6 +415,7 @@ public class Call {
 									
 									InterfaceGrafica.deletarProfessor();
 									operacao.deletarProfessor();
+									System.out.println("Professor deletado com sucesso!");
 									operacao.serializeAll();
 									
 									break;
@@ -427,6 +423,7 @@ public class Call {
 
 									InterfaceGrafica.deletarDiretor();
 									operacao.deletarDiretor(userDiretor.getCpf());
+									System.out.println("Diretor deletado com sucesso!");
 									operacao.serializeAll();
 									
 									break;

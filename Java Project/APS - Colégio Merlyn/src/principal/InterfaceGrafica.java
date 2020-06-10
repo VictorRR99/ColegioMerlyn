@@ -29,6 +29,9 @@ public abstract class InterfaceGrafica {
 		System.out.println("111 - Deletar Aluno;");
 		System.out.println("222 - Deletar Professor;");
 		System.out.println("444 - Deletar Diretor;");
+		System.out.println("1111 - Atualizar Aluno;");
+		System.out.println("2222 - Atualizar Professor;");
+		System.out.println("4444 - Atualizar Diretor;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
@@ -37,7 +40,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("1 - Colocar NP1 de uma Aluno;");//Problema sem Alunos
 		System.out.println("2 - Colocar NP2 de uma Aluno;");//Problema sem Alunos
 		System.out.println("11 - Ver todos as notas da NP1;");
-		System.out.println("22 - Ver todos as notas da NP1;");
+		System.out.println("22 - Ver todos as notas da NP2;");
 		System.out.println("33 - Ver todos os Alunos;");//Problema sem Alunos
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
@@ -193,6 +196,15 @@ public abstract class InterfaceGrafica {
 
 	public static void updateDiretor() {
 		System.out.println("Digite as novas informações para o Diretor:");		
+	}
+
+	
+	public static void getAllNP1() {
+		System.out.println("Todas as NP1 dos seus Alunos:");
+	}
+	
+	public static void getAllNP2() {
+		System.out.println("Todas as NP2 dos seus Alunos:");
 	}
 
 	

@@ -19,7 +19,7 @@ public class Operation {
 	private Scanner leitorVoltar = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, nomeDisc, numSala, cpf, rg, matricula, dtNasc, turno, sala, senha, sql;
+	private String nome, numSala, cpf, rg, matricula, dtNasc, turno, sala, senha, sql;
 	private Disciplina disc;
 	private int serie;
 	
@@ -414,8 +414,6 @@ public class Operation {
 		ps.execute();
 		ps.close();
 		
-		System.out.println("Aluno deletado com sucesso!");
-		
 		InterfaceGrafica.lineBreaker();
 	}	
 	
@@ -653,6 +651,74 @@ public class Operation {
 		
 	}
 	
+	public void getAllNP1(Professor professor) {
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Aluno> listaAlunosDoProfessor = professor.getListaAluno();
+		
+		System.out.println("+Nomes dos Alunos:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Matricula");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("NP1");
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separatorLight();
+		
+		InterfaceGrafica.lineBreaker();
+		for(Aluno x : listaAlunosDoProfessor) {
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getMat());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getNP1(professor.getDisc()));
+			
+			InterfaceGrafica.lineBreaker();
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	public void getAllNP2(Professor professor) {
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Aluno> listaAlunosDoProfessor = professor.getListaAluno();
+		
+		System.out.println("+Nomes dos Alunos:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Matricula");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("NP2");
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separatorLight();
+		
+		InterfaceGrafica.lineBreaker();
+		for(Aluno x : listaAlunosDoProfessor) {
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getMat());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getNP2(professor.getDisc()));
+			
+			InterfaceGrafica.lineBreaker();
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
 	/* Permitido por: Diretor, Professor */
 	public void verAlunos() {
 		
@@ -836,6 +902,8 @@ public class Operation {
 		}
 	}
 	
+	/* Relatórios */
+	
 	public void alunosComMaisDeTantosAnos() {
 		sql = "SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno "
 				+ "AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;";
@@ -934,6 +1002,8 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
 	}
+	
+	/* END // Relatórios */
 	
 	/* Operação Geral */
 	public void serializeAll() {
