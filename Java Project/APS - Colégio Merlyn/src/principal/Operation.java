@@ -845,9 +845,38 @@ public class Operation {
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
+        	
             while(rs.next()) {
             	nomeAlunoMaior = rs.getString(1);
             	System.out.println("Nome: " + nomeAlunoMaior);
+            }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+	}
+	
+	public void nomeAlunosComNota() {
+		sql = "SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
+				"UNION\r\n" + 
+				"SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno RIGHT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno;";
+        
+        String nomeAluno;
+        
+        float np1, np2;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+        	
+            while(rs.next()) {
+            	nomeAluno = rs.getString(1);
+            	np1 = rs.getFloat(2);
+            	np2 = rs.getFloat(3);
+            	System.out.println("Nome: " + nomeAluno + "NP1: " + np1 + "NP2: " + np2);
             }
             
             rs.close();
