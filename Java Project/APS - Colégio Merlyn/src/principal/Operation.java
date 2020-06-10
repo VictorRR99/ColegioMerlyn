@@ -581,6 +581,10 @@ public class Operation {
 		System.out.print("|");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("|");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Sala");
 		
 		InterfaceGrafica.lineBreaker();
 		InterfaceGrafica.separatorLight();
@@ -592,6 +596,11 @@ public class Operation {
 			System.out.print("|");
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getCpf());
+			InterfaceGrafica.spaceInLine();
+			System.out.print("|");
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getSala());
+			
 			InterfaceGrafica.lineBreaker();
 		}
 		
