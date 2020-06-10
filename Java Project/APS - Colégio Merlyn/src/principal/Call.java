@@ -129,15 +129,17 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
-											InterfaceGrafica.setNP1();
+											InterfaceGrafica.getNP1();
+											operacao.getNP1(userAluno);
+											operacao.serializeAll();
 
 											break;
 										case "2":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
-
+											InterfaceGrafica.getNP1();
+											operacao.getNP1(userAluno);
+											operacao.serializeAll();
+											
 											break;
 										case "3":
 
@@ -145,6 +147,12 @@ public class Call {
 											System.out.println("Operação não Implementada.");
 											InterfaceGrafica.separator();
 
+											break;
+										case "33":
+											
+											//Ajeitar pra ser só os alunos desse professor
+											operacao.verAlunos();
+											
 											break;
 										case "0":
 
@@ -234,16 +242,16 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+											InterfaceGrafica.setNP1();
+											operacao.setNP1(userProfessor);
+											operacao.serializeAll();
 
 											break;
 										case "2":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+											InterfaceGrafica.setNP2();
+											operacao.setNP2(userProfessor);
+											operacao.serializeAll();
 
 											break;
 										case "11":
