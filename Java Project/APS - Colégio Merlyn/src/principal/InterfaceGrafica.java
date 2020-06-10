@@ -154,7 +154,8 @@ public abstract class InterfaceGrafica {
 		System.out.println("Salas disponíveis pra série em questão: ");
 		InterfaceGrafica.lineBreaker();
 		for(Sala x : Sala.getLista()) {
-			if("" + x.getSala().charAt(0) == Integer.toString(serie)) {
+			String l = "" + x.getSala().charAt(0);
+			if(l.equals(Integer.toString(serie))) {
 				System.out.println(x.getSala());
 			}
 		}

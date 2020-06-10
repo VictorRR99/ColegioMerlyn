@@ -165,6 +165,19 @@ public class Operation {
 		
 		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
 		
+		System.out.println("Digite a sala para qual o professor irá lecionar:");
+		this.verSalas();
+		String sala = leitorStr.nextLine();
+
+		
+		for(Professor x : Professor.getLista()) {
+			if(x.getCpf().equals(cpf)) {
+				x.setSala(Sala.getSalaSala(sala));
+				x.receberAlunos();
+			}
+		}
+		
+		
 //		Inserindo na tabela Pessoa
 		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
 				cpf + "', '" + rg + "', '" + senha +"')";
