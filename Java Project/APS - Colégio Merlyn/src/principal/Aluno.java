@@ -164,10 +164,14 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	
 	public static void serialization() {
 		Aluno.saveObjectList(listaAlunos, "Alunos");
+		
+		Aluno.saveMatricula(nmTotalMat, "Matricula");
 	}
 	
 	public static void desserialization() {
 		listaAlunos = Aluno.readObjectList("Alunos");
+		
+		nmTotalMat = Aluno.lerMatricula("Matricula");
 	}
 	
 	public static void saveObjectList(List<Aluno> lista, String nomeArq) {
@@ -205,6 +209,45 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		}
 	    
 		return(lista);
+	}
+	
+	/* Salvar Matricula */
+	public static void saveMatricula(int matricula, String nomeArq) {
+	      File arq = new File(nomeArq);
+	      try {
+	    	  arq.delete();
+	    	  arq.createNewFile();
+	    
+	    	  ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
+	        
+	    	  objOutput.writeObject(matricula);
+	    	  objOutput.close();
+	    
+	      } catch(IOException erro) {
+	    	  System.out.printf("Erro: %s", erro.getMessage());
+	      }
+	}
+	
+	/* Salvar Matricula */
+	public static int lerMatricula(String nomeArq) {
+		
+		int aluno = 0;
+		
+		try {
+			File arq = new File(nomeArq);
+			if (arq.exists()) {
+				ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
+				aluno = (int) objInput.readObject();
+				objInput.close();
+			}
+			
+		} catch(IOException erro1) {
+			System.out.printf("Erro: %s", erro1.getMessage());
+		} catch(ClassNotFoundException erro2) {
+			System.out.printf("Erro: %s", erro2.getMessage());
+		}
+	    
+		return(aluno);
 	}
 	
 

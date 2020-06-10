@@ -28,8 +28,6 @@ public class Call {
 		Scanner leitorLogin = new Scanner(System.in);
 		/* Leitor do menu */
 		Scanner leitorSelection = new Scanner(System.in);
-		/* Leitor para voltar menus*/
-		Scanner leitorVoltar = new Scanner(System.in);
 
 		// Arrumar o Método do getLista de diretor pra dar Override na de Professor
 		// Se for possivel claro
@@ -67,7 +65,7 @@ public class Call {
 			// Checagem se existe um Diretor no sistema
 			if (!checagemDiretor.isEmpty()) {
 				InterfaceGrafica.loginMode();
-
+				
 				userLogin = leitorSelection.nextLine();
 
 				switch (userLogin) {
@@ -116,6 +114,7 @@ public class Call {
 								if(!operacao.usuarioVoltar()) {
 									isLogged = true;
 									userStop = true;
+									break;
 								}
 								
 							}
@@ -221,6 +220,7 @@ public class Call {
 								if(!operacao.usuarioVoltar()) {
 									isLogged = true;
 									userStop = true;
+									break;
 								}
 							}
 
@@ -324,11 +324,12 @@ public class Call {
 								InterfaceGrafica.separator();
 								System.out.println("Acesso Garantido!");
 								for (final Diretor x : Diretor.getListaDir()) {
-								if(cpf.equals(x.getCpf())) {
-									userDiretor = x;
-									break;
+									if(cpf.equals(x.getCpf())) {
+										userDiretor = x;
+										break;
+									}
 								}
-							}
+								
 								System.out.println("Bem vindo, " + userDiretor.getNome() +"!");
 								InterfaceGrafica.separator();
 								InterfaceGrafica.lineBreaker();
@@ -337,6 +338,7 @@ public class Call {
 								if(!operacao.usuarioVoltar()) {
 									isLogged = true;
 									userStop = true;
+									break;
 								}
 								
 						}
@@ -403,36 +405,42 @@ public class Call {
 
 									InterfaceGrafica.deletarAluno();
 									operacao.deletarAluno();
+									operacao.serializeAll();
 									
 									break;
 								case "222":
 									
 									InterfaceGrafica.deletarProfessor();
 									operacao.deletarProfessor();
+									operacao.serializeAll();
 									
 									break;
 								case "444":
 
 									InterfaceGrafica.deletarDiretor();
 									operacao.deletarDiretor(userDiretor.getCpf());
+									operacao.serializeAll();
 									
 									break;
 								case "1111":
 
 									InterfaceGrafica.updateAluno();
 									operacao.updateAluno();
+									operacao.serializeAll();
 									
 									break;
 								case "2222":
 
 									InterfaceGrafica.updateProfessor();
 									operacao.updateProfessor();
+									operacao.serializeAll();
 									
 									break;
 								case "4444":
 
 									InterfaceGrafica.updateDiretor();
 									operacao.updateDiretor();
+									operacao.serializeAll();
 									
 									break;
 								case "0":
@@ -491,7 +499,6 @@ public class Call {
 		
 		leitorSelection.close();
 		leitorLogin.close();
-		leitorVoltar.close();
 		
 		operacao.closeScanners();
 			

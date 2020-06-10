@@ -14,6 +14,7 @@ public class Operation {
 
 	private Scanner leitorInt = new Scanner(System.in);
 	private Scanner leitorStr = new Scanner(System.in);
+	Scanner leitorVoltar = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
 	private String nome, nomeDisc, numSala, cpf, rg, dtNasc, turno, sala, senha, sql;
@@ -454,15 +455,21 @@ public class Operation {
         
 	}
 	
-	public void deletarDiretor(String cpfDigitado) throws SQLException {
+	public boolean deletarDiretor(String cpfDigitado) throws SQLException {
 		cpf = leitorStr.nextLine();
 		boolean check = true;
 		
 		while(check) {
-			if(cpfDigitado == cpf) {
+			if(cpfDigitado.equals(cpf)) {
 				System.out.println("Você não pode se deletar!");
+				
+				if(!this.usuarioVoltar()) {
+					return false;
+				}
+				
 				System.out.println("Digite um CPF válido:");
 				cpf = leitorStr.nextLine();
+				
 			}else {
 				check = false;
 			}
@@ -505,6 +512,8 @@ public class Operation {
         
         ps.execute();
         ps.close();
+        
+        return true;
 	}
 	
 	public void updateAluno() throws SQLException {
@@ -567,11 +576,7 @@ public class Operation {
 		
 		System.out.print("Nome");
 		InterfaceGrafica.spaceInLine();
-		System.out.print("|");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("CPF");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("|");
+		System.out.print("Matricula");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Sala");
 		
@@ -582,11 +587,7 @@ public class Operation {
 		for(Aluno x : listaAlunos) {
 			System.out.print(x.getNome());
 			InterfaceGrafica.spaceInLine();
-			System.out.print("|");
-			InterfaceGrafica.spaceInLine();
-			System.out.print(x.getCpf());
-			InterfaceGrafica.spaceInLine();
-			System.out.print("|");
+			System.out.print(x.getMat());
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getSala());
 			
@@ -608,11 +609,7 @@ public class Operation {
 		
 		System.out.print("Nome");
 		InterfaceGrafica.spaceInLine();
-		System.out.print("|");
-		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("|");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Disciplina");
 		
@@ -623,11 +620,7 @@ public class Operation {
 		for(Professor x : listaProfessores) {
 			System.out.print(x.getNome());
 			InterfaceGrafica.spaceInLine();
-			System.out.print("|");
-			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getCpf());
-			InterfaceGrafica.spaceInLine();
-			System.out.print("|");
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getDisc());
 			
@@ -645,7 +638,7 @@ public class Operation {
 		
 		List<Sala> listaSalas = Sala.getLista();
 		
-		System.out.println("+Nomes das Salas:");
+		System.out.println("+Numeros das Salas:");
 		InterfaceGrafica.lineBreaker();
 		for(Sala x : listaSalas) {
 			System.out.println(x.getSala());
@@ -667,8 +660,6 @@ public class Operation {
 		
 		System.out.print("Nome");
 		InterfaceGrafica.spaceInLine();
-		System.out.print("|");
-		InterfaceGrafica.spaceInLine();
 		System.out.print("CPF");
 		
 		InterfaceGrafica.lineBreaker();
@@ -677,8 +668,6 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		for(Diretor x : listaDiretores) {
 			System.out.print(x.getNome());
-			InterfaceGrafica.spaceInLine();
-			System.out.print("|");
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getCpf());
 			
@@ -697,7 +686,7 @@ public class Operation {
 		
 		List<Disciplina> listaDisciplinas = Disciplina.getLista();
 		
-		System.out.println("+Nomes das Disciplinas:");
+		System.out.println("+Todas das Disciplinas:");
 		InterfaceGrafica.lineBreaker();
 		for(Disciplina x : listaDisciplinas) {
 			System.out.println(x.getNomeDisc());
@@ -747,6 +736,7 @@ public class Operation {
 	public void closeScanners() {
 		leitorInt.close();
 		leitorStr.close();
+		leitorVoltar.close();
 	}
 
 	
@@ -774,9 +764,9 @@ public class Operation {
 	}
 	
 	public boolean usuarioVoltar() {
-		Scanner leitorVoltar = new Scanner(System.in);
 		
-		String continuar = null;
+		
+		String continuar;
 		
 		InterfaceGrafica.separator();
 		InterfaceGrafica.backLogin();
@@ -786,18 +776,14 @@ public class Operation {
 			
 		switch(continuar) {
 		case "1":
-			leitorVoltar.close();
 			return true;
 			
 			
 		case "0":
-			
-			leitorVoltar.close();
 			return false;
 				
 		default:
 			
-			leitorVoltar.close();
 			return false;
 				
 		}

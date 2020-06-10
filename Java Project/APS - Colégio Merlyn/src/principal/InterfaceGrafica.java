@@ -159,12 +159,13 @@ public abstract class InterfaceGrafica {
 	}
 
 	public static void backLogin() {
+		System.out.println("Você deseja:");
 		System.out.println("1 - Tentar Novamente;");
 		System.out.println("0 - Voltar.");
 	}
 
 	public static void spaceInLine() {
-		System.out.print("    ");
+		System.out.print("  |  ");
 		
 	}
 
