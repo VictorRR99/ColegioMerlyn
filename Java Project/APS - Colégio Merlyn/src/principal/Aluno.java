@@ -38,12 +38,12 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		if(serie < 6) {
 			disc.put("portugues", null);
 			disc.put("matematica", null);
-			disc.put("educacao Fisica", null);
+			disc.put("educacao fisica", null);
 			disc.put("arte", null);
 		}else if(serie > 5) {
 			disc.put("portugues", null);
 			disc.put("matematica", null);
-			disc.put("educacao Fisica", null);
+			disc.put("educacao fisica", null);
 			disc.put("ciencia", null);
 			disc.put("ingles", null);
 			disc.put("filosofia", null);

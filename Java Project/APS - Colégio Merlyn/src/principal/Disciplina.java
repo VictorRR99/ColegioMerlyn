@@ -50,6 +50,12 @@ public class Disciplina implements Serializable {
 		listaDisciplinas.add(disciplina);
 	}
 	
+	/* Cadastro Disciplina */
+	
+	public static void cadastrarDisciplina(String nomeDisc) {
+		Disciplina.colocarNaLista(new Disciplina(nomeDisc));
+	}
+	
 	/* Serialization Handler */
 
 	public static void serialization() {

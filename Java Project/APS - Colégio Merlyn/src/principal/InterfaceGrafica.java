@@ -168,6 +168,12 @@ public abstract class InterfaceGrafica {
 	}
 
 	
+	public static void setNP1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 	
 

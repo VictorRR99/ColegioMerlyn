@@ -138,12 +138,6 @@ public class Diretor extends Pessoa implements Serializable, Autenticacao {
 	public static void cadastrarDiretor(String nome, String cpf, String rg, String dtNasc, String senha) throws SQLException {
 		Diretor.colocarNaLista(new Diretor(nome, cpf, rg, dtNasc, senha));
 	}
-
-	/* Cadastro Disciplina */
-	
-	public static void cadastrarDisciplina(String nomeDisc) {
-		Disciplina.colocarNaLista(new Disciplina(nomeDisc));
-	}
 	
 	
 	/*Cadastro Sala */

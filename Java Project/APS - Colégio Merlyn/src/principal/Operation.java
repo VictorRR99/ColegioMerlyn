@@ -542,11 +542,15 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
-	public void setNP1() {
+	public void setNP1(Professor professor) {
+		
+		
 		
 	}
 	
-	public void setNP2() {
+	public void setNP2(Professor professor) {
+		
+		
 		
 	}
 	
@@ -715,6 +719,30 @@ public class Operation {
 	public void closeScanners() {
 		leitorInt.close();
 		leitorStr.close();
+	}
+
+	
+	public void pegarDisciplinas() throws SQLException {
+		
+		Disciplina.cadastrarDisciplina("portugues");
+		Disciplina.cadastrarDisciplina("matematica");
+		Disciplina.cadastrarDisciplina("educacao Fisica");
+		Disciplina.cadastrarDisciplina("ciencia");
+		Disciplina.cadastrarDisciplina("ingles");
+		Disciplina.cadastrarDisciplina("filosofia");
+		Disciplina.cadastrarDisciplina("geografia");
+		Disciplina.cadastrarDisciplina("historia");
+		Disciplina.cadastrarDisciplina("arte");
+
+		sql = "INSERT INTO Disciplina(nm_disc) VALUES('portugues'),('matematica'), ('educacao fisica'), ('ciencia'), ('ingles'), ('filosofia'), ('geografia'), ('historia'), ('arte')";
+
+		Connection conexao = Conexao.getConnection();
+				
+		PreparedStatement ps = conexao.prepareStatement(sql);
+				
+		ps.execute();
+		ps.close();
+		
 	}
 	
 }

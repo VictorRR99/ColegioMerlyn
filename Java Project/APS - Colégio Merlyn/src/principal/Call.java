@@ -21,21 +21,26 @@ public class Call {
 		System.out.println("Desserialização completa!");
 		InterfaceGrafica.separator();
 
+		/* Instancia para chamada das operacoes */
+		Operation operacao = new Operation();
+		
 		/* Leitor do menu de login */
-		final Scanner leitorLogin = new Scanner(System.in);
+		Scanner leitorLogin = new Scanner(System.in);
 		/* Leitor do menu */
-		final Scanner leitorSelection = new Scanner(System.in);
+		Scanner leitorSelection = new Scanner(System.in);
 
 		// Arrumar o Método do getLista de diretor pra dar Override na de Professor
 		// Se for possivel claro
 		//Talvez não seja possível no atual design do professor
 		/* Checagem da existencia de um Diretor no sistema */
-		final List<Diretor> checagemDiretor = Diretor.getListaDir();
+		List<Diretor> checagemDiretor = Diretor.getListaDir();
 		/* Checagem da existencia de um Diretor no sistema */
-		final List<Disciplina> checagemDisciplina = Disciplina.getLista();
+		List<Disciplina> checagemDisciplina = Disciplina.getLista();
 
-		/* Instancia para chamada das operacoes */
-		final Operation operacao = new Operation();
+		if(checagemDisciplina.isEmpty()) {
+			operacao.pegarDisciplinas();
+			operacao.serializeAll();
+		}
 
 		/* Usuarios */
 		Diretor userDiretor = null;
@@ -142,9 +147,7 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
-											InterfaceGrafica.separator();
-											System.out.println("Operação não Implementada.");
-											InterfaceGrafica.separator();
+											InterfaceGrafica.setNP1();
 
 											break;
 										case "2":
