@@ -309,25 +309,25 @@ public class Operation {
 	}
 
 	/* Permitido por: Diretor */
-	public void cadastrarDisciplina() throws SQLException {
-		InterfaceGrafica.cadastrarDisciplina();
-		
-		System.out.println("Digite nome da Disciplina:");
-		nomeDisc = leitorStr.nextLine();
-		
-		Diretor.cadastrarDisciplina(nomeDisc);
-		
-		InterfaceGrafica.lineBreaker();
-		
-		sql = "INSERT INTO Disciplina(nm_disc) VALUES('" + nomeDisc + "')";
-		
-		Connection conexao = Conexao.getConnection();
-				
-		PreparedStatement ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-	}
+//	public void cadastrarDisciplina() throws SQLException {
+//		InterfaceGrafica.cadastrarDisciplina();
+//		
+//		System.out.println("Digite nome da Disciplina:");
+//		nomeDisc = leitorStr.nextLine();
+//		
+//		Diretor.cadastrarDisciplina(nomeDisc);
+//		
+//		InterfaceGrafica.lineBreaker();
+//		
+//		sql = "INSERT INTO Disciplina(nm_disc) VALUES('" + nomeDisc + "')";
+//		
+//		Connection conexao = Conexao.getConnection();
+//				
+//		PreparedStatement ps = conexao.prepareStatement(sql);
+//				
+//		ps.execute();
+//		ps.close();
+//	}
 	
 	/* Permitido por: Diretor */
 	public void cadastrarSala() throws SQLException {

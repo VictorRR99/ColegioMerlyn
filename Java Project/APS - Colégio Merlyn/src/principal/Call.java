@@ -400,12 +400,6 @@ public class Call {
 									operacao.serializeAll();
 									
 									break;
-								case "5":
-									
-									operacao.cadastrarDisciplina();
-									operacao.serializeAll();
-									
-									break;
 								case "11":
 									
 									operacao.verAlunos();
@@ -490,35 +484,17 @@ public class Call {
 				//Main Switch end
 
 			}else {
-				
-				if(!checagemDisciplina.isEmpty()) {
-					InterfaceGrafica.separator();
-					InterfaceGrafica.semDiretor();
-					InterfaceGrafica.separator();
+			
+				InterfaceGrafica.separator();
+				InterfaceGrafica.semDiretor();
+				InterfaceGrafica.separator();
 					
-					operacao.cadastrarDiretor();
+				operacao.cadastrarDiretor();
 					
-					/*Serializar*/
-					operacao.serializeAll();
-				}else {
-					InterfaceGrafica.separator();
-					InterfaceGrafica.semDisciplina();
-					InterfaceGrafica.separator();
-					
-					operacao.cadastrarDisciplina();
-					
-					InterfaceGrafica.separator();
-					InterfaceGrafica.semDiretor();
-					InterfaceGrafica.separator();
-					
-					operacao.cadastrarDiretor();
-					
-					/*Serializar*/
-					operacao.serializeAll();
-				}
+				/*Serializar*/
+				operacao.serializeAll();
 
 			}
-			
 		}
 		
 		leitorSelection.close();
