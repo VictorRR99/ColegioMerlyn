@@ -836,6 +836,28 @@ public class Operation {
 		}
 	}
 	
+	public void alunosComMaisDeTantosAnos() {
+		sql = "SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno "
+				+ "AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;";
+        
+        String nomeAlunoMaior;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            while(rs.next()) {
+            	nomeAlunoMaior = rs.getString(1);
+            	System.out.println("Nome: " + nomeAlunoMaior);
+            }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+	}
+	
 	/* Operação Geral */
 	public void serializeAll() {
 		Professor.serialization();
