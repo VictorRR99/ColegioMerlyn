@@ -887,6 +887,30 @@ public class Operation {
         }
 	}
 	
+	public void alunosSemNotas() {
+		sql = "SELECT Pessoa.nome FROM Pessoa\r\n" + 
+				"INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa\r\n" + 
+				"LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;";
+        
+        String nomeAluno;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+        	
+            while(rs.next()) {
+            	nomeAluno = rs.getString(1);
+            	System.out.println("Nome: " + nomeAluno);
+            }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+	}
+	
 	/* Operação Geral */
 	public void serializeAll() {
 		Professor.serialization();
