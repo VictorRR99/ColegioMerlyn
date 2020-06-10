@@ -52,7 +52,7 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 			disc.put("arte", null);
 		}
 		for(Sala x : Sala.getLista()) {
-			if(sala == x.getSala()) {
+			if(sala.equals(x.getSala())) {
 				x.addAluno(this);
 				this.sala = x;
 			}

@@ -21,7 +21,7 @@ public class Operation {
 	private int serie;
 	
 	/* Permitido por: Diretor */
-	public void cadastrarAluno() throws SQLException{
+	public boolean cadastrarAluno() throws SQLException{
 		InterfaceGrafica.cadastrarAluno();
 		
 		System.out.println("Digite nome:");
@@ -55,10 +55,6 @@ public class Operation {
 		serie = leitorInt.nextInt();
 		InterfaceGrafica.lineBreaker();
 		
-		System.out.println("Digite turno:");
-		turno = leitorStr.nextLine();
-		InterfaceGrafica.lineBreaker();
-		
 		InterfaceGrafica.mostrarSalas(serie);
 		System.out.println("Digite sala:");
 		sala = leitorStr.nextLine();
@@ -67,11 +63,23 @@ public class Operation {
 		//Checagem se não há inconsistência nas séries e salas
 		boolean check = Sala.checarSalaCerta(serie, sala);
 		while(!check) {
+			System.out.println("Sala errada para série escolhida!");
 			System.out.println("Digite uma sala válida:");
 			sala = leitorStr.nextLine();
 			InterfaceGrafica.lineBreaker();
 			check = Sala.checarSalaCerta(serie, sala);
+			
+			//Voltar
+			
+			if(!this.usuarioVoltar()) {
+				return false;
+			}
+			
 		}
+		
+		System.out.println("Digite turno:");
+		turno = leitorStr.nextLine();
+		InterfaceGrafica.lineBreaker();
 		
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
@@ -115,7 +123,7 @@ public class Operation {
             System.out.println(ex.getMessage());
         }
 
-//		insert na tabela Aluno
+        //insert na tabela Aluno
 		sql = "INSERT INTO Aluno(cd_aluno, pessoa_cd_pessoa, cd_sala, serie, turno) VALUES("+ matProvi + ", '"+ cd_pessoa +"', '" + 
 				Integer.parseInt(sala) + "', '" + serie + "', '" + turno +"')";
 				
@@ -126,6 +134,7 @@ public class Operation {
 		ps.execute();
 		
 		System.out.println("Cadastro concluído com sucesso!");
+		return true;
 	}
 	
 	/* Permitido por: Diretor */
@@ -322,27 +331,6 @@ public class Operation {
         
 	}
 
-	/* Permitido por: Diretor */
-//	public void cadastrarDisciplina() throws SQLException {
-//		InterfaceGrafica.cadastrarDisciplina();
-//		
-//		System.out.println("Digite nome da Disciplina:");
-//		nomeDisc = leitorStr.nextLine();
-//		
-//		Diretor.cadastrarDisciplina(nomeDisc);
-//		
-//		InterfaceGrafica.lineBreaker();
-//		
-//		sql = "INSERT INTO Disciplina(nm_disc) VALUES('" + nomeDisc + "')";
-//		
-//		Connection conexao = Conexao.getConnection();
-//				
-//		PreparedStatement ps = conexao.prepareStatement(sql);
-//				
-//		ps.execute();
-//		ps.close();
-//	}
-	
 	/* Permitido por: Diretor */
 	public void cadastrarSala() throws SQLException {
 		InterfaceGrafica.cadastrarSala();
@@ -785,4 +773,37 @@ public class Operation {
 		
 	}
 	
+	public boolean usuarioVoltar() {
+		Scanner leitorVoltar = new Scanner(System.in);
+		
+		String continuar = null;
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.backLogin();
+		InterfaceGrafica.separator();
+		
+		continuar = leitorVoltar.nextLine();
+			
+		switch(continuar) {
+		case "1":
+			leitorVoltar.close();
+			return true;
+			
+			
+		case "0":
+			
+			leitorVoltar.close();
+			return false;
+				
+		default:
+			
+			leitorVoltar.close();
+			return false;
+				
+		}
+		
+		
+	}
+	
+
 }

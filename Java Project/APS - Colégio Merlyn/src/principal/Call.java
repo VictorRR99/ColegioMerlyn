@@ -28,6 +28,8 @@ public class Call {
 		Scanner leitorLogin = new Scanner(System.in);
 		/* Leitor do menu */
 		Scanner leitorSelection = new Scanner(System.in);
+		/* Leitor para voltar menus*/
+		Scanner leitorVoltar = new Scanner(System.in);
 
 		// Arrumar o Método do getLista de diretor pra dar Override na de Professor
 		// Se for possivel claro
@@ -61,7 +63,7 @@ public class Call {
 
 		/* Menu Principal das Operacoes */
 		while (!repStop) {
-
+			
 			// Checagem se existe um Diretor no sistema
 			if (!checagemDiretor.isEmpty()) {
 				InterfaceGrafica.loginMode();
@@ -110,31 +112,12 @@ public class Call {
 								InterfaceGrafica.separator();
 								InterfaceGrafica.lineBreaker();
 							}else {
-								String continuar;
 								
-								System.out.println("Você deseja:");
-								InterfaceGrafica.backLogin();
-								
-								continuar = leitorSelection.next();
-								
-								switch(continuar) {
-								case "1":
-									
-									
-									break;
-								case "0":
-									
+								if(!operacao.usuarioVoltar()) {
 									isLogged = true;
 									userStop = true;
-									
-									break;
-								default:
-									
-									InterfaceGrafica.separator();
-									System.out.println("Operação selecionada não existe.");
-									InterfaceGrafica.separator();
-									
 								}
+								
 							}
 
 							if (isLogged) {
@@ -216,6 +199,8 @@ public class Call {
 
 							userCheck = call.autenticar(cpf, senha);
 
+							//Checagem de Autenticação
+							//Else para poder tirar o usuário do loop caso o mesmo deseje
 							if (userCheck == true) {
 								isLogged = true;
 
@@ -232,33 +217,10 @@ public class Call {
 								InterfaceGrafica.separator();
 								InterfaceGrafica.lineBreaker();
 							}else {
-								String continuar;
 								
-								InterfaceGrafica.separator();
-								System.out.println("Você deseja:");
-								InterfaceGrafica.separator();
-								InterfaceGrafica.backLogin();
-								
-								
-								continuar = leitorSelection.next();
-								
-								switch(continuar) {
-								case "1":
-									
-									
-									break;
-								case "0":
-									
+								if(!operacao.usuarioVoltar()) {
 									isLogged = true;
 									userStop = true;
-									
-									break;
-								default:
-									
-									InterfaceGrafica.separator();
-									System.out.println("Operação selecionada não existe.");
-									InterfaceGrafica.separator();
-									
 								}
 							}
 
@@ -353,6 +315,8 @@ public class Call {
 
 							userCheck = call.autenticar(cpf, senha);
 
+							//Checagem de Autenticação
+							//Else para poder tirar o usuário do loop caso o mesmo deseje
 							if (userCheck == true) {
 								isLogged = true;
 
@@ -365,9 +329,16 @@ public class Call {
 									break;
 								}
 							}
-							System.out.println("Bem vindo, " + userDiretor.getNome() +"!");
-							InterfaceGrafica.separator();
-							InterfaceGrafica.lineBreaker();
+								System.out.println("Bem vindo, " + userDiretor.getNome() +"!");
+								InterfaceGrafica.separator();
+								InterfaceGrafica.lineBreaker();
+							}else {
+								
+								if(!operacao.usuarioVoltar()) {
+									isLogged = true;
+									userStop = true;
+								}
+								
 						}
 
 						if(isLogged) {
@@ -446,6 +417,24 @@ public class Call {
 									operacao.deletarDiretor(userDiretor.getCpf());
 									
 									break;
+								case "1111":
+
+									InterfaceGrafica.updateAluno();
+									operacao.updateAluno();
+									
+									break;
+								case "2222":
+
+									InterfaceGrafica.updateProfessor();
+									operacao.updateProfessor();
+									
+									break;
+								case "4444":
+
+									InterfaceGrafica.updateDiretor();
+									operacao.updateDiretor();
+									
+									break;
 								case "0":
 									
 									repStop = true;
@@ -501,6 +490,8 @@ public class Call {
 		}
 		
 		leitorSelection.close();
+		leitorLogin.close();
+		leitorVoltar.close();
 		
 		operacao.closeScanners();
 			

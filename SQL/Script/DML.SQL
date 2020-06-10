@@ -50,11 +50,16 @@ SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno
 AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;
 
 -- NOME DE TODOS OS ALUNOS COM SUAS NOTAS
-SELECT cd_aluno FROM Aluno UNION SELECT cd_aluno FROM Notas;
+SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno
+UNION
+SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno RIGHT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno;
 
 -- NOME DOS ALUNOS QUE NÃO POSSUEM NOTAS
-SELECT nome FROM Aluno LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;
+SELECT Pessoa.nome FROM Pessoa
+INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.cd_pessoa
+LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;
 
 -- NOME DOS ALUNOS QUE ESTÃO ACIMA DA MÉDIA
-SELECT pessoa.nome FROM Aluno INNER JOIN Pessoa ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa
-WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);
+SELECT pessoa.nome FROM Aluno 
+INNER JOIN Pessoa ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa
+	WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);

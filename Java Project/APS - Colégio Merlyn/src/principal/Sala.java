@@ -72,12 +72,19 @@ public class Sala implements Serializable {
 	}
 	
 	static boolean checarSalaCerta(int x, String sala) {
-		String l = "" + sala.charAt(0);
-		if(l.equals(Integer.toString(x))) {
-			System.out.println("Sala errada para série escolhida!");
-			return true;
+		
+		String serieChecar = Integer.toString(x);
+		serieChecar = "" + serieChecar.charAt(0);
+		String salaChecar = "" + sala.charAt(0);
+		
+		for(Sala x1 : Sala.getLista()) {
+			if(sala.equals(x1.getSala())) {
+				if(serieChecar.equals(salaChecar))
+					return true;
+			}
 		}
 		return false;
+		
 	}
 	
 	static Sala getSalaSala(String a) {

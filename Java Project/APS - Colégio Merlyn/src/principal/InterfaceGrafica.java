@@ -115,12 +115,6 @@ public abstract class InterfaceGrafica {
 		
 	}
 	
-	public static void semDisciplina() {
-		System.out.println("Este sistema ainda não possui nenhuma Disciplina.");
-		System.out.println("Por favor cadastre uma Disciplina:");
-		
-	}
-	
 	public static void semProfessor() {
 		InterfaceGrafica.separator();
 		System.out.println("Este sistema ainda não possui nenhum Professor.");
@@ -174,18 +168,21 @@ public abstract class InterfaceGrafica {
 		
 	}
 
-	
 	public static void setNP1() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	
+	public static void updateAluno() {
+		System.out.println("Digite as novas informações para o Aluno:");		
+	}
 
-	
+	public static void updateProfessor() {
+		System.out.println("Digite as novas informações para o Professor:");		
+	}
 
-	
-
-	
+	public static void updateDiretor() {
+		System.out.println("Digite as novas informações para o Diretor:");		
+	}
 	
 }
