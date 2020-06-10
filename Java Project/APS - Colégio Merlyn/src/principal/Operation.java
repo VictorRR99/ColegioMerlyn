@@ -355,6 +355,37 @@ public class Operation {
 				
 		ps.execute();
 		ps.close();
+		
+		if(Integer.parseInt(numSala) < 6) {
+			
+			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
+					+ " ("+ Integer.parseInt("" + numSala.charAt(0)) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
+							+ "("+ Integer.parseInt(numSala) +", 9)";
+			
+			conexao = Conexao.getConnection();
+			
+			ps = conexao.prepareStatement(sql);
+			
+			ps.execute();
+			ps.close();
+			
+		}else if(Integer.parseInt("" + numSala.charAt(0)) > 5) {
+			
+			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
+					+ " ("+ Integer.parseInt(numSala) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
+					+ "("+ Integer.parseInt(numSala) +", 4), ("+ Integer.parseInt(numSala) +", 5), "
+							+ "("+ Integer.parseInt(numSala) +", 6), ("+ Integer.parseInt(numSala) +", 7), "
+									+ "("+ Integer.parseInt(numSala) +", 8), ("+ Integer.parseInt(numSala) +", 9)";
+			
+			conexao = Conexao.getConnection();
+			
+			ps = conexao.prepareStatement(sql);
+			
+			ps.execute();
+			ps.close();
+			
+		}
+		
 	}
 	
 	//Deletar Aluno
