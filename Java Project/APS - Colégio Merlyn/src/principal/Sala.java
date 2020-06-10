@@ -79,6 +79,16 @@ public class Sala implements Serializable {
 		return true;
 	}
 	
+	static Sala getSalaSala(String a) {
+		for(Sala x : listaSalas) {
+			if(x.getSala().equals(a)){
+				return x;
+			}
+		}
+		
+		return null;
+	}
+	
 	/* Método Lista */
 	
 	public static List<Sala> getLista(){
