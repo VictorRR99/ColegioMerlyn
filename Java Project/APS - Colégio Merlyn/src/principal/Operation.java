@@ -70,6 +70,7 @@ public class Operation {
 			System.out.println("Digite uma sala válida:");
 			sala = leitorStr.nextLine();
 			InterfaceGrafica.lineBreaker();
+			check = Sala.checarSalaCerta(serie, sala);
 		}
 		
 		System.out.println("Digite senha:");
