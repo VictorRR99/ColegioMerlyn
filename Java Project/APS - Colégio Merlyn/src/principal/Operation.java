@@ -12,6 +12,7 @@ import bdConnection.Conexao;
 
 public class Operation {
 
+	private static final float NULL = 0;
 	private Scanner leitorInt = new Scanner(System.in);
 	private Scanner leitorStr = new Scanner(System.in);
 	private Scanner leitorFloat = new Scanner(System.in);
@@ -558,20 +559,39 @@ public class Operation {
 	
 	public void getNP1(Aluno aluno) {
 		
+		System.out.print("Disciplina");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("NP1");
 		
 		for(Disciplina x : Disciplina.getLista()) {
-			System.out.print("Disciplina:" + x.getNomeDisc());
+			System.out.print(x.getNomeDisc());
 			InterfaceGrafica.spaceInLine();
-			System.out.print(aluno.getNP1(x.getNomeDisc()));
+			if(aluno.getNP1(x.getNomeDisc()) == NULL) {
+				System.out.println("S/Nota");
+			}else {
+				System.out.print(aluno.getNP1(x.getNomeDisc()));
+			}
+			
 		}
-		
-		
 		
 	}
 	
 	public void getNP2(Aluno aluno) {
 		
+		System.out.print("Disciplina");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("NP1");
 		
+		for(Disciplina x : Disciplina.getLista()) {
+			System.out.print(x.getNomeDisc());
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP2(x.getNomeDisc()) == NULL) {
+				System.out.println("S/Nota");
+			}else {
+				System.out.print(aluno.getNP2(x.getNomeDisc()));
+			}
+			
+		}
 		
 	}
 	
