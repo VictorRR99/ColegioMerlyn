@@ -911,6 +911,30 @@ public class Operation {
         }
 	}
 	
+	public void alunosAcimaMedia() {
+		sql = "SELECT pessoa.nome FROM Aluno \r\n" + 
+				"INNER JOIN Pessoa ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa\r\n" + 
+				"	WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);";
+        
+        String nomeAluno;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+        	
+            while(rs.next()) {
+            	nomeAluno = rs.getString(1);
+            	System.out.println("Nome: " + nomeAluno);
+            }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+	}
+	
 	/* Operação Geral */
 	public void serializeAll() {
 		Professor.serialization();
