@@ -75,9 +75,9 @@ public class Sala implements Serializable {
 		String l = "" + sala.charAt(0);
 		if(l.equals(Integer.toString(x))) {
 			System.out.println("Sala errada para série escolhida!");
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	static Sala getSalaSala(String a) {
