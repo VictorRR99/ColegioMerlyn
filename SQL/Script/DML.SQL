@@ -33,14 +33,14 @@ DROP TABLE Diretor;
 --END-- Facilitador DROP TABLE
 
 -- Facilitador DELETE
-DELETE FROM Pessoa;
-DELETE FROM Sala;
-DELETE FROM Aluno;
-DELETE FROM Notas;
-DELETE FROM Disciplina;
-DELETE FROM Sala_Disc;
-DELETE FROM Professor;
 DELETE FROM Diretor;
+DELETE FROM Professor;
+DELETE FROM Sala_Disc;
+DELETE FROM Disciplina;
+DELETE FROM Notas;
+DELETE FROM Aluno;
+DELETE FROM Sala;
+DELETE FROM Pessoa;
 --END-- Facilitador DELETE
 
 -- PESQUISAS NO SISTEMA

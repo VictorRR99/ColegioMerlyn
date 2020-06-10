@@ -14,12 +14,15 @@ public class Operation {
 
 	private Scanner leitorInt = new Scanner(System.in);
 	private Scanner leitorStr = new Scanner(System.in);
-	Scanner leitorVoltar = new Scanner(System.in);
+	private Scanner leitorFloat = new Scanner(System.in);
+	private Scanner leitorVoltar = new Scanner(System.in);
 	
 	/* Variáveis Cadastro */
-	private String nome, nomeDisc, numSala, cpf, rg, dtNasc, turno, sala, senha, sql;
+	private String nome, nomeDisc, numSala, cpf, rg, matricula, dtNasc, turno, sala, senha, sql;
 	private Disciplina disc;
 	private int serie;
+	
+	private Float np1, np2;
 	
 	/* Permitido por: Diretor */
 	public boolean cadastrarAluno() throws SQLException{
@@ -553,15 +556,76 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 	}
 	
-	public void setNP1(Professor professor) {
+	public void getNP1(Aluno aluno) {
+		
+		
+		for(Disciplina x : Disciplina.getLista()) {
+			System.out.print("Disciplina:" + x.getNomeDisc());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(aluno.getNP1(x.getNomeDisc()));
+		}
 		
 		
 		
 	}
 	
+	public void getNP2(Aluno aluno) {
+		
+		
+		
+	}
+	
+	public void getMedia() {
+		
+	}
+	
+	public void setNP1(Professor professor) {
+		
+		System.out.println("Digite a matrícula do aluno para alterar/adicionar NP1:");
+		matricula = leitorStr.nextLine();
+		
+		Aluno instanciaAluno = null;
+		
+		String mat;
+		
+		for(Aluno x : Aluno.getLista()) {
+			mat = "" + x.getMat();
+			
+			if(matricula.equals(mat)) {
+				instanciaAluno = x;
+			}
+			
+		}
+		
+		System.out.println("Digite a nota da NP1:");
+		np1 = leitorFloat.nextFloat();
+		
+		instanciaAluno.setNP1(np1, professor);
+		
+	}
+	
 	public void setNP2(Professor professor) {
 		
+		System.out.println("Digite a matrícula do aluno para alterar/adicionar NP2");
+		matricula = leitorStr.nextLine();
 		
+		Aluno instanciaAluno = null;
+		
+		String mat;
+		
+		for(Aluno x : Aluno.getLista()) {
+			mat = "" + x.getMat();
+			
+			if(matricula.equals(mat)) {
+				instanciaAluno = x;
+			}
+			
+		}
+		
+		System.out.println("Digite a nota da NP2:");
+		np2 = leitorFloat.nextFloat();
+		
+		instanciaAluno.setNP1(np2, professor);
 		
 	}
 	

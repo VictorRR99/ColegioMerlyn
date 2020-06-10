@@ -1,7 +1,5 @@
 package principal;
 
-import java.util.List;
-
 public abstract class InterfaceGrafica {
 
 	/* Criar outra Classe para fazer a leitura de entradas do teclado */
@@ -169,9 +167,20 @@ public abstract class InterfaceGrafica {
 		
 	}
 
+	public static void getNP1() {
+		System.out.println("Mostrando todas as NP1:");	
+	}
+	
+	public static void getNP2() {
+		System.out.println("Mostrando todas as NP2:");	
+	}
+	
 	public static void setNP1() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Adicionar ou alterar NP1 de um Aluno:");
+	}
+	
+	public static void setNP2() {
+		System.out.println("Adicionar ou alterar NP1 de um Aluno:");
 	}
 
 	public static void updateAluno() {
@@ -185,5 +194,8 @@ public abstract class InterfaceGrafica {
 	public static void updateDiretor() {
 		System.out.println("Digite as novas informações para o Diretor:");		
 	}
+
+	
+	
 	
 }
