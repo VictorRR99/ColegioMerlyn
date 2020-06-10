@@ -127,7 +127,6 @@ public class Operation {
 		System.out.println("Cadastro concluído com sucesso!");
 	}
 	
-	
 	/* Permitido por: Diretor */
 	public void cadastrarProfessor() throws SQLException {
 		InterfaceGrafica.cadastrarProfessor();
@@ -541,6 +540,14 @@ public class Operation {
 		
 		System.out.println("Diretor alterado com sucesso!");
 		InterfaceGrafica.lineBreaker();
+	}
+	
+	public void setNP1() {
+		
+	}
+	
+	public void setNP2() {
+		
 	}
 	
 	/* Permitido por: Diretor, Professor */
