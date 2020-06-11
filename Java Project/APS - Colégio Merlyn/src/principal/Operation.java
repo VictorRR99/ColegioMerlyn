@@ -356,7 +356,7 @@ public class Operation {
 		if(Integer.parseInt("" + numSala.charAt(0)) < 6) {
 			
 			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
-					+ " ("+ Integer.parseInt("" + numSala.charAt(0)) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
+					+ " ("+ Integer.parseInt(numSala) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
 							+ "("+ Integer.parseInt(numSala) +", 9)";
 			
 			conexao = Conexao.getConnection();
