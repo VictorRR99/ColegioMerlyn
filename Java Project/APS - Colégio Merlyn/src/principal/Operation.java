@@ -81,6 +81,11 @@ public class Operation {
 						break;
 					}
 				}
+				
+				if(serieValida) {
+					break;
+				}
+				
 				System.out.println("Serie inválida.");
 				if(!this.usuarioVoltar()) {
 					return false;
