@@ -90,6 +90,7 @@ public class Operation {
 				if(!this.usuarioVoltar()) {
 					return false;
 				}
+				System.out.println("");
 			}
 			
 			InterfaceGrafica.lineBreaker();
@@ -217,24 +218,10 @@ public class Operation {
 		boolean excecao = false;
 		try {
 			Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);	
+			SQLcommand.insertProfessor(nome, cpf, rg, dtNasc, senha, disc);
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
-		try {
-			SQLcommand.insertProfessor(nome, cpf, rg, dtNasc, senha, disc);
-		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindProfessorException();
 			InterfaceGrafica.separatorLight();
@@ -298,25 +285,9 @@ public class Operation {
 		//Inserção no Banco
 		boolean excecao = false;
 		try {
+			Diretor.cadastrarSala(numSala);
 			SQLcommand.insertSala(numSala);
 		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			
-			excecao = true;
-		}
-		
-		if(excecao) {
-			
-			return false;
-		}
-		
-		try {
-			Diretor.cadastrarSala(numSala);
-		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
@@ -386,37 +357,9 @@ public class Operation {
 		
 		//Serialização
 		//Inserção no Banco
-		boolean excecao = false;
-		try {
-			Aluno.deletarAluno(matDeleta);
+		Aluno.deletarAluno(matDeleta);
+		SQLcommand.deletarAluno(matDeleta);
 			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
-		try {
-			SQLcommand.deletarAluno(matDeleta);
-			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
 		InterfaceGrafica.lineBreaker();
 		
 		return true;
@@ -428,37 +371,10 @@ public class Operation {
 		
 		//Serialização
 		//Inserção de Dados
-		boolean excecao = false;
-		try {
-			SQLcommand.deletarProfessor(cpf);
-			
-		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
-		try {
-			Professor.deletarProfessor(cpf);
-			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
+
+		Professor.deletarProfessor(cpf);
+		SQLcommand.deletarProfessor(cpf);
+
 		return true;
         
 	}
@@ -486,38 +402,10 @@ public class Operation {
 		
 		//Serialização
 		//Inserção no Banco
-		boolean excecao = false;
-		try {	
-			SQLcommand.deletarDiretor(cpf);
-			
-		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
-		try {
-			Diretor.deletarDiretor(cpf);
-			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
+		Diretor.deletarDiretor(cpf);
+		SQLcommand.deletarDiretor(cpf);
+
 		InterfaceGrafica.lineBreaker();
-		
-		if(excecao) {
-			return false;
-		}
 		
 		return true;
 	}

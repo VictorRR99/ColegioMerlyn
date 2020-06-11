@@ -88,7 +88,6 @@ public class SQLcommand {
 		}
 	}
 
-	
 	public static void insertProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disc) throws SQLException {
 		
 		String sql;
@@ -153,8 +152,6 @@ public class SQLcommand {
 		
 	}
 
-
-	
 	@SuppressWarnings("resource")
 	public static void insertSala(String numSala) throws SQLException {
 		String sql;
@@ -200,8 +197,6 @@ public class SQLcommand {
 		
 	}
 
-
-	
 	public static void insertDiretor(String nome, String cpf, String rg, String dtNasc, String senha) throws SQLException {
 		String sql;
 		
@@ -246,8 +241,6 @@ public class SQLcommand {
 		ps.close();
 		
 	}
-
-
 
 	public static void deletarAluno(int matDeleta) throws SQLException {
 		String sql;
@@ -305,7 +298,6 @@ public class SQLcommand {
 		
 	}
 
-
 	public static void deletarProfessor(String cpf) throws SQLException {
 		String sql;
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
@@ -345,7 +337,6 @@ public class SQLcommand {
 		
 	}
 
-
 	public static void deletarDiretor(String cpf) throws SQLException {
 		String sql;
 		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = '" + cpf + "'";
@@ -384,7 +375,6 @@ public class SQLcommand {
         ps.close();
 	}
 
-
 	public static void deletarSala(String sala) throws SQLException {
 		String sql;
 		
@@ -401,6 +391,5 @@ public class SQLcommand {
 			}
 		}
 	}
-	
 	
 }
