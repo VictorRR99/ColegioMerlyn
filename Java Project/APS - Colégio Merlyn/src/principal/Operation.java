@@ -18,16 +18,15 @@ public class Operation {
 	private Scanner leitorFloat = new Scanner(System.in);
 	private Scanner leitorVoltar = new Scanner(System.in);
 	
-	/* Variáveis Cadastro */
-	private String nome, numSala, cpf, rg, matricula, dtNasc, turno, sala, senha, sql;
-	private Disciplina disc;
-	private int serie;
-	
-	private Float np1, np2;
+	private String sql;
 	
 	/* Permitido por: Diretor */
 	public boolean cadastrarAluno() throws SQLException{
 		InterfaceGrafica.cadastrarAluno();
+		
+		String nome, cpf, rg, dtNasc = null, sala, turno, senha;
+		int serie;
+		
 		
 		System.out.println("Digite nome:");
 		nome = leitorStr.nextLine();
@@ -144,6 +143,10 @@ public class Operation {
 	
 	/* Permitido por: Diretor */
 	public void cadastrarProfessor() throws SQLException {
+		
+		String nome, cpf, rg, dtNasc, senha;
+		Disciplina disc = null;
+		
 		InterfaceGrafica.cadastrarProfessor();
 		
 		System.out.println("Digite nome:");
@@ -256,6 +259,9 @@ public class Operation {
 	
 	/* Permitido por: Diretor */
 	public void cadastrarDiretor() throws SQLException {
+		
+		String nome, cpf, rg, dtNasc, senha;
+		
 		InterfaceGrafica.cadastrarDiretor();
 		
 		System.out.println("Digite nome:");
@@ -277,19 +283,6 @@ public class Operation {
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
-		
-//		/* Lidar com digitação incorreta de disciplina */
-//		// Talvez fazer um menu enumerado igual ao main
-//		System.out.println("Digite a disciplina a ser lecionada:");
-//		InterfaceGrafica.mostrarDisciplinas();
-//		String check;
-//		check = leitorStr.nextLine();
-//			
-//		for(Disciplina x : Disciplina.getLista()) {
-//			if(x.getNomeDisc().equals(check)) {
-//				disc = x;
-//			}
-//		}
 		
 		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
 		
@@ -337,7 +330,11 @@ public class Operation {
 	}
 
 	/* Permitido por: Diretor */
+	@SuppressWarnings("resource")
 	public void cadastrarSala() throws SQLException {
+		
+		String numSala;
+		
 		InterfaceGrafica.cadastrarSala();
 		
 		System.out.println("Digite numero da Sala:");
@@ -449,7 +446,12 @@ public class Operation {
 	}	
 	
 	public void deletarProfessor() throws SQLException {
+		
+		String cpf;
+		
 		cpf = leitorStr.nextLine();
+		
+		Professor.deletarProfessor(cpf);
 		
 		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
 		
@@ -489,6 +491,9 @@ public class Operation {
 	}
 	
 	public boolean deletarDiretor(String cpfDigitado) throws SQLException {
+		
+		String cpf;
+		
 		cpf = leitorStr.nextLine();
 		boolean check = true;
 		
@@ -630,6 +635,9 @@ public class Operation {
 	
 	public void setNP1(Professor professor) {
 		
+		String matricula;
+		Float np1;
+		
 		this.verAlunosDoProfessor(professor);
 		
 		System.out.println("Digite a matrícula do aluno para alterar/adicionar NP1:");
@@ -656,6 +664,9 @@ public class Operation {
 	}
 	
 	public void setNP2(Professor professor) {
+		
+		String matricula;
+		Float np2;
 		
 		this.verAlunosDoProfessor(professor);
 		
@@ -959,11 +970,15 @@ public class Operation {
 	}
 	
 	public void nomeAlunosComNota() {
-		sql = "SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
-				"UNION\r\n" + 
-				"SELECT Aluno.cd_aluno, Notas.np1, Notas.np2 FROM Aluno RIGHT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno;";
+		sql = "SELECT Aluno.cd_aluno, Disciplina.nm_disc, Notas.np1, Notas.np2 FROM Aluno\r\n" + 
+				"	LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
+				"		INNER JOIN Disciplina ON Notas.cd_disc = Disciplina.cd_disc\r\n" + 
+				"				UNION\r\n" + 
+				"SELECT Aluno.cd_aluno, Disciplina.nm_disc, Notas.np1, Notas.np2 FROM Aluno \r\n" + 
+				"	RIGHT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
+				"		INNER JOIN Disciplina ON Notas.cd_disc = Disciplina.cd_disc;";
         
-        String nomeAluno;
+        String nomeAluno, disciplina;
         
         float np1, np2;
 
@@ -973,9 +988,10 @@ public class Operation {
         	
             while(rs.next()) {
             	nomeAluno = rs.getString(1);
-            	np1 = rs.getFloat(2);
-            	np2 = rs.getFloat(3);
-            	System.out.println("Nome: " + nomeAluno + "NP1: " + np1 + "NP2: " + np2);
+            	disciplina = rs.getString(2);
+            	np1 = rs.getFloat(3);
+            	np2 = rs.getFloat(4);
+            	System.out.println("Nome: " + nomeAluno + "| Disciplina: " + disciplina + "| NP1: " + np1 + "| NP2: " + np2);
             }
             
             rs.close();

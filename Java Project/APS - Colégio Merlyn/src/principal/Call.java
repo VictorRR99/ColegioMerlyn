@@ -28,6 +28,8 @@ public class Call {
 		Scanner leitorLogin = new Scanner(System.in);
 		/* Leitor do menu */
 		Scanner leitorSelection = new Scanner(System.in);
+		/* Leitor dos Relatórios */
+		Scanner leitorRelatorios = new Scanner(System.in);
 
 		// Arrumar o Método do getLista de diretor pra dar Override na de Professor
 		// Se for possivel claro
@@ -53,9 +55,11 @@ public class Call {
 		/* Seleção nos menus */
 		String userSelect;
 		String userLogin;
+		String relatorios;
 		/* Condição de parada While */
 		boolean repStop = false;
 		boolean userStop = false;
+		boolean relatorioStop = false;
 
 		InterfaceGrafica.welcome();
 
@@ -140,13 +144,6 @@ public class Call {
 											operacao.getNP1(userAluno);
 											operacao.serializeAll();
 											
-											break;
-										case "3":
-
-//											InterfaceGrafica.getMedia();
-//											operacao.getMedia(userAluno);
-											operacao.serializeAll();
-
 											break;
 										case "0":
 
@@ -448,6 +445,52 @@ public class Call {
 									operacao.serializeAll();
 									
 									break;
+								case "8":
+									
+									
+									while(!relatorioStop) {
+										
+										InterfaceGrafica.relatoriosMenu();
+										
+										relatorios = leitorRelatorios.nextLine();
+										
+										switch(relatorios) {
+										case "1":
+											
+											operacao.alunosComMaisDeTantosAnos();
+											
+											break;
+										case "2":
+											
+											operacao.nomeAlunosComNota();
+											
+											break;
+										case "3":
+											
+											operacao.alunosSemNotas();
+											
+											break;
+										case "4":
+											
+											operacao.alunosAcimaMedia();
+											
+											break;
+										case "/":
+											
+											relatorioStop = true;
+											
+											break;
+										default:
+											
+											InterfaceGrafica.separator();
+											System.out.println("Operação selecionada não existe.");
+											InterfaceGrafica.separator();
+										
+										}
+									}
+									
+									
+									break;
 								case "0":
 									
 									repStop = true;
@@ -504,6 +547,7 @@ public class Call {
 		
 		leitorSelection.close();
 		leitorLogin.close();
+		leitorRelatorios.close();
 		
 		operacao.closeScanners();
 			

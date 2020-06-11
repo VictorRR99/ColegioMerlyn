@@ -32,6 +32,7 @@ public abstract class InterfaceGrafica {
 		System.out.println("1111 - Atualizar Aluno;");
 		System.out.println("2222 - Atualizar Professor;");
 		System.out.println("4444 - Atualizar Diretor;");
+		System.out.println("8 - Relatórios;");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
 	}
@@ -205,6 +206,14 @@ public abstract class InterfaceGrafica {
 	
 	public static void getAllNP2() {
 		System.out.println("Todas as NP2 dos seus Alunos:");
+	}
+
+	public static void relatoriosMenu() {
+		System.out.println("1 - Alunos com mais de 15 anos;");
+		System.out.println("2 - Nomes dos Alunos com nota;");
+		System.out.println("3 - Alunos sem notas;");
+		System.out.println("4 - Alunos acima da média.");
+		System.out.println("/ - Voltar.");
 	}
 
 	
