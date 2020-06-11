@@ -300,7 +300,7 @@ public class SQLcommand {
 
 	public static void deletarProfessor(String cpf) throws SQLException {
 		String sql;
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf = '" + cpf + "'";
 		
 		int cd_pessoa = 0;
 
@@ -373,23 +373,6 @@ public class SQLcommand {
         
         ps.execute();
         ps.close();
-	}
-
-	public static void deletarSala(String sala) throws SQLException {
-		String sql;
-		
-		for(Sala x : Sala.getLista()) {
-			if(x.getSala().equals(sala)) {
-				sql = "DELETE FROM Sala WHERE cd_sala =" + Integer.parseInt(sala);
-		        
-		        Connection con = Conexao.getConnection();
-		        
-		        PreparedStatement ps = con.prepareStatement(sql);
-		        
-		        ps.execute();
-		        ps.close();
-			}
-		}
 	}
 	
 }

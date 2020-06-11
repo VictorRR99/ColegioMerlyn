@@ -125,6 +125,7 @@ public class Operation {
 			
 			//Voltar
 			if(!check) {
+				System.out.println("Sala errada.");
 				if(!this.usuarioVoltar()) {
 					return false;
 				}
@@ -195,18 +196,18 @@ public class Operation {
 		String sala = leitorStr.nextLine();
 
 		
-		for(Professor x : Professor.getLista()) {
-			if(x.getCpf().equals(cpf)) {
-				x.setSala(Sala.getSalaSala(sala));
-				x.receberAlunos();
-			}
-		}
 
 		//Serialização
 		//Inserção no Banco
 		boolean excecao = false;
 		try {
 			Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);	
+			for(Professor x : Professor.getLista()) {
+				if(x.getCpf().equals(cpf)) {
+					x.setSala(Sala.getSalaSala(sala));
+					x.receberAlunos();
+				}
+			}
 			SQLcommand.insertProfessor(nome, cpf, rg, dtNasc, senha, disc);
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
@@ -852,7 +853,7 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Matricula");
 		InterfaceGrafica.spaceInLine();
-		System.out.println("CPF");
+		System.out.print("CPF");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Sala");
 		
@@ -865,7 +866,7 @@ public class Operation {
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getMat());
 			InterfaceGrafica.spaceInLine();
-			System.out.println(x.getCpf());
+			System.out.print(x.getCpf());
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getSala());
 			
@@ -890,7 +891,7 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Matricula");
 		InterfaceGrafica.spaceInLine();
-		System.out.println("CPF");
+		System.out.print("CPF");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Sala");
 		
@@ -1092,7 +1093,6 @@ public class Operation {
 		leitorVoltar.close();
 	}
 
-	
 	public void pegarDisciplinas() throws SQLException {
 		
 		Disciplina.cadastrarDisciplina("portugues");
