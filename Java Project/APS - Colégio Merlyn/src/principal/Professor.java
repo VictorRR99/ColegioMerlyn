@@ -70,6 +70,10 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 		this.sala = sala;
 	}
 	
+	void addAluno(Aluno aluno) {
+		this.getListaAluno().add(aluno);
+	}
+	
 	public static List<Professor> getLista(){
 		return listaProfessores;
 	}

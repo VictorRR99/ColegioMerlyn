@@ -132,12 +132,14 @@ public class Operation {
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
-		
+	
 		//Serialização
 		//Inserção no Banco
 		boolean excecao = false;
 		try {		
 			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+			
+
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
@@ -152,7 +154,24 @@ public class Operation {
 		}
 		
 		try {
-			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);	
+			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+			Aluno provi = null;
+			
+			for(Aluno x : Aluno.getLista()) {
+				if(x.getCpf().equals(cpf)) {
+					provi = x;
+				}
+			}	
+			
+			if(provi == null) {
+				
+			}else {
+				for(Professor x: Professor.getLista()) {
+					if(x.getSala().equals(provi.getSala())) {
+						
+					}
+				}
+			}	
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
@@ -816,10 +835,6 @@ public class Operation {
 		
 		InterfaceGrafica.separator();
 			
-	}
-	
-	public void getMedia() {
-		
 	}
 	
 	public void setNP1(Professor professor) throws SQLException {
