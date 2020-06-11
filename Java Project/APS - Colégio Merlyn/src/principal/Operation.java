@@ -377,107 +377,72 @@ public class Operation {
         
 	}
 
-	public void deletarAluno() throws SQLException {
+	public boolean deletarAluno() throws SQLException {
 		int matDeleta = leitorInt.nextInt();
 		
-		Aluno.deletarAluno(matDeleta);
+		boolean excecao = false;
+		try {
+			
+			Aluno.deletarAluno(matDeleta);
+			
+			SQLcommand.deletarAluno(matDeleta);
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+		}
 		
-		sql = "DELETE FROM Notas WHERE cd_aluno = " + matDeleta;
-		
-		Connection con = Conexao.getConnection();
-		
-		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.execute();
-		ps.close();
-		
-		sql = "SELECT pessoa_cd_pessoa FROM Aluno WHERE cd_aluno =" + matDeleta;
-		
-		int pessoa_cd_pessoa = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            pessoa_cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        con = Conexao.getConnection();
-        
-        ps = con.prepareStatement(sql);
-        
-        ps.execute();
-        ps.close();
-		
-		sql = "DELETE FROM Aluno WHERE pessoa_cd_pessoa = " + pessoa_cd_pessoa;
-		
-		con = Conexao.getConnection();
-		
-		ps = con.prepareStatement(sql);
-		
-		ps.execute();
-		ps.close();
-		
-		sql = "DELETE FROM Pessoa WHERE cd_pessoa = " + pessoa_cd_pessoa;
-		
-		con = Conexao.getConnection();
-		
-		ps = con.prepareStatement(sql);
-		
-		ps.execute();
-		ps.close();
+		if(!excecao) {
+			return true;
+		}
 		
 		InterfaceGrafica.lineBreaker();
+		return false;
 	}	
 	
-	public void deletarProfessor() throws SQLException {
+	public boolean deletarProfessor() throws SQLException {
 		
 		String cpf;
 		
 		cpf = leitorStr.nextLine();
 		
-		Professor.deletarProfessor(cpf);
+		boolean excecao = false;
+		try {
+			
+			SQLcommand.deletarProfessor(cpf);
+			
+			Professor.deletarProfessor(cpf);
+			
+			
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+		}
 		
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		if(!excecao) {
+			return true;
+		}
 		
-		int cd_pessoa = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        sql = "DELETE FROM Professor WHERE cd_pessoa =" + cd_pessoa;
-        
-        Connection con = Conexao.getConnection();
-        
-        PreparedStatement ps = con.prepareStatement(sql);
-        
-        ps.execute();
-        ps.close();
-        
-        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
-        
-        con = Conexao.getConnection();
-        
-        ps = con.prepareStatement(sql);
-        
-        ps.execute();
-        ps.close();
+		return false;
         
 	}
 	
@@ -504,45 +469,33 @@ public class Operation {
 			}
 		}
 		
+		boolean excecao = false;
+		try {
+			
+			SQLcommand.deletarDiretor(cpf);
+			
+			Diretor.deletarDiretor(cpf);
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.separatorLight();
+		}
 		
-		Diretor.deletarDiretor(cpf);
+		if(!excecao) {
+			return true;
+		}
 		
-		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = '" + cpf + "'";
-		
-		int cd_pessoa = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        sql = "DELETE FROM Diretor WHERE cd_pessoa =" + cd_pessoa;
-        
-        Connection con = Conexao.getConnection();
-        
-        PreparedStatement ps = con.prepareStatement(sql);
-        
-        ps.execute();
-        ps.close();
-        
-        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
-        
-        con = Conexao.getConnection();
-        
-        ps = con.prepareStatement(sql);
-        
-        ps.execute();
-        ps.close();
-        
-        return true;
+		InterfaceGrafica.lineBreaker();
+		return false;
 	}
 	
 	public void updateAluno() throws SQLException {

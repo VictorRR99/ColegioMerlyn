@@ -246,6 +246,143 @@ public class SQLcommand {
 		ps.close();
 		
 	}
+
+
+
+	public static void deletarAluno(int matDeleta) throws SQLException {
+		String sql;
+		
+		sql = "DELETE FROM Notas WHERE cd_aluno = " + matDeleta;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+		sql = "SELECT pessoa_cd_pessoa FROM Aluno WHERE cd_aluno =" + matDeleta;
+		
+		int pessoa_cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            pessoa_cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+		
+		sql = "DELETE FROM Aluno WHERE pessoa_cd_pessoa = " + pessoa_cd_pessoa;
+		
+		con = Conexao.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+		sql = "DELETE FROM Pessoa WHERE cd_pessoa = " + pessoa_cd_pessoa;
+		
+		con = Conexao.getConnection();
+		
+		ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+	}
+
+
+	public static void deletarProfessor(String cpf) throws SQLException {
+		String sql;
+		sql = "SELECT cd_pessoa FROM Pessoa WHERE cpf =" + cpf;
+		
+		int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        sql = "DELETE FROM Professor WHERE cd_pessoa =" + cd_pessoa;
+        
+        Connection con = Conexao.getConnection();
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+        
+        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+		
+	}
+
+
+	public static void deletarDiretor(String cpf) throws SQLException {
+		String sql;
+		sql = "SELECT Pessoa.cd_pessoa FROM Diretor INNER JOIN Pessoa ON Pessoa.cd_pessoa = Diretor.cd_pessoa AND Pessoa.cpf = '" + cpf + "'";
+		
+		int cd_pessoa = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_pessoa = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        sql = "DELETE FROM Diretor WHERE cd_pessoa =" + cd_pessoa;
+        
+        Connection con = Conexao.getConnection();
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+        
+        sql = "DELETE FROM Pessoa WHERE cd_pessoa =" + cd_pessoa;
+        
+        con = Conexao.getConnection();
+        
+        ps = con.prepareStatement(sql);
+        
+        ps.execute();
+        ps.close();
+	}
 	
 	
 }
