@@ -151,7 +151,7 @@ public class Operation {
 			}else {
 				for(Professor x: Professor.getLista()) {
 					if(x.getSala().equals(provi.getSala())) {
-						
+						x.addAluno(provi);
 					}
 				}
 			}
