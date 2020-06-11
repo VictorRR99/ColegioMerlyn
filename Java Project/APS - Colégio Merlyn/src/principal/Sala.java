@@ -31,7 +31,7 @@ public class Sala implements Serializable {
 	
 	boolean checarSalas(String a) {
 		for(int i = 0; i < listaSalas.size(); i++) {
-			if(listaSalas.get(i).getSala() == a) return true;
+			if(listaSalas.get(i).getSala().equals(a)) return true;
 		}
 		return false;
 	}

@@ -269,8 +269,10 @@ public class Operation {
 		
 		while(!serieValida) {
 			
+			String comparar = "" + numSala.charAt(0);
+			
 			for(int i = 0; i < 9; i++) {
-				if("" + numSala.charAt(0) == Integer.toString(a[i])) {
+				if(comparar.equals(Integer.toString(a[i]))) {
 					serieValida = true;
 					break;
 				}
@@ -278,13 +280,14 @@ public class Operation {
 			
 			//Voltar
 			
-			if(!this.usuarioVoltar()) {
-				return false;
+			if(!serieValida) {
+				System.out.println("Sala inválida.");
+				if(!this.usuarioVoltar()) {
+					return false;
+				}
 			}
 			
 		}
-		
-		Diretor.cadastrarSala(numSala);
 		
 		InterfaceGrafica.lineBreaker();
 		
@@ -1025,8 +1028,7 @@ public class Operation {
 		InterfaceGrafica.lineBreaker();
 		
 	}
-	
-	
+
 	/* Mostra as salas disponíveis por série*/
 	public void mostrarSalas(int serie){
 		System.out.println("Salas disponíveis pra série em questão: ");
@@ -1073,7 +1075,6 @@ public class Operation {
         
 	}
 	
-	
 	public void nomeAlunosComNota() throws IOException {
 		sql = "SELECT Aluno.cd_aluno, Disciplina.nm_disc, Notas.np1, Notas.np2 FROM Aluno\r\n" + 
 				"	LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
@@ -1117,7 +1118,6 @@ public class Operation {
         
 	}
 	
-	
 	public void alunosSemNotas() throws IOException {
 		sql = "SELECT Pessoa.nome FROM Pessoa\r\n" + 
 				"INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa\r\n" + 
@@ -1151,7 +1151,6 @@ public class Operation {
         arch.close();
         
 	}
-	
 	
 	public void alunosAcimaMedia() throws IOException {
 		sql = "SELECT pessoa.nome FROM Aluno \r\n" + 
@@ -1188,7 +1187,6 @@ public class Operation {
         arch.close();
         
 	}
-	
 	
 	/* END // Relatórios */
 	
