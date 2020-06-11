@@ -34,8 +34,7 @@ CREATE TABLE Notas (
     cd_aluno INTEGER NOT NULL,       /* [FK] */
 	cd_disc INTEGER NOT NULL,  /* [FK] */
     NP1 FLOAT,
-    NP2 FLOAT,
-	bimestre INTEGER NOT NULL
+    NP2 FLOAT
 );
 
 --CRIANDO TABELA DISCIPLINA
