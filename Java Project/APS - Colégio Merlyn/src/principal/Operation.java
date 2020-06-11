@@ -273,23 +273,10 @@ public class Operation {
 		
 		//Serialização
 		//Inserção no Banco
-		boolean excecao = false;
-		try {
-			Diretor.cadastrarSala(numSala);
-			SQLcommand.insertSala(numSala);
-		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
+
+		Diretor.cadastrarSala(numSala);
+		SQLcommand.insertSala(numSala);
+
 		return true;
 	}
 	
