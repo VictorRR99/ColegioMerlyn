@@ -27,6 +27,9 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	private int mat;
 	private String turno;
 	
+	Float[] np = new Float[2];
+	
+	
 	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
 		super(nome, cpf, rg, dtNasc, senha);
 		this.serie = serie;
@@ -34,9 +37,9 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		nmTotalMat++;
 		String matSwap = sala + "" + "" + serie + "" + nmTotalMat;
 		mat = Integer.parseInt(matSwap);
-		Float[] np = new Float[2];
-		np[0] = 0.0f;
-		np[1] = 0.0f;
+		
+		np[0] = 0f;
+		np[1] = 0f;
 		
 		if(serie < 6) {
 			disc.put("portugues", np);
