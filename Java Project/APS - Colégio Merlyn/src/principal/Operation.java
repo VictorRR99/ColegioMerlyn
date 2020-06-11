@@ -141,22 +141,9 @@ public class Operation {
 	
 		//Serialização
 		//Inserção no Banco
-		boolean excecao = false;
-		try {
-			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindAlunoException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
 		
-		if(excecao) {
-			return false;
-		}
+		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+		SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		
 		return true;
 	}
@@ -331,22 +318,9 @@ public class Operation {
 		
 		//Serialização
 		//Inserção no Banco
-		boolean excecao = false;
-		try {
-			Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
-			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
+
+		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
+		SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
 		
 		return true;
         
@@ -876,6 +850,8 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Matricula");
 		InterfaceGrafica.spaceInLine();
+		System.out.println("CPF");
+		InterfaceGrafica.spaceInLine();
 		System.out.print("Sala");
 		
 		InterfaceGrafica.lineBreaker();
@@ -886,6 +862,8 @@ public class Operation {
 			System.out.print(x.getNome());
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getMat());
+			InterfaceGrafica.spaceInLine();
+			System.out.println(x.getCpf());
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getSala());
 			
