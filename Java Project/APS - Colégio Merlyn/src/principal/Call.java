@@ -355,7 +355,9 @@ public class Call {
 								case "1":
 									
 									if(!Sala.getLista().isEmpty()) {
-										operacao.cadastrarAluno();
+										if(operacao.cadastrarAluno()) {
+											System.out.println("Cadastro concluído com sucesso!");
+										}
 										operacao.serializeAll();
 									}else {
 										InterfaceGrafica.semSala();
@@ -365,25 +367,30 @@ public class Call {
 									break;
 								case "2":
 									
-									//Colocar um IF aqui para verificar se a lista de disciplinas nï¿½o estï¿½ vazia
-									operacao.cadastrarProfessor();
+									if(operacao.cadastrarProfessor()) {
+										System.out.println("Cadastro concluído com sucesso!");
+									}
 									operacao.serializeAll();
 									
 									break;
 								case "3":
 									
-									operacao.cadastrarSala();
+									if(operacao.cadastrarSala()) {
+										System.out.println("Cadastro concluído com sucesso!");
+									}
 									operacao.serializeAll();
 									
 									break;
 								case "4":
 									
-									operacao.cadastrarDiretor();
+									if(operacao.cadastrarDiretor()) {
+										System.out.println("Cadastro concluído com sucesso!");
+									}
 									operacao.serializeAll();
 									
 									break;
 								case "11":
-									
+								
 									operacao.verAlunos();
 									
 									break;
