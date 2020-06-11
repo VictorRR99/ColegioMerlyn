@@ -34,22 +34,25 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		nmTotalMat++;
 		String matSwap = sala + "" + "" + serie + "" + nmTotalMat;
 		mat = Integer.parseInt(matSwap);
+		Float[] np = new Float[2];
+		np[0] = 0.0f;
+		np[1] = 0.0f;
 		
 		if(serie < 6) {
-			disc.put("portugues", new Float[2]);
-			disc.put("matematica", new Float[2]);
-			disc.put("educacao fisica", new Float[2]);
-			disc.put("arte", new Float[2]);
+			disc.put("portugues", np);
+			disc.put("matematica", np);
+			disc.put("educacao fisica", np);
+			disc.put("arte", np);
 		}else if(serie > 5) {
-			disc.put("portugues", new Float[2]);
-			disc.put("matematica", new Float[2]);
-			disc.put("educacao fisica", new Float[2]);
-			disc.put("ciencia", new Float[2]);
-			disc.put("ingles", new Float[2]);
-			disc.put("filosofia", new Float[2]);
-			disc.put("geografia", new Float[2]);
-			disc.put("historia", new Float[2]);
-			disc.put("arte", new Float[2]);
+			disc.put("portugues", np);
+			disc.put("matematica", np);
+			disc.put("educacao fisica", np);
+			disc.put("ciencia", np);
+			disc.put("ingles", np);
+			disc.put("filosofia", np);
+			disc.put("geografia", np);
+			disc.put("historia", np);
+			disc.put("arte", np);
 		}
 		for(Sala x : Sala.getLista()) {
 			if(sala.equals(x.getSala())) {
