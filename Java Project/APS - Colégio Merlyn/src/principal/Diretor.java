@@ -127,18 +127,6 @@ public class Diretor extends Pessoa implements Serializable, Autenticacao {
 		return false;
 	}
 	
-	public static boolean cadastrarAlunoFundamental2(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) throws SQLException {
-
-		if("" + sala.charAt(0) == Integer.toString(serie)) {
-			System.out.println("Sala errada para série escolhida!");
-			return true;
-		}
-		
-		Aluno.colocarNaLista(new AlunoFundamental2(nome, cpf, rg, dtNasc, serie, turno, sala, senha));
-		
-		return false;
-	}
-	
 	/* Cadastro Aluno */
 	
 	public static void cadastrarProfessor(String nome, String cpf, String rg, String dtNasc, String senha, Disciplina disciplina) throws SQLException {
