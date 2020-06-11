@@ -131,11 +131,19 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	float getNP1(String a) {
 		Float[] x = disc.get(a);
 		
+		if(x[0].equals(null)) {
+			return 0;
+		}
+		
 		return x[0];
 	}
 	
 	float getNP2(String a) {
 		Float[] x = disc.get(a);
+		
+		if(x[1].equals(null)) {
+			return 0;
+		}
 		
 		return x[1];
 	}
