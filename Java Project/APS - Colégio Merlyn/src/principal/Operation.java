@@ -596,6 +596,8 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("NP1");
 		
+		InterfaceGrafica.lineBreaker();
+		
 		for(Disciplina x : Disciplina.getLista()) {
 			System.out.print(x.getNomeDisc());
 			InterfaceGrafica.spaceInLine();
@@ -606,6 +608,7 @@ public class Operation {
 				System.out.print(aluno.getNP1(x.getNomeDisc()));
 			}
 			
+			InterfaceGrafica.lineBreaker();
 		}
 		
 	}
@@ -625,6 +628,8 @@ public class Operation {
 			}else {
 				System.out.print(aluno.getNP2(x.getNomeDisc()));
 			}
+			
+			InterfaceGrafica.lineBreaker();
 			
 		}
 		
@@ -1072,7 +1077,7 @@ public class Operation {
 		
 		Disciplina.cadastrarDisciplina("portugues");
 		Disciplina.cadastrarDisciplina("matematica");
-		Disciplina.cadastrarDisciplina("educacao Fisica");
+		Disciplina.cadastrarDisciplina("educacao fisica");
 		Disciplina.cadastrarDisciplina("ciencia");
 		Disciplina.cadastrarDisciplina("ingles");
 		Disciplina.cadastrarDisciplina("filosofia");
