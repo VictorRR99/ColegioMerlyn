@@ -136,6 +136,33 @@ public class Operation {
 				
 		ps.execute();
 		
+		if(serie < 6) {
+			sql = "INSERT INTO Notas(cd_aluno, cd_disc) VALUES("+ matProvi +", 1), ("+ matProvi +", 2), ("+ matProvi +", 3), "
+					+ "("+ matProvi +", 9)";
+			
+			conexao = Conexao.getConnection();
+			
+			ps = conexao.prepareStatement(sql);
+			
+			ps.execute();
+			ps.cancel();
+			
+		}else if(serie > 5) {
+			
+			sql = "INSERT INTO Notas(cd_aluno, cd_disc) VALUES("+ matProvi +", 1), ("+ matProvi +", 2), ("+ matProvi +", 3), "
+					+ "("+ matProvi +", 4), ("+ matProvi +", 5), ("+ matProvi +",6), ("+ matProvi +",7), "
+							+ "("+ matProvi +",8), ("+ matProvi +",9)";
+			
+			conexao = Conexao.getConnection();
+			
+			ps = conexao.prepareStatement(sql);
+			
+			ps.execute();
+			ps.cancel();
+			
+		}
+		
+		
 		System.out.println("Cadastro concluído com sucesso!");
 		return true;
 	}
@@ -728,7 +755,7 @@ public class Operation {
 		
 	}
 	
-	public void setNP1(Professor professor) {
+	public void setNP1(Professor professor) throws SQLException {
 		
 		String matricula;
 		Float np1;
@@ -756,9 +783,35 @@ public class Operation {
 		
 		instanciaAluno.setNP1(np1, professor);
 		
+		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = " + professor.getDisc()+"'";
+		
+		int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+		
+		sql = "UPDATE Notas SET NP1 = " + np1 + "WHERE cd_aluno = " + instanciaAluno.getMat() + " AND cd_disc = " + cd_disc;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
 	}
 	
-	public void setNP2(Professor professor) {
+	public void setNP2(Professor professor) throws SQLException {
 		
 		String matricula;
 		Float np2;
@@ -785,6 +838,32 @@ public class Operation {
 		np2 = leitorFloat.nextFloat();
 		
 		instanciaAluno.setNP2(np2, professor);
+		
+		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = '" + professor.getDisc() +"'";
+		
+		int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+		
+		sql = "UPDATE Notas SET NP2 = " + np2 + "WHERE cd_aluno = " + instanciaAluno.getMat() + " AND cd_disc = " + cd_disc;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
 		
 	}
 	
