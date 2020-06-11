@@ -143,23 +143,7 @@ public class Operation {
 		boolean excecao = false;
 		try {
 			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-			Aluno provi = null;
-			
-			for(Aluno x : Aluno.getLista()) {
-				if(x.getCpf().equals(cpf)) {
-					provi = x;
-				}
-			}	
-			
-			if(provi == null) {
-				
-			}else {
-				for(Professor x: Professor.getLista()) {
-					if(x.getSala().equals(provi.getSala())) {
-						x.addAluno(provi);
-					}
-				}
-			}	
+			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
@@ -170,23 +154,6 @@ public class Operation {
 		}
 		
 		if(excecao) {
-			return false;
-		}
-		
-		try {		
-			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindAlunoException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			//Delete
 			return false;
 		}
 		
@@ -396,7 +363,7 @@ public class Operation {
 		boolean excecao = false;
 		try {
 			Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
-			
+			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
@@ -409,24 +376,6 @@ public class Operation {
 		if(excecao) {
 			return false;
 		}
-		
-		try {
-			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
-			
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
-			return false;
-		}
-		
-		
 		
 		return true;
         
