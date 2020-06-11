@@ -124,10 +124,12 @@ public class Operation {
 			check = Sala.checarSalaCerta(serie, sala);
 			
 			//Voltar
-			
-			if(!this.usuarioVoltar()) {
-				return false;
+			if(!check) {
+				if(!this.usuarioVoltar()) {
+					return false;
+				}
 			}
+			
 			
 		}
 		
