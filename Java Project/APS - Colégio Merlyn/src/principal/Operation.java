@@ -187,6 +187,13 @@ public class Operation {
 		}
 		
 		if(excecao) {
+			int y = 0;
+			for(Aluno x : Aluno.getLista()){
+				if(x.getCpf().equals(cpf)) {
+					y = x.getMat();
+				}
+			}
+			SQLcommand.deletarAluno(y);
 			return false;
 		}
 		
@@ -275,6 +282,7 @@ public class Operation {
 		}
 		
 		if(excecao) {
+			SQLcommand.deletarProfessor(cpf);
 			return false;
 		}
 		
@@ -331,6 +339,21 @@ public class Operation {
 		//Inserção no Banco
 		boolean excecao = false;
 		try {
+			Diretor.cadastrarSala(numSala);
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
+			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
 			SQLcommand.insertSala(numSala);
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
@@ -343,21 +366,7 @@ public class Operation {
 		}
 		
 		if(excecao) {
-			return false;
-		}
-		
-		try {
-			Diretor.cadastrarSala(numSala);
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindProfessorException();
-			InterfaceGrafica.separatorLight();
-			excecao = true;
-		}
-		
-		if(excecao) {
+			
 			return false;
 		}
 		
@@ -396,7 +405,7 @@ public class Operation {
 		try {
 			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
 			
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
@@ -405,7 +414,7 @@ public class Operation {
 			excecao = true;
 		}
 		
-		if(!excecao) {
+		if(excecao) {
 			return false;
 		}
 		
@@ -422,6 +431,7 @@ public class Operation {
 		}
 		
 		if(excecao) {
+			SQLcommand.deletarDiretor(cpf);
 			return false;
 		}
 		

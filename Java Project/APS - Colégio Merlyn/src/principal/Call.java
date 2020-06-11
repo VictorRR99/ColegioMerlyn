@@ -555,7 +555,9 @@ public class Call {
 				InterfaceGrafica.semDiretor();
 				InterfaceGrafica.separator();
 					
-				operacao.cadastrarDiretor();
+				if(operacao.cadastrarDiretor()) {
+					System.out.println("Cadastro concluído com sucesso!");
+				}
 					
 				/*Serializar*/
 				operacao.serializeAll();
