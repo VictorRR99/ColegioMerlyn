@@ -592,47 +592,136 @@ public class Operation {
 	
 	public void getNP1(Aluno aluno) {
 		
+		InterfaceGrafica.separator();
 		System.out.print("Disciplina");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("NP1");
 		
 		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.lineBreaker();
 		
-		for(Disciplina x : Disciplina.getLista()) {
-			System.out.print(x.getNomeDisc());
-			InterfaceGrafica.spaceInLine();
+		if(aluno.getSerie() > 5) {
 			
-			if(aluno.getNP1(x.getNomeDisc()) == 0) {
-				System.out.println("S/Nota");
-			}else {
-				System.out.print(aluno.getNP1(x.getNomeDisc()));
+			for(Disciplina x : Disciplina.getLista()) {
+				System.out.print(x.getNomeDisc());
+				InterfaceGrafica.spaceInLine();
+			
+				if(aluno.getNP1(x.getNomeDisc()) == 0) {
+					System.out.print("SemNota");
+				}else {
+					System.out.print(aluno.getNP1(x.getNomeDisc()));
+				}
+			
+				InterfaceGrafica.lineBreaker();
 			}
+		
+		}else {
+			System.out.print("portugues");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP1("portugues") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP1("portugues"));
+			}
+			InterfaceGrafica.lineBreaker();
 			
+			System.out.print("matematica");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP1("matematica") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP1("matematica"));
+			}
+			InterfaceGrafica.lineBreaker();
+			
+			System.out.print("educacao fisica");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP1("educacao fisica") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP1("educacao fisica"));
+			}
+			InterfaceGrafica.lineBreaker();
+			
+			System.out.print("arte");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP1("arte") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP1("arte"));
+			}
 			InterfaceGrafica.lineBreaker();
 		}
 		
+		InterfaceGrafica.separator();
+			
 	}
 	
 	public void getNP2(Aluno aluno) {
 		
+		InterfaceGrafica.separator();
 		System.out.print("Disciplina");
 		InterfaceGrafica.spaceInLine();
 		System.out.print("NP2");
 		
-		for(Disciplina x : Disciplina.getLista()) {
-			System.out.print(x.getNomeDisc());
-			InterfaceGrafica.spaceInLine();
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.lineBreaker();
+		
+		if(aluno.getSerie() > 5) {
 			
-			if(aluno.getNP2(x.getNomeDisc()) == 0) {
-				System.out.println("S/Nota");
-			}else {
-				System.out.print(aluno.getNP2(x.getNomeDisc()));
+			for(Disciplina x : Disciplina.getLista()) {
+				System.out.print(x.getNomeDisc());
+				InterfaceGrafica.spaceInLine();
+			
+				if(aluno.getNP2(x.getNomeDisc()) == 0) {
+					System.out.print("SemNota");
+				}else {
+					System.out.print(aluno.getNP2(x.getNomeDisc()));
+				}
+			
+				InterfaceGrafica.lineBreaker();
 			}
-			
+		
+		}else {
+			System.out.print("portugues");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP2("portugues") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP2("portugues"));
+			}
 			InterfaceGrafica.lineBreaker();
 			
+			System.out.print("matematica");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP2("matematica") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP2("matematica"));
+			}
+			InterfaceGrafica.lineBreaker();
+			
+			System.out.print("educacao fisica");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP2("educacao fisica") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP2("educacao fisica"));
+			}
+			InterfaceGrafica.lineBreaker();
+			
+			System.out.print("arte");
+			InterfaceGrafica.spaceInLine();
+			if(aluno.getNP2("arte") == 0) {
+				System.out.print("SemNota");
+			}else {
+				System.out.print(aluno.getNP2("arte"));
+			}
+			InterfaceGrafica.lineBreaker();
 		}
 		
+		InterfaceGrafica.separator();
+			
 	}
 	
 	public void getMedia() {

@@ -141,7 +141,7 @@ public class Call {
 										case "2":
 
 											InterfaceGrafica.getNP1();
-											operacao.getNP1(userAluno);
+											operacao.getNP2(userAluno);
 											operacao.serializeAll();
 											
 											break;
