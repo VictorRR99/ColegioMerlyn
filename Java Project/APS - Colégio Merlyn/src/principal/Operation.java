@@ -59,49 +59,40 @@ public class Operation {
 		}
 		
 		//Exception da serie
-		try {
-			System.out.println("Digite serie:");
-			InterfaceGrafica.mostrarSerie();
+		System.out.println("Digite serie:");
+		InterfaceGrafica.mostrarSerie();
 			
-			boolean serieValida = false;
-			int a[] = new int[9];
-			int numSerie=1;
+		boolean serieValida = false;
+		int a[] = new int[9];
+		int numSerie=1;
 			
-			for(int i=0; i<9; i++) {
-				a[i] = numSerie;
-				numSerie++;
-			}
+		for(int i=0; i<9; i++) {
+			a[i] = numSerie;
+			numSerie++;
+		}
 			
 			
-			while(!serieValida) {
-				serie = leitorInt.nextInt();
-				for(int i = 0; i<9; i++) {
-					if(serie == a[i]) {
-						serieValida = true;
-						break;
-					}
-				}
-				
-				if(serieValida) {
+		while(!serieValida) {
+			serie = leitorInt.nextInt();
+			for(int i = 0; i<9; i++) {
+				if(serie == a[i]) {
+					serieValida = true;
 					break;
 				}
-				
-				System.out.println("Serie inválida.");
-				if(!this.usuarioVoltar()) {
-					return false;
-				}
-				System.out.println("");
 			}
-			
-			InterfaceGrafica.lineBreaker();
-		}catch(Exception e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro inesperado.");
-			System.out.println("Por favor, tente novamente, serie deve ser somente números.");
-			InterfaceGrafica.separatorLight();
-			
+				
+			if(serieValida) {
+				break;
+			}
+				
+		System.out.println("Serie inválida.");
+		if(!this.usuarioVoltar()) {
 			return false;
 		}
+		System.out.println("");
+		}
+			
+		InterfaceGrafica.lineBreaker();
 		
 		
 		InterfaceGrafica.mostrarSalas(serie);
