@@ -19,7 +19,7 @@ public class Disciplina implements Serializable {
 	
 	Disciplina(String nomeDisc){
 //		Apenas teste, talvez remover depois
-		if(this.checaDuplicata(nomeDisc)) {
+		if(Disciplina.checaDuplicata(nomeDisc)) {
 			System.out.println("Disciplina já existe! >:(");
 		}
 		else {

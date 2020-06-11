@@ -140,6 +140,7 @@ public class Professor extends Pessoa implements Serializable, Autenticacao {
 	}
 	
 	//Destroi Professor
+	@SuppressWarnings("unlikely-arg-type")
 	static void deletarProfessor(String cpf) {
 		for(Professor x : Professor.getLista()) {
 			if(x.getCpf().equals(cpf)) {
