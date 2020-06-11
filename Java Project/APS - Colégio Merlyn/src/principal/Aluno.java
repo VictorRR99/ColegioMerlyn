@@ -17,7 +17,7 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 
 	private static List<Aluno> listaAlunos =  new ArrayList<>();
 	
-	private Map<String, Float[]> disc = new HashMap<String, Float[]>();
+	protected Map<String, Float[]> disc = new HashMap<String, Float[]>();
 	
 	private static int nmTotalMat;
 	
@@ -26,7 +26,11 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 	private int mat;
 	private String turno;
 	
-	Float[] np = new Float[2];
+	private Float[] port = new Float[2];
+	private Float[] mtm = new Float[2];
+	private Float[] edf = new Float[2];
+	private Float[] arte = new Float[2];
+	
 	
 	
 	Aluno(String nome, String cpf, String rg, String dtNasc, int serie, String turno, String sala, String senha) {
@@ -37,25 +41,23 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		String matSwap = sala + "" + "" + serie + "" + nmTotalMat;
 		mat = Integer.parseInt(matSwap);
 		
-		np[0] = 0f;
-		np[1] = 0f;
+		port[0] = 0f;
+		port[1] = 0f;
 		
-		if(serie < 6) {
-			disc.put("portugues", np);
-			disc.put("matematica", np);
-			disc.put("educacao fisica", np);
-			disc.put("arte", np);
-		}else if(serie > 5) {
-			disc.put("portugues", np);
-			disc.put("matematica", np);
-			disc.put("educacao fisica", np);
-			disc.put("ciencia", np);
-			disc.put("ingles", np);
-			disc.put("filosofia", np);
-			disc.put("geografia", np);
-			disc.put("historia", np);
-			disc.put("arte", np);
-		}
+		mtm[0] = 0f;
+		mtm[0] = 0f;
+		
+		edf[0] = 0f;
+		edf[1] = 0f;
+		
+		arte[0] = 0f;
+		arte[1] = 0f;
+		
+			disc.put("portugues", port);
+			disc.put("matematica", mtm);
+			disc.put("educacao fisica", edf);
+			disc.put("arte", arte);
+			
 		for(Sala x : Sala.getLista()) {
 			if(sala.equals(x.getSala())) {
 				x.addAluno(this);
