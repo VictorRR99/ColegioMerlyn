@@ -58,6 +58,7 @@ public class Operation {
 			}
 		}
 		
+		//Exception da serie
 		try {
 			System.out.println("Digite serie:");
 			InterfaceGrafica.mostrarSerie();
@@ -131,13 +132,29 @@ public class Operation {
 		System.out.println("Digite senha:");
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
-		
+	
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
-		try {
-			
+		try {		
 			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 			
+
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindAlunoException();
+			InterfaceGrafica.separatorLight();
+			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
 			Aluno provi = null;
 			
 			for(Aluno x : Aluno.getLista()) {
@@ -154,30 +171,21 @@ public class Operation {
 						x.addAluno(provi);
 					}
 				}
-			}
-			
-		}catch(SQLException e) {
-			InterfaceGrafica.separatorLight();
-			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
-			System.out.println("Por favor, tente novamente.");
-			InterfaceGrafica.remindAlunoException();
-			InterfaceGrafica.separatorLight();
-			
-			excecao = true;
+			}	
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindAlunoException();
 			InterfaceGrafica.separatorLight();
+			excecao = true;
 		}
 		
-		if(!excecao) {
-			System.out.println("Cadastro concluído com sucesso!");
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public boolean cadastrarProfessor() throws SQLException {
@@ -232,21 +240,26 @@ public class Operation {
 			}
 		}
 
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
 		try {
-			
 			SQLcommand.insertProfessor(nome, cpf, rg, dtNasc, senha, disc);
-			
-			Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
-			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindProfessorException();
 			InterfaceGrafica.separatorLight();
-			
 			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);	
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
@@ -256,12 +269,11 @@ public class Operation {
 			excecao = true;
 		}
 		
-		if(!excecao) {
-			System.out.println("Cadastro concluído com sucesso!");
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
-		return false;
+		return true;
 		
 	}
 	
@@ -310,13 +322,11 @@ public class Operation {
 
 		InterfaceGrafica.lineBreaker();
 		
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
 		try {
-			
 			SQLcommand.insertSala(numSala);
-			
-			Diretor.cadastrarSala(numSala);
-			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
@@ -325,20 +335,28 @@ public class Operation {
 			InterfaceGrafica.separatorLight();
 			
 			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Diretor.cadastrarSala(numSala);
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindProfessorException();
 			InterfaceGrafica.separatorLight();
+			excecao = true;
 		}
 		
-		if(!excecao) {
-			System.out.println("Cadastro concluído com sucesso!");
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public boolean cadastrarDiretor() throws SQLException {
@@ -367,12 +385,11 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
 		try {
-			
 			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
-			
-			Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
 			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
@@ -380,101 +397,120 @@ public class Operation {
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindProfessorException();
 			InterfaceGrafica.separatorLight();
-			
 			excecao = true;
+		}
+		
+		if(!excecao) {
+			return false;
+		}
+		
+		try {
+			Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
+			
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.remindProfessorException();
 			InterfaceGrafica.separatorLight();
+			excecao = true;
 		}
 		
-		if(!excecao) {
-			System.out.println("Cadastro concluído com sucesso!");
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
-		return false;
+		return true;
         
 	}
 
 	public boolean deletarAluno() throws SQLException {
 		int matDeleta = leitorInt.nextInt();
 		
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
 		try {
-			
-			Aluno.deletarAluno(matDeleta);
-			
 			SQLcommand.deletarAluno(matDeleta);
 			
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
-			
 			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Aluno.deletarAluno(matDeleta);
+			
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
+			excecao = true;
 		}
 		
-		if(!excecao) {
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
 		InterfaceGrafica.lineBreaker();
-		return false;
+		
+		return true;
 	}	
 	
 	public boolean deletarProfessor() throws SQLException {
-		
 		String cpf;
-		
 		cpf = leitorStr.nextLine();
 		
+		//Serialização
+		//Inserção de Dados
 		boolean excecao = false;
 		try {
-			
 			SQLcommand.deletarProfessor(cpf);
-			
-			Professor.deletarProfessor(cpf);
-			
-			
 			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
-			
 			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Professor.deletarProfessor(cpf);
+			
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
+			excecao = true;
 		}
 		
-		if(!excecao) {
-			return true;
+		if(excecao) {
+			return false;
 		}
 		
-		return false;
+		return true;
         
 	}
 	
 	public boolean deletarDiretor(String cpfDigitado) throws SQLException {
-		
 		String cpf;
-		
 		cpf = leitorStr.nextLine();
-		boolean check = true;
 		
+		boolean check = true;
 		while(check) {
 			if(cpfDigitado.equals(cpf)) {
 				System.out.println("Você não pode se deletar!");
@@ -491,33 +527,42 @@ public class Operation {
 			}
 		}
 		
+		//Serialização
+		//Inserção no Banco
 		boolean excecao = false;
-		try {
-			
+		try {	
 			SQLcommand.deletarDiretor(cpf);
-			
-			Diretor.deletarDiretor(cpf);
 			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
-			
 			excecao = true;
+		}
+		
+		if(excecao) {
+			return false;
+		}
+		
+		try {
+			Diretor.deletarDiretor(cpf);
+			
 		}catch(Exception e) {
 			InterfaceGrafica.separatorLight();
 			System.out.println("Ocorreu um erro inesperado.");
 			System.out.println("Por favor, tente novamente.");
 			InterfaceGrafica.separatorLight();
-		}
-		
-		if(!excecao) {
-			return true;
+			excecao = true;
 		}
 		
 		InterfaceGrafica.lineBreaker();
-		return false;
+		
+		if(excecao) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public void updateAluno() throws SQLException {
@@ -548,6 +593,7 @@ public class Operation {
 		System.out.println("Digite o CPF do Diretor que deseja alterar:");
 		String a = null;
 		this.deletarDiretor(a);
+		
 		InterfaceGrafica.lineBreaker();
 		
 		this.cadastrarDiretor();
