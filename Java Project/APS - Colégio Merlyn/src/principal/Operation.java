@@ -136,8 +136,25 @@ public class Operation {
 		try {
 			
 			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-			
 			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+			
+			Aluno provi = null;
+			
+			for(Aluno x : Aluno.getLista()) {
+				if(x.getCpf().equals(cpf)) {
+					provi = x;
+				}
+			}	
+			
+			if(provi == null) {
+				
+			}else {
+				for(Professor x: Professor.getLista()) {
+					if(x.getSala().equals(provi.getSala())) {
+						
+					}
+				}
+			}
 			
 		}catch(SQLException e) {
 			InterfaceGrafica.separatorLight();
@@ -772,10 +789,6 @@ public class Operation {
 		
 		InterfaceGrafica.separator();
 			
-	}
-	
-	public void getMedia() {
-		
 	}
 	
 	public void setNP1(Professor professor) throws SQLException {

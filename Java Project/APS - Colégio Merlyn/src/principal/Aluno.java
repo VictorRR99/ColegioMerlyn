@@ -108,6 +108,10 @@ public class Aluno extends Pessoa implements Serializable, Autenticacao {
 		
 	}
 	
+	Aluno getAluno() {
+		return this;
+	}
+	
 	/* Autenticação */
 	
 	@Override
