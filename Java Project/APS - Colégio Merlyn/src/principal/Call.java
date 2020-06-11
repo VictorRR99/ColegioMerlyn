@@ -1,12 +1,13 @@
 package principal;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Call {
 	
-	public static void main(final String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(final String[] args) throws ClassNotFoundException, SQLException, IOException {
 
 		/* Principal */
 

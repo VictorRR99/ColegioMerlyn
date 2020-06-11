@@ -1,5 +1,8 @@
 package principal;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1041,20 +1044,27 @@ public class Operation {
 	
 	/* Relatórios */
 	
-	public void alunosComMaisDeTantosAnos() {
+	public void alunosComMaisDeTantosAnos() throws IOException {
 		sql = "SELECT Pessoa.nome FROM Pessoa INNER JOIN Aluno ON Aluno.pessoa_cd_pessoa = Pessoa.cd_pessoa \r\n" + 
 				"AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;";
         
         String nomeAlunoMaior;
 
+        FileWriter arch = new FileWriter("Relatorio_1.txt");
+        PrintWriter WriteArch = new PrintWriter(arch);
+        
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
         	
+        	System.out.println("O resultado é:");
+        	InterfaceGrafica.separator();
             while(rs.next()) {
             	nomeAlunoMaior = rs.getString(1);
             	System.out.println("Nome: " + nomeAlunoMaior);
+            	WriteArch.write("Nome: " + nomeAlunoMaior + "\n");
             }
+            InterfaceGrafica.separator();
             
             rs.close();
             stmt.close();
@@ -1062,9 +1072,13 @@ public class Operation {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        arch.close();
+        
 	}
 	
-	public void nomeAlunosComNota() {
+	
+	public void nomeAlunosComNota() throws IOException {
 		sql = "SELECT Aluno.cd_aluno, Disciplina.nm_disc, Notas.np1, Notas.np2 FROM Aluno\r\n" + 
 				"	LEFT OUTER JOIN Notas ON Aluno.cd_aluno = Notas.cd_aluno\r\n" + 
 				"		INNER JOIN Disciplina ON Notas.cd_disc = Disciplina.cd_disc\r\n" + 
@@ -1075,19 +1089,26 @@ public class Operation {
         
         String nomeAluno, disciplina;
         
+        FileWriter arch = new FileWriter("Relatorio_2.txt");
+        PrintWriter WriteArch = new PrintWriter(arch);
+        
         float np1, np2;
 
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
         	
+        	System.out.println("O resultado é:");
+        	InterfaceGrafica.separator();
             while(rs.next()) {
             	nomeAluno = rs.getString(1);
             	disciplina = rs.getString(2);
             	np1 = rs.getFloat(3);
             	np2 = rs.getFloat(4);
             	System.out.println("Nome: " + nomeAluno + "| Disciplina: " + disciplina + "| NP1: " + np1 + "| NP2: " + np2);
+            	WriteArch.write("Nome: " + nomeAluno + "| Disciplina: " + disciplina + "| NP1: " + np1 + "| NP2: " + np2 + "\n");
             }
+            InterfaceGrafica.separator();
             
             rs.close();
             stmt.close();
@@ -1095,23 +1116,34 @@ public class Operation {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        arch.close();
+        
 	}
 	
-	public void alunosSemNotas() {
+	
+	public void alunosSemNotas() throws IOException {
 		sql = "SELECT Pessoa.nome FROM Pessoa\r\n" + 
 				"INNER JOIN Aluno ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa\r\n" + 
 				"LEFT JOIN Notas ON NP1 = NULL OR NP2 = NULL;";
         
         String nomeAluno;
+        
+        FileWriter arch = new FileWriter("Relatorio_3.txt");
+        PrintWriter WriteArch = new PrintWriter(arch);
 
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
         	
+        	System.out.println("O resultado é:");
+        	InterfaceGrafica.separator();
             while(rs.next()) {
             	nomeAluno = rs.getString(1);
             	System.out.println("Nome: " + nomeAluno);
+            	WriteArch.write("Nome: " + nomeAluno + "\n");
             }
+            InterfaceGrafica.separator();
             
             rs.close();
             stmt.close();
@@ -1119,23 +1151,35 @@ public class Operation {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        arch.close();
+        
 	}
 	
-	public void alunosAcimaMedia() {
+	
+	public void alunosAcimaMedia() throws IOException {
 		sql = "SELECT pessoa.nome FROM Aluno \r\n" + 
 				"INNER JOIN Pessoa ON Pessoa.cd_pessoa = Aluno.pessoa_cd_pessoa\r\n" + 
 				"	WHERE cd_aluno = (SELECT cd_aluno FROM Notas WHERE (NP1 + NP2)/2 >= 7);";
         
         String nomeAluno;
 
+        FileWriter arch = new FileWriter("Relatorio_4.txt");
+        PrintWriter WriteArch = new PrintWriter(arch);
+        
         try (Connection conn = Conexao.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
         	
+        	System.out.println("O resultado é:");
+        	InterfaceGrafica.separator();
             while(rs.next()) {
             	nomeAluno = rs.getString(1);
+            	
             	System.out.println("Nome: " + nomeAluno);
+            	WriteArch.write("Nome: " + nomeAluno + "\n");
             }
+            InterfaceGrafica.separator();
             
             rs.close();
             stmt.close();
@@ -1143,7 +1187,12 @@ public class Operation {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        
+        arch.close();
+        
 	}
+	
 	
 	/* END // Relatórios */
 	
@@ -1156,12 +1205,14 @@ public class Operation {
 		Disciplina.serialization();
 	}
 
+	
 	public void closeScanners() {
 		leitorInt.close();
 		leitorStr.close();
 		leitorVoltar.close();
 	}
 
+	
 	public void pegarDisciplinas() throws SQLException {
 		
 		Disciplina.cadastrarDisciplina("portugues");
@@ -1184,6 +1235,7 @@ public class Operation {
 		ps.close();
 		
 	}
+	
 	
 	public boolean usuarioVoltar() {
 		

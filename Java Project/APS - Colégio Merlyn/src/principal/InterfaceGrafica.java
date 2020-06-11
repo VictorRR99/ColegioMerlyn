@@ -9,83 +9,114 @@ public abstract class InterfaceGrafica {
 	}
 	
 	public static void loginMode() {
+		System.out.println("{}----------{}");
 		System.out.println("Você deseja entrar como:");
 		System.out.println("1 - Aluno");
 		System.out.println("2 - Professor");
 		System.out.println("3 - Diretor");
 		System.out.println("0 - Sair do Sistema");
+		System.out.println("{}----------{}");
 	}
 	
 	public static void operationsDiretor() {
+		System.out.println("{}----------{}");
 		System.out.println("1 - Cadastrar Aluno;");
 		System.out.println("2 - Cadastrar Professor;");
 		System.out.println("3 - Cadastrar Sala;");
 		System.out.println("4 - Cadastrar Diretor;");
+		System.out.println("--------------");
 		System.out.println("11 - Ver todos os Alunos;");
 		System.out.println("22 - Ver todos os Professores;");
 		System.out.println("33 - Ver todos as Salas;");
 		System.out.println("44 - Ver todos os Diretores;");
 		System.out.println("55 - Ver todas as Disciplinas;");
+		System.out.println("--------------");
 		System.out.println("111 - Deletar Aluno;");
 		System.out.println("222 - Deletar Professor;");
 		System.out.println("444 - Deletar Diretor;");
+		System.out.println("--------------");
 		System.out.println("1111 - Atualizar Aluno;");
 		System.out.println("2222 - Atualizar Professor;");
 		System.out.println("4444 - Atualizar Diretor;");
+		System.out.println("--------------");
 		System.out.println("8 - Relatórios;");
+		System.out.println("--------------");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
+		System.out.println("{}----------{}");
 	}
 	
 	public static void operationsProfessor() {
-		System.out.println("1 - Colocar NP1 de uma Aluno;");//Problema sem Alunos
-		System.out.println("2 - Colocar NP2 de uma Aluno;");//Problema sem Alunos
+		System.out.println("{}----------{}");
+		System.out.println("1 - Colocar NP1 de uma Aluno;");
+		System.out.println("2 - Colocar NP2 de uma Aluno;");
+		System.out.println("--------------");
 		System.out.println("11 - Ver todos as notas da NP1;");
 		System.out.println("22 - Ver todos as notas da NP2;");
-		System.out.println("33 - Ver todos os Alunos;");//Problema sem Alunos
+		System.out.println("33 - Ver todos os Alunos;");
+		System.out.println("--------------");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
+		System.out.println("{}----------{}");
 	}
 	
 	public static void operationsAluno() {
+		System.out.println("{}----------{}");
 		System.out.println("1 - Ver NP1 de todas as Disciplinas;");
 		System.out.println("2 - Ver NP2 de todas as Disciplinas;");
-		System.out.println("3 - Ver Média de todas as Disciplinas;");
+		System.out.println("--------------");
 		System.out.println("0 - Sair do Sistema.");
 		System.out.println("/ - Voltar ao Login.");
+		System.out.println("{}----------{}");
 	}
 	
 	public static void cadastrarAluno() {
+		System.out.println("|==*==|");
 		System.out.println("Digite as informações do Aluno:");
+		System.out.println("|==*==|");
 	}
 	
 	public static void cadastrarProfessor() {
+		System.out.println("|==*==|");
 		System.out.println("Digite as informações do Professor:");
+		System.out.println("|==*==|");
 	}
 	
 	public static void cadastrarDiretor() {
+		System.out.println("|==*==|");
 		System.out.println("Digite as informações do Diretor:");	
+		System.out.println("|==*==|");
 	}
 	
 	public static void cadastrarDisciplina() {
+		System.out.println("|==*==|");
 		System.out.println("Digite a informação da Disciplina:");
+		System.out.println("|==*==|");
 	}
 	
 	public static void cadastrarSala() {
-		System.out.println("Digite a informação da Sala:");		
+		System.out.println("|==*==|");
+		System.out.println("Digite a informação da Sala:");
+		System.out.println("|==*==|");
 	}
 	
 	/* DELETES */
 	public static void deletarAluno() {
+		System.out.println("|==*==|");
 		System.out.println("Digite a matrícula do aluno que deseja deletar:");
+		System.out.println("|==*==|");
 	}
 	
 	public static void deletarProfessor() {
+		System.out.println("|==*==|");
 		System.out.println("Digite o CPF do Professor que deseja deletar:");
+		System.out.println("|==*==|");
 	}
 	
 	public static void deletarDiretor() {
+		System.out.println("|==*==|");
 		System.out.println("Digite o CPF do Diretor que deseja deletar:");
+		System.out.println("|==*==|");
 	}
 	/* END * DELETES */
 	
@@ -209,11 +240,13 @@ public abstract class InterfaceGrafica {
 	}
 
 	public static void relatoriosMenu() {
+		System.out.println("{}----------{}");
 		System.out.println("1 - Alunos com mais de 15 anos;");
 		System.out.println("2 - Nomes dos Alunos com nota;");
 		System.out.println("3 - Alunos sem notas;");
 		System.out.println("4 - Alunos acima da média.");
 		System.out.println("/ - Voltar.");
+		System.out.println("{}----------{}");
 	}
 
 	
