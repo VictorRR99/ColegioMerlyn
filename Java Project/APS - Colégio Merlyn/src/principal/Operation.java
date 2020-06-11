@@ -353,7 +353,7 @@ public class Operation {
 		ps.execute();
 		ps.close();
 		
-		if(Integer.parseInt(numSala) < 6) {
+		if(Integer.parseInt("" + numSala.charAt(0)) < 6) {
 			
 			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
 					+ " ("+ Integer.parseInt("" + numSala.charAt(0)) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
