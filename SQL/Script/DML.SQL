@@ -46,7 +46,7 @@ DELETE FROM Pessoa;
 -- PESQUISAS NO SISTEMA
 
 -- ALUNOS COM MAIS DE 15 ANOS
-SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno 
+SELECT Pessoa.nome FROM Pessoa INNER JOIN Aluno ON Aluno.pessoa_cd_pessoa = Pessoa.cd_pessoa 
 AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;
 
 -- NOME DE TODOS OS ALUNOS COM SUAS NOTAS

@@ -953,8 +953,8 @@ public class Operation {
 	/* Relatórios */
 	
 	public void alunosComMaisDeTantosAnos() {
-		sql = "SELECT nome FROM Pessoa INNER JOIN Aluno ON cd_pessoa = cd_aluno "
-				+ "AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;";
+		sql = "SELECT Pessoa.nome FROM Pessoa INNER JOIN Aluno ON Aluno.pessoa_cd_pessoa = Pessoa.cd_pessoa \r\n" + 
+				"AND DATE_PART('year', NOW()) - DATE_PART('year', dt_nasc) > 15;";
         
         String nomeAlunoMaior;
 
