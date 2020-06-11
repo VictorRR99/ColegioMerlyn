@@ -213,6 +213,7 @@ public abstract class InterfaceGrafica {
 			String l = "" + x.getSala().charAt(0);
 			if(l.equals(Integer.toString(serie))) {
 				System.out.println(x.getSala());
+				break;
 			}
 		}
 		
