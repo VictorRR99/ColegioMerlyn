@@ -285,10 +285,12 @@ public class Operation {
 				if(!this.usuarioVoltar()) {
 					return false;
 				}
+				System.out.println("Digite numero da sala");
+				numSala = leitorStr.nextLine();
 			}
 			
 		}
-		
+
 		InterfaceGrafica.lineBreaker();
 		
 		boolean excecao = false;
