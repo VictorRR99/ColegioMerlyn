@@ -22,12 +22,13 @@ public class Operation {
 	
 	private String sql;
 	
-	/* Permitido por: Diretor */
+	/* Operações do Diretor*/
+	@SuppressWarnings("all")
 	public boolean cadastrarAluno() throws SQLException{
 		InterfaceGrafica.cadastrarAluno();
 		
 		String nome, cpf, rg, dtNasc = null, sala, turno, senha;
-		int serie;
+		int serie = 0;
 		
 		
 		System.out.println("Digite nome:");
@@ -57,18 +58,58 @@ public class Operation {
 			}
 		}
 		
-		System.out.println("Digite serie:");
-		serie = leitorInt.nextInt();
-		InterfaceGrafica.lineBreaker();
+		try {
+			System.out.println("Digite serie:");
+			InterfaceGrafica.mostrarSerie();
+			
+			boolean serieValida = false;
+			int a[] = new int[9];
+			int numSerie=1;
+			
+			for(int i=0; i<9; i++) {
+				a[i] = numSerie;
+				numSerie++;
+			}
+			
+			
+			while(!serieValida) {
+				serie = leitorInt.nextInt();
+				for(int i = 0; i<9; i++) {
+					if(serie == a[i]) {
+						serieValida = true;
+						break;
+					}
+				}
+				System.out.println("Serie inválida.");
+				if(!this.usuarioVoltar()) {
+					return false;
+				}
+			}
+			
+			InterfaceGrafica.lineBreaker();
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente, serie deve ser somente números.");
+			InterfaceGrafica.separatorLight();
+			
+			return false;
+		}
+		
 		
 		InterfaceGrafica.mostrarSalas(serie);
 		System.out.println("Digite sala:");
 		sala = leitorStr.nextLine();
+		if(sala.equals("0")) {
+			System.out.println("Cadastre uma sala que comece com o número da série:" + serie);
+			return false;
+		}
 		InterfaceGrafica.lineBreaker();
 		
 		//Checagem se não há inconsistência nas séries e salas
 		boolean check = Sala.checarSalaCerta(serie, sala);
 		while(!check) {
+			
 			System.out.println("Sala errada para série escolhida!");
 			System.out.println("Digite uma sala válida:");
 			sala = leitorStr.nextLine();
@@ -91,87 +132,38 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
-		
-//		Inserindo na tabela Pessoa
-		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
-				
-		Connection conexao = Conexao.getConnection();
-				
-		PreparedStatement ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-		
-		int matProvi = 0;
-		
-		for(Aluno x : Aluno.getLista()) {
-			if(x.getCpf().equals(cpf)) {
-				matProvi = x.getMat();
-			}
+		boolean excecao = false;
+		try {
+			
+			SQLcommand.insertAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+			
+			Diretor.cadastrarAluno(nome, cpf, rg, dtNasc, serie, turno, sala, senha);
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindAlunoException();
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindAlunoException();
+			InterfaceGrafica.separatorLight();
 		}
 		
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
-        
-        int cd_pessoa = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        //insert na tabela Aluno
-		sql = "INSERT INTO Aluno(cd_aluno, pessoa_cd_pessoa, cd_sala, serie, turno) VALUES("+ matProvi + ", '"+ cd_pessoa +"', '" + 
-				Integer.parseInt(sala) + "', '" + serie + "', '" + turno +"')";
-				
-		conexao = Conexao.getConnection();
-				
-		ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		
-		if(serie < 6) {
-			sql = "INSERT INTO Notas(cd_aluno, cd_disc) VALUES("+ matProvi +", 1), ("+ matProvi +", 2), ("+ matProvi +", 3), "
-					+ "("+ matProvi +", 9)";
-			
-			conexao = Conexao.getConnection();
-			
-			ps = conexao.prepareStatement(sql);
-			
-			ps.execute();
-			ps.cancel();
-			
-		}else if(serie > 5) {
-			
-			sql = "INSERT INTO Notas(cd_aluno, cd_disc) VALUES("+ matProvi +", 1), ("+ matProvi +", 2), ("+ matProvi +", 3), "
-					+ "("+ matProvi +", 4), ("+ matProvi +", 5), ("+ matProvi +",6), ("+ matProvi +",7), "
-							+ "("+ matProvi +",8), ("+ matProvi +",9)";
-			
-			conexao = Conexao.getConnection();
-			
-			ps = conexao.prepareStatement(sql);
-			
-			ps.execute();
-			ps.cancel();
-			
+		if(!excecao) {
+			System.out.println("Cadastro concluído com sucesso!");
+			return true;
 		}
 		
-		
-		System.out.println("Cadastro concluído com sucesso!");
-		return true;
+		return false;
 	}
 	
-	/* Permitido por: Diretor */
-	public void cadastrarProfessor() throws SQLException {
+	public boolean cadastrarProfessor() throws SQLException {
 		
 		String nome, cpf, rg, dtNasc, senha;
 		Disciplina disc = null;
@@ -210,7 +202,6 @@ public class Operation {
 		}
 		InterfaceGrafica.lineBreaker();
 		
-		Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
 		
 		System.out.println("Digite a sala para qual o professor irá lecionar:");
 		this.verSalas();
@@ -223,71 +214,112 @@ public class Operation {
 				x.receberAlunos();
 			}
 		}
-		
-		
-//		Inserindo na tabela Pessoa
-		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
-				
-		Connection conexao = Conexao.getConnection();
-				
-		PreparedStatement ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-		
-//		Select na tabela pessoa para pegar o cd_pessoa
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
-        
-        int cd_pessoa = 0;
 
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-//        Select na tabela Disciplina para pegar cd_disc
-        sql = "SELECT cd_disc FROM Disciplina WHERE nm_disc = '" + disc.getNomeDisc() + "'";
-        
-        int cd_disc = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_disc = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-//		Inserindo na tabela Professor
-        
-        sql = "INSERT INTO Professor(cd_pessoa, cd_disc) VALUES("+ cd_pessoa + ", "+ cd_disc + ")";
-        
-		conexao = Conexao.getConnection();
-				
-		ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-
-		System.out.println("Cadastro concluído com sucesso!");
+		boolean excecao = false;
+		try {
+			
+			SQLcommand.insertProfessor(nome, cpf, rg, dtNasc, senha, disc);
+			
+			Diretor.cadastrarProfessor(nome, cpf, rg, dtNasc, senha, disc);
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
+			excecao = true;
+		}
+		
+		if(!excecao) {
+			System.out.println("Cadastro concluído com sucesso!");
+			return true;
+		}
+		
+		return false;
+		
 	}
 	
-	/* Permitido por: Diretor */
-	public void cadastrarDiretor() throws SQLException {
+	@SuppressWarnings("all")
+	public boolean cadastrarSala() throws SQLException {
+		
+		String numSala;
+		
+		InterfaceGrafica.cadastrarSala();
+		
+		System.out.println("Digite numero da Sala:");
+		numSala = leitorStr.nextLine();
+		
+		boolean serieValida = false;
+		int a[] = new int[9];
+		int numSerie=1;
+		
+		for(int i=0; i<9; i++) {
+			a[i] = numSerie;
+			numSerie++;
+		}
+		
+		while(!serieValida) {
+			
+			for(int i = 0; i < 9; i++) {
+				if("" + numSala.charAt(0) == Integer.toString(a[i])) {
+					serieValida = true;
+					break;
+				}
+			}
+			
+			//Voltar
+			
+			if(!this.usuarioVoltar()) {
+				return false;
+			}
+			
+		}
+		
+		Diretor.cadastrarSala(numSala);
+		
+		InterfaceGrafica.lineBreaker();
+		
+		boolean excecao = false;
+		try {
+			
+			SQLcommand.insertSala(numSala);
+			
+			Diretor.cadastrarSala(numSala);
+			
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
+			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
+		}
+		
+		if(!excecao) {
+			System.out.println("Cadastro concluído com sucesso!");
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean cadastrarDiretor() throws SQLException {
 		
 		String nome, cpf, rg, dtNasc, senha;
 		
@@ -313,108 +345,38 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
-		
-		InterfaceGrafica.lineBreaker();
-		
-//		Inserindo na tabela Pessoa
-		sql = "INSERT INTO Pessoa(nome, dt_nasc, cpf, rg, senha) VALUES('"+ nome + "', '"+ dtNasc +"', '" + 
-				cpf + "', '" + rg + "', '" + senha +"')";
-				
-		Connection conexao = Conexao.getConnection();
-				
-		PreparedStatement ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-		
-//		Select na tabela pessoa para pegar o cd_pessoa
-		sql = "SELECT cd_pessoa FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
-        
-        int cd_pessoa = 0;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-            rs.next();
-            cd_pessoa = rs.getInt(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-
-		sql = "INSERT INTO Diretor(cd_pessoa) VALUES(" + cd_pessoa + ")";
-		
-		conexao = Conexao.getConnection();
-		
-		ps = conexao.prepareStatement(sql);
-		
-		ps.execute();
-		ps.close();
-        
-	}
-
-	/* Permitido por: Diretor */
-	@SuppressWarnings("resource")
-	public void cadastrarSala() throws SQLException {
-		
-		String numSala;
-		
-		InterfaceGrafica.cadastrarSala();
-		
-		System.out.println("Digite numero da Sala:");
-		numSala = leitorStr.nextLine();
-		
-		Diretor.cadastrarSala(numSala);
-		
-		InterfaceGrafica.lineBreaker();
-		
-		sql = "INSERT INTO Sala(cd_Sala) VALUES('" + Integer.parseInt(numSala) + "')";
-		
-		Connection conexao = Conexao.getConnection();
-				
-		PreparedStatement ps = conexao.prepareStatement(sql);
-				
-		ps.execute();
-		ps.close();
-		
-		if(Integer.parseInt("" + numSala.charAt(0)) < 6) {
+		boolean excecao = false;
+		try {
 			
-			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
-					+ " ("+ Integer.parseInt(numSala) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
-							+ "("+ Integer.parseInt(numSala) +", 9)";
+			SQLcommand.insertDiretor(nome, cpf, rg, dtNasc, senha);
 			
-			conexao = Conexao.getConnection();
+			Diretor.cadastrarDiretor(nome, cpf, rg, dtNasc, senha);
 			
-			ps = conexao.prepareStatement(sql);
+		}catch(SQLException e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro ao inserir os dados no Banco.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
 			
-			ps.execute();
-			ps.close();
-			
-		}else if(Integer.parseInt("" + numSala.charAt(0)) > 5) {
-			
-			sql = "INSERT INTO sala_disc(cd_sala, cd_disc) VALUES("+ Integer.parseInt(numSala) +", 1),"
-					+ " ("+ Integer.parseInt(numSala) +", 2), ("+ Integer.parseInt(numSala) +", 3), "
-					+ "("+ Integer.parseInt(numSala) +", 4), ("+ Integer.parseInt(numSala) +", 5), "
-							+ "("+ Integer.parseInt(numSala) +", 6), ("+ Integer.parseInt(numSala) +", 7), "
-									+ "("+ Integer.parseInt(numSala) +", 8), ("+ Integer.parseInt(numSala) +", 9)";
-			
-			conexao = Conexao.getConnection();
-			
-			ps = conexao.prepareStatement(sql);
-			
-			ps.execute();
-			ps.close();
-			
+			excecao = true;
+		}catch(Exception e) {
+			InterfaceGrafica.separatorLight();
+			System.out.println("Ocorreu um erro inesperado.");
+			System.out.println("Por favor, tente novamente.");
+			InterfaceGrafica.remindProfessorException();
+			InterfaceGrafica.separatorLight();
 		}
 		
+		if(!excecao) {
+			System.out.println("Cadastro concluído com sucesso!");
+			return true;
+		}
+		
+		return false;
+        
 	}
-	
-	//Deletar Aluno
+
 	public void deletarAluno() throws SQLException {
 		int matDeleta = leitorInt.nextInt();
 		
@@ -619,6 +581,106 @@ public class Operation {
 		System.out.println("Diretor alterado com sucesso!");
 		InterfaceGrafica.lineBreaker();
 	}
+	
+	public void verProfessores() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Professor> listaProfessores = Professor.getLista();
+		
+		System.out.println("+Nomes dos Professores:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("CPF");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Disciplina");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("Sala");
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separatorLight();
+		
+		InterfaceGrafica.lineBreaker();
+		for(Professor x : listaProfessores) {
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getDisc());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getSala());
+			
+			InterfaceGrafica.lineBreaker();
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+	}
+	
+	public void verSalas() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Sala> listaSalas = Sala.getLista();
+		
+		System.out.println("+Numeros das Salas:");
+		InterfaceGrafica.lineBreaker();
+		for(Sala x : listaSalas) {
+			System.out.println(x.getSala());
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	public void verDiretores() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Diretor> listaDiretores = Diretor.getListaDir();
+		
+		System.out.println("+Nomes dos Diretores:");
+		
+		System.out.print("Nome");
+		InterfaceGrafica.spaceInLine();
+		System.out.print("CPF");
+		
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separatorLight();
+		
+		InterfaceGrafica.lineBreaker();
+		for(Diretor x : listaDiretores) {
+			System.out.print(x.getNome());
+			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			
+			InterfaceGrafica.lineBreaker();
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	
+	public void verDisciplinas() {
+		InterfaceGrafica.lineBreaker();
+		InterfaceGrafica.separator();
+		
+		List<Disciplina> listaDisciplinas = Disciplina.getLista();
+		
+		System.out.println("+Todas das Disciplinas:");
+		InterfaceGrafica.lineBreaker();
+		for(Disciplina x : listaDisciplinas) {
+			System.out.println(x.getNomeDisc());
+		}
+		
+		InterfaceGrafica.separator();
+		InterfaceGrafica.lineBreaker();
+		
+	}
+	/* END // Operações do Diretor*/
 	
 	public void getNP1(Aluno aluno) {
 		
@@ -986,6 +1048,8 @@ public class Operation {
 		InterfaceGrafica.spaceInLine();
 		System.out.print("Matricula");
 		InterfaceGrafica.spaceInLine();
+		System.out.println("CPF");
+		InterfaceGrafica.spaceInLine();
 		System.out.print("Sala");
 		
 		InterfaceGrafica.lineBreaker();
@@ -997,6 +1061,8 @@ public class Operation {
 			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getMat());
 			InterfaceGrafica.spaceInLine();
+			System.out.print(x.getCpf());
+			InterfaceGrafica.spaceInLine();
 			System.out.print(x.getSala());
 			
 			InterfaceGrafica.lineBreaker();
@@ -1007,108 +1073,6 @@ public class Operation {
 		
 	}
 	
-	/* Permitido por: Diretor */
-	public void verProfessores() {
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separator();
-		
-		List<Professor> listaProfessores = Professor.getLista();
-		
-		System.out.println("+Nomes dos Professores:");
-		
-		System.out.print("Nome");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("CPF");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("Disciplina");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("Sala");
-		
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separatorLight();
-		
-		InterfaceGrafica.lineBreaker();
-		for(Professor x : listaProfessores) {
-			System.out.print(x.getNome());
-			InterfaceGrafica.spaceInLine();
-			System.out.print(x.getCpf());
-			InterfaceGrafica.spaceInLine();
-			System.out.print(x.getDisc());
-			InterfaceGrafica.spaceInLine();
-			System.out.print(x.getSala());
-			
-			InterfaceGrafica.lineBreaker();
-		}
-		
-		InterfaceGrafica.separator();
-		InterfaceGrafica.lineBreaker();
-	}
-	
-	/* Permitido por: Diretor */
-	public void verSalas() {
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separator();
-		
-		List<Sala> listaSalas = Sala.getLista();
-		
-		System.out.println("+Numeros das Salas:");
-		InterfaceGrafica.lineBreaker();
-		for(Sala x : listaSalas) {
-			System.out.println(x.getSala());
-		}
-		
-		InterfaceGrafica.separator();
-		InterfaceGrafica.lineBreaker();
-		
-	}
-	
-	/* Permitido por: Diretor */
-	public void verDiretores() {
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separator();
-		
-		List<Diretor> listaDiretores = Diretor.getListaDir();
-		
-		System.out.println("+Nomes dos Diretores:");
-		
-		System.out.print("Nome");
-		InterfaceGrafica.spaceInLine();
-		System.out.print("CPF");
-		
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separatorLight();
-		
-		InterfaceGrafica.lineBreaker();
-		for(Diretor x : listaDiretores) {
-			System.out.print(x.getNome());
-			InterfaceGrafica.spaceInLine();
-			System.out.print(x.getCpf());
-			
-			InterfaceGrafica.lineBreaker();
-		}
-		
-		InterfaceGrafica.separator();
-		InterfaceGrafica.lineBreaker();
-		
-	}
-	
-	/* Permitido por: Diretor */
-	public void verDisciplinas() {
-		InterfaceGrafica.lineBreaker();
-		InterfaceGrafica.separator();
-		
-		List<Disciplina> listaDisciplinas = Disciplina.getLista();
-		
-		System.out.println("+Todas das Disciplinas:");
-		InterfaceGrafica.lineBreaker();
-		for(Disciplina x : listaDisciplinas) {
-			System.out.println(x.getNomeDisc());
-		}
-		
-		InterfaceGrafica.separator();
-		InterfaceGrafica.lineBreaker();
-		
-	}
 	
 	/* Mostra as salas disponíveis por série*/
 	public void mostrarSalas(int serie){

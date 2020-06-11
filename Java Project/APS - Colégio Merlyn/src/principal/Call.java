@@ -39,8 +39,10 @@ public class Call {
 		List<Diretor> checagemDiretor = Diretor.getListaDir();
 		/* Checagem da existencia de um Diretor no sistema */
 		List<Disciplina> checagemDisciplina = Disciplina.getLista();
+		/* Checagem da existencia de sala no sistema antes da criação de um aluno */
+		List<Sala> checagemSala = Sala.getLista();
 
-		if(checagemDisciplina.isEmpty()) {
+		if(Disciplina.getLista().isEmpty()) {
 			operacao.pegarDisciplinas();
 			operacao.serializeAll();
 		}
@@ -352,9 +354,13 @@ public class Call {
 								switch(userSelect) {
 								case "1":
 									
-									//Colocar um IF aqui para verificar se a lista de salas nï¿½o estï¿½ vazia
-									operacao.cadastrarAluno();
-									operacao.serializeAll();
+									if(!Sala.getLista().isEmpty()) {
+										operacao.cadastrarAluno();
+										operacao.serializeAll();
+									}else {
+										InterfaceGrafica.semSala();
+									}
+									
 									
 									break;
 								case "2":
@@ -455,38 +461,42 @@ public class Call {
 										
 										relatorios = leitorRelatorios.nextLine();
 										
-										switch(relatorios) {
-										case "1":
+										try {
+											switch(relatorios) {
+											case "1":
+												
+												operacao.alunosComMaisDeTantosAnos();
+												
+												break;
+											case "2":
+												
+												operacao.nomeAlunosComNota();
+												
+												break;
+											case "3":
+												
+												operacao.alunosSemNotas();
+												
+												break;
+											case "4":
+												
+												operacao.alunosAcimaMedia();
+												
+												break;
+											case "/":
+												
+												relatorioStop = true;
+												
+												break;
+											default:
+												
+												InterfaceGrafica.separator();
+												System.out.println("Operação selecionada não existe.");
+												InterfaceGrafica.separator();
 											
-											operacao.alunosComMaisDeTantosAnos();
-											
-											break;
-										case "2":
-											
-											operacao.nomeAlunosComNota();
-											
-											break;
-										case "3":
-											
-											operacao.alunosSemNotas();
-											
-											break;
-										case "4":
-											
-											operacao.alunosAcimaMedia();
-											
-											break;
-										case "/":
-											
-											relatorioStop = true;
-											
-											break;
-										default:
-											
-											InterfaceGrafica.separator();
-											System.out.println("Operação selecionada não existe.");
-											InterfaceGrafica.separator();
-										
+											}
+										} catch (IOException e) {
+											e.printStackTrace();
 										}
 									}
 									
