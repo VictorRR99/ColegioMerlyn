@@ -30,7 +30,6 @@ public class Operation {
 		String nome, cpf, rg, dtNasc = null, sala, turno, senha;
 		int serie = 0;
 		
-		
 		System.out.println("Digite nome:");
 		nome = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
