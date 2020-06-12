@@ -374,5 +374,68 @@ public class SQLcommand {
         ps.execute();
         ps.close();
 	}
+
+	public static void setNP1(Aluno instanciaAluno, Float np1, Professor professor) throws SQLException {
+		String sql;
+		
+		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = '" + professor.getDisc()+"'";
+		
+		int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+		
+		sql = "UPDATE Notas SET NP1 = " + np1 + "WHERE cd_aluno = " + instanciaAluno.getMat() + " AND cd_disc = " + cd_disc;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+	}
+
+	public static void setNP2(Aluno instanciaAluno, Float np2, Professor professor) throws SQLException {
+		String sql;
+		
+		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = '" + professor.getDisc() +"'";
+		
+		int cd_disc = 0;
+
+        try (Connection conn = Conexao.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            cd_disc = rs.getInt(1);
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+		
+		sql = "UPDATE Notas SET NP2 = " + np2 + "WHERE cd_aluno = " + instanciaAluno.getMat() + " AND cd_disc = " + cd_disc;
+		
+		Connection con = Conexao.getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.execute();
+		ps.close();
+		
+	}
+
 	
 }
