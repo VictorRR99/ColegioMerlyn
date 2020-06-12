@@ -613,6 +613,8 @@ public class Operation {
 	
 	public void getNP2(Aluno aluno) {
 		
+		InterfaceGrafica.lineBreaker();
+		
 		InterfaceGrafica.separator();
 		System.out.print("Disciplina");
 		InterfaceGrafica.spaceInLine();
@@ -750,6 +752,7 @@ public class Operation {
 		List<Aluno> listaAlunosDoProfessor = professor.getListaAluno();
 		
 		System.out.println("+Nomes dos Alunos:");
+		System.out.println("[Se Nota = 0 então não há nota]");
 		
 		System.out.print("Nome");
 		InterfaceGrafica.spaceInLine();
@@ -784,6 +787,7 @@ public class Operation {
 		List<Aluno> listaAlunosDoProfessor = professor.getListaAluno();
 		
 		System.out.println("+Nomes dos Alunos:");
+		System.out.println("[Se Nota = 0 então não há nota]");
 		
 		System.out.print("Nome");
 		InterfaceGrafica.spaceInLine();
