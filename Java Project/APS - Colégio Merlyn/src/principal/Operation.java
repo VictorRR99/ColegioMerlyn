@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -66,7 +65,7 @@ public class Operation {
 				}
 			}
 			
-			
+			break;
 		}
 			sql = "SELECT cpf FROM Pessoa";
 	        
@@ -299,6 +298,12 @@ public class Operation {
 			if(x.getNomeDisc().equals(check)) {
 				disc = x;
 			}
+		}
+		
+		boolean lok = false;
+		
+		while(!lok) {
+			
 		}
 		
 		InterfaceGrafica.lineBreaker();
