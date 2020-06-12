@@ -236,16 +236,24 @@ public class Call {
 									switch (userSelect) {
 										case "1":
 
-											InterfaceGrafica.setNP1();
-											operacao.setNP1(userProfessor);
-											operacao.serializeAll();
+											if(!userProfessor.getListaAluno().isEmpty()) {
+												InterfaceGrafica.setNP1();
+												operacao.setNP1(userProfessor);
+												operacao.serializeAll();
+											}else {
+												System.out.println("Este professor não tem Alunos.");
+											}
 
 											break;
 										case "2":
 
-											InterfaceGrafica.setNP2();
-											operacao.setNP2(userProfessor);
-											operacao.serializeAll();
+											if(!userProfessor.getListaAluno().isEmpty()) {
+												InterfaceGrafica.setNP2();
+												operacao.setNP2(userProfessor);
+												operacao.serializeAll();
+											}else {
+												System.out.println("Este professor não tem Alunos.");
+											}
 
 											break;
 										case "11":

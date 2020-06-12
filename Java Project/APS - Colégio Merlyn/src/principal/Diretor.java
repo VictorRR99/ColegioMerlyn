@@ -150,7 +150,8 @@ public class Diretor extends Pessoa implements Serializable, Autenticacao {
 	static void deletarDiretor(String cpf) {
 		for(Diretor x : Diretor.getListaDir()) {
 			if(x.getCpf().equals(cpf)) {
-				Diretor.getListaDir().remove(x);
+				Diretor diretor = x;
+				Diretor.getListaDir().remove(diretor);
 				break;
 			}
 		}
