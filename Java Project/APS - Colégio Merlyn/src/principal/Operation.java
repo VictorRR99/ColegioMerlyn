@@ -42,32 +42,7 @@ public class Operation {
 		boolean checkCpf = false;
 		
 		while(!checkCpf) {
-			for(int i = 0; i < Diretor.getListaDir().size(); i++) {
-				if(Diretor.getListaDir().get(i).getCpf().equals(cpf)) {
-					System.out.println("CPF já cadastrado, digite outro!");
-					cpf = leitorStr.nextLine();
-					i = 0;
-				}
-			}
 			
-			for(int i = 0; i < Professor.getLista().size(); i++) {
-				if(Professor.getLista().get(i).getCpf().equals(cpf)) {
-					System.out.println("CPF já cadastrado, digite outro!");
-					cpf = leitorStr.nextLine();
-					i = 0;
-				}
-			}
-			
-			for(int i = 0; i < Aluno.getLista().size(); i++) {
-				if(Aluno.getLista().get(i).getCpf().equals(cpf)) {
-					System.out.println("CPF já cadastrado, digite outro!");
-					cpf = leitorStr.nextLine();
-					i = 0;
-				}
-			}
-			
-			
-		}
 			sql = "SELECT cpf FROM Pessoa";
 	        
 	        String cpfChk = null;
@@ -95,7 +70,10 @@ public class Operation {
     			conn.close();
     		} catch (SQLException ex) {
     			System.out.println(ex.getMessage());
-    		}	
+    		}
+			
+		}
+				
 	        	
 	       
 		
@@ -220,36 +198,37 @@ public class Operation {
 		boolean checkCpf = false;
 		
 		while(!checkCpf) {
-			sql = "SELECT cpf FROM Pessoa";
-	        
-	        String cpfChk = null;
-	        
-	        try (Connection conn = Conexao.getConnection();
-    				Statement stmt = conn.createStatement();
-    				ResultSet rs = stmt.executeQuery(sql)) {
-    			while(rs.next()) {
-    				
-    				cpfChk = rs.getString(1);
-    				
-    				if(cpf.equals(cpfChk)) {
-    					System.out.println("CPF já está cadastrado. Digite outro!");
-    					cpf = leitorStr.nextLine();
-    					checkCpf = false;
-    					break;
-    				}else {
-    					checkCpf = true;
-    				}
-    				
-    			}
-    			
-    			rs.close();
-    			stmt.close();
-    			conn.close();
-    		} catch (SQLException ex) {
-    			System.out.println(ex.getMessage());
-    		}	
-	        	
-	       }
+					
+					sql = "SELECT cpf FROM Pessoa";
+			        
+			        String cpfChk = null;
+			        
+			        try (Connection conn = Conexao.getConnection();
+		    				Statement stmt = conn.createStatement();
+		    				ResultSet rs = stmt.executeQuery(sql)) {
+		    			while(rs.next()) {
+		    				
+		    				cpfChk = rs.getString(1);
+		    				
+		    				if(cpf.equals(cpfChk)) {
+		    					System.out.println("CPF já está cadastrado. Digite outro!");
+		    					cpf = leitorStr.nextLine();
+		    					checkCpf = false;
+		    					break;
+		    				}else {
+		    					checkCpf = true;
+		    				}
+		    				
+		    			}
+		    			
+		    			rs.close();
+		    			stmt.close();
+		    			conn.close();
+		    		} catch (SQLException ex) {
+		    			System.out.println(ex.getMessage());
+		    		}
+					
+				}
 	        
 		
 		System.out.println("Digite rg:");
