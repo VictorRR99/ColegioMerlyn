@@ -85,11 +85,11 @@ public class Operation {
 				break;
 			}
 				
-		System.out.println("Serie inválida.");
-		if(!this.usuarioVoltar()) {
-			return false;
-		}
-		System.out.println("");
+			System.out.println("Serie inválida.");
+			if(!this.usuarioVoltar()) {
+				return false;
+			}
+			System.out.println("");
 		}
 			
 		InterfaceGrafica.lineBreaker();
@@ -186,7 +186,27 @@ public class Operation {
 		this.verSalas();
 		String sala = leitorStr.nextLine();
 
+		boolean checarSala = false;
 		
+		while(!checarSala) {
+			
+			for(Sala x : Sala.getLista()) {
+				if(x.getSala().equals(sala)) {
+					checarSala = true;
+					break;
+				}
+			}
+			
+			if(!checarSala) {
+				if(this.usuarioVoltar()) {
+					sala = leitorStr.nextLine();
+				}else {
+					return false;
+				}
+				
+			}
+			
+		}
 
 		//Serialização
 		//Inserção no Banco
@@ -665,7 +685,7 @@ public class Operation {
 		
 		instanciaAluno.setNP1(np1, professor);
 		
-		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = " + professor.getDisc()+"'";
+		sql = "SELECT Disciplina.cd_disc FROM Disciplina INNER JOIN Professor ON Disciplina.nm_disc = '" + professor.getDisc()+"'";
 		
 		int cd_disc = 0;
 

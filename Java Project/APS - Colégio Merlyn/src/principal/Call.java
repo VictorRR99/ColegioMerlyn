@@ -367,10 +367,15 @@ public class Call {
 									break;
 								case "2":
 									
-									if(operacao.cadastrarProfessor()) {
-										System.out.println("Cadastro concluído com sucesso!");
+									if(!Sala.getLista().isEmpty()) {
+										if(operacao.cadastrarProfessor()) {
+											System.out.println("Cadastro concluído com sucesso!");
+										}
+										operacao.serializeAll();
+									}else {
+										InterfaceGrafica.semSala();
 									}
-									operacao.serializeAll();
+									
 									
 									break;
 								case "3":
