@@ -39,6 +39,28 @@ public class Operation {
 		cpf = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
+		boolean checkCpf = false;
+		
+		while(!checkCpf) {
+			for(Professor x : Professor.getLista()) {
+				if(x.getCpf().equals(cpf)) {
+					System.out.println("CPF já cadastrado, digite outro!");
+					cpf = leitorStr.nextLine();
+					break;
+				}
+			}
+			
+			for(Aluno x : Aluno.getLista()) {
+				if(x.getCpf().equals(cpf)) {
+					System.out.println("CPF já cadastrado, digite outro!");
+					cpf = leitorStr.nextLine();
+					break;
+				}
+			}
+			
+			break;
+		}
+		
 		System.out.println("Digite rg:");
 		rg = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
