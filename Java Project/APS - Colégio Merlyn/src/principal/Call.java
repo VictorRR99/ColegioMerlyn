@@ -18,7 +18,7 @@ public class Call {
 		Sala.desserialization();
 		Disciplina.desserialization();
 		/* Leitura dos arquivos */
-
+		
 		System.out.println("Desserialização completa!");
 		InterfaceGrafica.separator();
 
