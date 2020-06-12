@@ -229,54 +229,20 @@ public class Operation {
 		senha = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		System.out.println("Digite a disciplina a ser lecionada:");
-		InterfaceGrafica.mostrarDisciplinas();
-		String check;
-		check = leitorStr.nextLine();
-			
-		for(Disciplina x : Disciplina.getLista()) {
-			if(x.getNomeDisc().equals(check)) {
-				disc = x;
-			}
-		}
-		InterfaceGrafica.lineBreaker();
-		
-		
 		System.out.println("Digite a sala para qual o professor irá lecionar:");
 		this.verSalas();
 		String sala = leitorStr.nextLine();
 
 		boolean checarSala = false;
 		
-		Sala salaProvi = null;
-		
-		List<String> l = null;
-		
-		boolean lok = false;
-		
 		while(!checarSala) {
 			
 			for(Sala x : Sala.getLista()) {
 				if(x.getSala().equals(sala)) {
 					checarSala = true;
-					salaProvi = x;
-					l = x.getDiscDaSalas();
 					break;
 				}
 			}
-			
-			while(!lok) {
-				for(String x : l) {
-					if(x.equals(disc.getNomeDisc())) {
-						System.out.println("Já existe essa disciplina nessa sala!");
-						System.out.println("Digite outra: ");
-						sala = leitorStr.nextLine();
-					}
-				}
-				break;
-			}
-			
-
 			
 			if(!checarSala) {
 				if(this.usuarioVoltar()) {
@@ -288,6 +254,25 @@ public class Operation {
 			}
 			
 		}
+		
+		System.out.println("Digite a disciplina a ser lecionada:");
+		InterfaceGrafica.mostrarDisciplinas();
+		String check;
+		check = leitorStr.nextLine();
+			
+		for(Disciplina x : Disciplina.getLista()) {
+			if(x.getNomeDisc().equals(check)) {
+				disc = x;
+			}
+		}
+		
+		boolean lok = false;
+		
+		while(!lok) {
+			
+		}
+		
+		InterfaceGrafica.lineBreaker();
 
 		//Serialização
 		//Inserção no Banco
