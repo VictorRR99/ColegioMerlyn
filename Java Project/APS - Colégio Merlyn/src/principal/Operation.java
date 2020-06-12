@@ -188,14 +188,35 @@ public class Operation {
 
 		boolean checarSala = false;
 		
+		Sala salaProvi = null;
+		
+		List<String> l = null;
+		
+		boolean lok = false;
+		
 		while(!checarSala) {
 			
 			for(Sala x : Sala.getLista()) {
 				if(x.getSala().equals(sala)) {
 					checarSala = true;
+					salaProvi = x;
+					l = x.getDiscDaSalas();
 					break;
 				}
 			}
+			
+			while(!lok) {
+				for(String x : l) {
+					if(x.equals(disc.getNomeDisc())) {
+						System.out.println("Já existe essa disciplina nessa sala!");
+						System.out.println("Digite outra: ");
+						sala = leitorStr.nextLine();
+					}
+				}
+				break;
+			}
+			
+
 			
 			if(!checarSala) {
 				if(this.usuarioVoltar()) {
