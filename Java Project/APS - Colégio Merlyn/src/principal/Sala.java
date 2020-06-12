@@ -40,6 +40,10 @@ public class Sala implements Serializable {
 		return numSala;
 	}
 	
+	List<Professor> getListaProf(){
+		return this.professoresQueLecionam;
+	}
+	
 	boolean addProfessor(Professor nmProf) {
 		for(int i = 0; i < professoresQueLecionam.size(); i++) {
 			if(professoresQueLecionam.get(i).getDisc() == nmProf.getDisc()) {
