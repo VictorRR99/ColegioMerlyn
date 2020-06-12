@@ -42,27 +42,27 @@ public class Operation {
 		boolean checkCpf = false;
 		
 		while(!checkCpf) {
-			for(Diretor x : Diretor.getListaDir()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Diretor.getListaDir().size(); i++) {
+				if(Diretor.getListaDir().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Professor x : Professor.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Professor.getLista().size(); i++) {
+				if(Professor.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Aluno x : Aluno.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Aluno.getLista().size(); i++) {
+				if(Aluno.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
@@ -190,27 +190,27 @@ public class Operation {
 		boolean checkCpf = false;
 		
 		while(!checkCpf) {
-			for(Diretor x : Diretor.getListaDir()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Diretor.getListaDir().size(); i++) {
+				if(Diretor.getListaDir().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Professor x : Professor.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Professor.getLista().size(); i++) {
+				if(Professor.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Aluno x : Aluno.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Aluno.getLista().size(); i++) {
+				if(Aluno.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
@@ -374,27 +374,27 @@ public class Operation {
 		boolean checkCpf = false;
 		
 		while(!checkCpf) {
-			for(Diretor x : Diretor.getListaDir()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Diretor.getListaDir().size(); i++) {
+				if(Diretor.getListaDir().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Professor x : Professor.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Professor.getLista().size(); i++) {
+				if(Professor.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
-			for(Aluno x : Aluno.getLista()) {
-				if(x.getCpf().equals(cpf)) {
+			for(int i = 0; i < Aluno.getLista().size(); i++) {
+				if(Aluno.getLista().get(i).getCpf().equals(cpf)) {
 					System.out.println("CPF já cadastrado, digite outro!");
 					cpf = leitorStr.nextLine();
-					break;
+					i = 0;
 				}
 			}
 			
