@@ -97,7 +97,7 @@ public class Operation {
     			System.out.println(ex.getMessage());
     		}	
 	        	
-	       }
+	       
 		
 		System.out.println("Digite rg:");
 		rg = leitorStr.nextLine();
