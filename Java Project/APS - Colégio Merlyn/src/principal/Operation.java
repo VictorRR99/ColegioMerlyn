@@ -50,7 +50,10 @@ public class Operation {
 	        try (Connection conn = Conexao.getConnection();
     				Statement stmt = conn.createStatement();
     				ResultSet rs = stmt.executeQuery(sql)) {
-    			while(rs.next()) {
+    			
+	        	if(!rs.next()) break;
+	        	
+	        	while(rs.next()) {
     				
     				cpfChk = rs.getString(1);
     				
@@ -206,7 +209,10 @@ public class Operation {
 			        try (Connection conn = Conexao.getConnection();
 		    				Statement stmt = conn.createStatement();
 		    				ResultSet rs = stmt.executeQuery(sql)) {
-		    			while(rs.next()) {
+			        	
+			        	if(!rs.next()) break;
+			        	
+			        	while(rs.next()) {
 		    				
 		    				cpfChk = rs.getString(1);
 		    				
@@ -389,7 +395,10 @@ public class Operation {
 	        try (Connection conn = Conexao.getConnection();
     				Statement stmt = conn.createStatement();
     				ResultSet rs = stmt.executeQuery(sql)) {
-    			while(rs.next()) {
+	        	
+	        	if(!rs.next()) break;
+	        	
+	        	while(rs.next()) {
     				
     				cpfChk = rs.getString(1);
     				
