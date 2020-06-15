@@ -46,79 +46,7 @@ public abstract class Pessoa implements Serializable{
 	public String getSenha() {
 		return senha;
 	}
-	
-	/* M�todos de Relat�rio [Pesquisa] JAVA */
-	
-	//Talvez fazer m�todos que procuram igual a pesquisa do SQL
-	//Para tal realmente � poss�vel a necessidade de umaa lista est�tica
-	//Por�m haver� complica��es a respeito de como ser� chamado os m�todos
-	
-	// INSERIR METODOS DE RELATORIO
 
-	/* M�todos de Relat�rio [Pesquisa] PostgreSQL */
-	
-	//Quantidade de Pessoas que est�o cadastradas na Escola
-	public int getPessoaCount() throws ClassNotFoundException {
-        String SQL = "SELECT count(*) FROM Pessoa";
-        int count = 0;
-
-        try (Connection conn = Conexao.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(SQL)) {
-            rs.next();
-            count = rs.getInt(1);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return count;
-    }
-	
-	//Todas os nomes das Pessoas que est�o cadastradas na Escola
-	public List<String> getAllPessoa() throws ClassNotFoundException {
-		String SQL = "SELECT nome FROM Pessoa";
-		
-		List<String> lista = new ArrayList<>();
-		
-		try (Connection conn = Conexao.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(SQL)) {
-			while(rs.next()) {
-					lista.add(rs.getString("nome"));
-			}
-		      rs.next();
-		      rs.close();
-	          stmt.close();
-	          conn.close();
-		} catch (SQLException ex) {
-		      System.out.println(ex.getMessage());
-		}
-	
-			return lista;
-	}
-	
-	//Dado o cpf que estiver na String cpf ser� retornado a data de nascimento desta pessoa
-	//Atrav�s da pesquisa no Banco de Dados
-	public String getPessoaDtNasc() throws ClassNotFoundException {
-		
-		//Faz o Select da data de nascimento e assegura que a pesquisa ser� feito corretamente
-        String SQL = "SELECT TO_CHAR(dt_nasc :: DATE, 'dd/mm/yyyy') FROM Pessoa WHERE LOWER(cpf) = '" + cpf.toLowerCase() + "'";
-        
-        String queryPessoa = null;
-
-        try (Connection conn = Conexao.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL)) {
-            rs.next();
-            queryPessoa = rs.getString(1);
-            
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return queryPessoa;
-    }
 }
 
 
