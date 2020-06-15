@@ -39,46 +39,43 @@ public class Operation {
 		cpf = leitorStr.nextLine();
 		InterfaceGrafica.lineBreaker();
 		
-		if(!Diretor.getListaDir().isEmpty()) {
+		boolean checkCpf = false;
+		
+		while(!checkCpf) {
 			
-			boolean checkCpf = false;
-			
-			while(!checkCpf) {
-				
-				sql = "SELECT cpf FROM Pessoa";
-				
-				String cpfChk = null;
-				
-				try (Connection conn = Conexao.getConnection();
-						Statement stmt = conn.createStatement();
-						ResultSet rs = stmt.executeQuery(sql)) {
-					
-					while(rs.next()) {
-						
-						cpfChk = rs.getString(1);
-						
-						if(cpf.equals(cpfChk)) {
-							System.out.println("CPF já está cadastrado. Digite outro!");
-							cpf = leitorStr.nextLine();
-							checkCpf = false;
-							break;
-						}else {
-							checkCpf = true;
-						}
-						
-					}
-					
-					rs.close();
-					stmt.close();
-					conn.close();
-				} catch (SQLException ex) {
-					System.out.println(ex.getMessage());
-				}
-				
-			}
+			sql = "SELECT cpf FROM Pessoa";
+	        
+	        String cpfChk = null;
+	        
+	        try (Connection conn = Conexao.getConnection();
+    				Statement stmt = conn.createStatement();
+    				ResultSet rs = stmt.executeQuery(sql)) {
+    			
+	        	if(!rs.next()) break;
+	        	
+	        	while(rs.next()) {
+    				
+    				cpfChk = rs.getString(1);
+    				
+    				if(cpf.equals(cpfChk)) {
+    					System.out.println("CPF já está cadastrado. Digite outro!");
+    					cpf = leitorStr.nextLine();
+    					checkCpf = false;
+    					break;
+    				}else {
+    					checkCpf = true;
+    				}
+    				
+    			}
+    			
+    			rs.close();
+    			stmt.close();
+    			conn.close();
+    		} catch (SQLException ex) {
+    			System.out.println(ex.getMessage());
+    		}
 			
 		}
-		
 				
 	        	
 	       
@@ -212,6 +209,8 @@ public class Operation {
 			        try (Connection conn = Conexao.getConnection();
 		    				Statement stmt = conn.createStatement();
 		    				ResultSet rs = stmt.executeQuery(sql)) {
+			        	
+			        	if(!rs.next()) break;
 			        	
 			        	while(rs.next()) {
 		    				
@@ -396,6 +395,8 @@ public class Operation {
 	        try (Connection conn = Conexao.getConnection();
     				Statement stmt = conn.createStatement();
     				ResultSet rs = stmt.executeQuery(sql)) {
+	        	
+	        	if(!rs.next()) break;
 	        	
 	        	while(rs.next()) {
     				
