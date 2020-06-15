@@ -394,8 +394,6 @@ public class Operation {
 						Statement stmt = conn.createStatement();
 						ResultSet rs = stmt.executeQuery(sql)) {
 					
-					if(!rs.next()) break;
-					
 					while(rs.next()) {
 						
 						cpfChk = rs.getString(1);
